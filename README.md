@@ -6,6 +6,10 @@ Then to enable all required IA services:
   
   `./ccd enable backend frontend dm-store`
 
+Scripts to create IA test users and import IA CCD definitions are here:
+
+https://github.com/hmcts/ia-ccd-e2e-tests/tree/master/bin
+
 ----
 
 # CCD Docker :whale:
