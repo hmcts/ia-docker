@@ -198,7 +198,7 @@ services:
       IDAM_API_BASE_URI: http://idam-api:8080
       ENABLE_LIQUIBASE: "true"
       APPINSIGHTS_INSTRUMENTATIONKEY: key
-      DM_STORE_APP_URL: http://dm-store:4506
+      DM_STORE_APP_URL: http://dm-store:8080
       DOCMOSIS_ACCESS_KEY: "${DOCMOSIS_ACCESS_KEY}"
       S2S_NAMES_WHITELIST: jui_webapp,em_ccd_orchestrator,em_gw,iac
       JAVA_OPTS: -Xmx512m
@@ -223,8 +223,8 @@ services:
     image: hmcts.azurecr.io/hmcts/em-ccd-orchestrator:latest
     environment:
       SERVER_PORT: 8060
-      IDAM_USER_BASE_URI: http://idam-api:8080
-      IDAM_S2S_BASE_URI: http://service-auth-provider-api:8080
+      IDAM_API_BASE_URI: http://idam-api:8080
+      S2S_BASE_URI: http://service-auth-provider-api:8080
       EM_STITCHING_API_URL: http://stitching-api:8080
       APPINSIGHTS_INSTRUMENTATIONKEY: key
       # these environment variables are used by java-logging library
