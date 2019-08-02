@@ -501,7 +501,7 @@ function ccd_compose() {
 }
 
 function ccd_login() {
-    az acr login --name hmcts --subscription 1c4f0704-a29e-403d-b719-b90c34ef14c9
+    az acr login --name hmctsprivate --subscription DCD-CNP-PROD
 }
 
 if [ $# -lt 1 ]; then

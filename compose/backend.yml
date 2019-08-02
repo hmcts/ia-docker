@@ -9,7 +9,7 @@ services:
     restart: on-failure
 
   ccd-user-profile-api:
-    image: hmcts.azurecr.io/hmcts/ccd-user-profile-api:latest
+    image: hmctspublic.azurecr.io/ccd/user-profile-api:latest
     environment:
       USER_PROFILE_DB_HOST: ccd-shared-database
       USER_PROFILE_DB_PORT: 5432
@@ -32,7 +32,7 @@ services:
       - service-auth-provider-api
 
   ccd-definition-store-api:
-    image: hmcts.azurecr.io/hmcts/ccd-definition-store-api:latest
+    image: hmctspublic.azurecr.io/ccd/definition-store-api:latest
     environment:
       DEFINITION_STORE_DB_HOST: ccd-shared-database
       DEFINITION_STORE_DB_PORT: 5432
@@ -64,7 +64,7 @@ services:
       - service-auth-provider-api
 
   ccd-data-store-api:
-    image: hmcts.azurecr.io/hmcts/ccd-data-store-api:latest
+    image: hmctspublic.azurecr.io/ccd/data-store-api:latest
     environment:
       DATA_STORE_DB_HOST: ccd-shared-database
       DATA_STORE_DB_PORT: 5432
@@ -100,7 +100,7 @@ services:
       - service-auth-provider-api
 
   idam-api:
-    image: hmcts.azurecr.io/hmcts/tidam-api:latest
+    image: hmctsprivate.azurecr.io/tidam/api:latest
     healthcheck:
       interval: 10s
       timeout: 10s
@@ -185,7 +185,7 @@ services:
       - ccd-docker-ccd-shared-database-data:/var/lib/postgresql/data
 
   stitching-api:
-    image: hmcts.azurecr.io/hmcts/em-stitching:latest
+    image: hmctspublic.azurecr.io/em/stitching:latest
     healthcheck:
       interval: 10s
       timeout: 10s
@@ -220,7 +220,7 @@ services:
       - POSTGRES_PASSWORD=emstitch
 
   rpa-em-ccd-orchestrator:
-    image: hmcts.azurecr.io/hmcts/em-ccd-orchestrator:latest
+    image: hmctspublic.azurecr.io/em/ccd-orchestrator:latest
     environment:
       SERVER_PORT: 8060
       IDAM_API_BASE_URI: http://idam-api:8080
