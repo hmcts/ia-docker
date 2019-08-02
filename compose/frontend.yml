@@ -3,7 +3,7 @@ version: '3'
 
 services:
   ccd-case-management-web:
-    image: "hmcts/ccd-case-management-web:${CCD_CASE_MANAGEMENT_WEB_TAG:-latest}"
+    image: "d99014eb4b95"
     container_name: ccd-case-management-web
     environment:
       IDAM_LOGIN_URL: https://localhost:3501/login
@@ -17,7 +17,7 @@ services:
       - ccd-api-gateway
 
   ccd-api-gateway:
-    image: "hmcts/ccd-api-gateway:${CCD_API_GATEWAY_TAG:-latest}"
+    image: "908687627a08"
     container_name: ccd-api-gateway
     environment:
       IDAM_BASE_URL: http://idam-api:8080
@@ -43,7 +43,7 @@ services:
       - ccd-data-store-api
 
   authentication-web:
-    image: hmcts.azurecr.io/hmcts/tidam-authentication-web:latest
+    image: "4c0ee9a00cac"
     environment:
      IDAM_API_URL: http://idam-api:8080
      IDAM_CONTINUE_URL_VALIDATOR_ENFORCE_TLS: "false"

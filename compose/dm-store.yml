@@ -24,7 +24,7 @@ services:
       MICROSERVICE_KEYS_EM_GW: "${IDAM_KEY_DM_STORE}"
 
   dm-store:
-    image: "hmcts/dm-store:${DM_STORE_TAG:-latest}"
+    image: "5a38e45571cc"
     command: --wait-for-database 30
     healthcheck:
       disable: true

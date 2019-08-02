@@ -9,7 +9,7 @@ services:
     restart: on-failure
 
   ccd-user-profile-api:
-    image: "hmcts/ccd-user-profile-api:${CCD_USER_PROFILE_API_TAG:-latest}"
+    image: "e7cdbaa9c50d"
     environment:
       USER_PROFILE_DB_HOST: ccd-shared-database
       USER_PROFILE_DB_PORT: 5432
@@ -32,7 +32,7 @@ services:
       - service-auth-provider-api
 
   ccd-definition-store-api:
-    image: "hmcts/ccd-definition-store-api:${CCD_DEFINITION_STORE_API_TAG:-latest}"
+    image: "5263ec488eca"
     environment:
       DEFINITION_STORE_DB_HOST: ccd-shared-database
       DEFINITION_STORE_DB_PORT: 5432
@@ -64,7 +64,7 @@ services:
       - service-auth-provider-api
 
   ccd-data-store-api:
-    image: "hmcts/ccd-data-store-api:${CCD_DATA_STORE_API_TAG:-latest}"
+    image: "ce9b45d2498a"
     environment:
       DATA_STORE_DB_HOST: ccd-shared-database
       DATA_STORE_DB_PORT: 5432
@@ -100,7 +100,7 @@ services:
       - service-auth-provider-api
 
   idam-api:
-    image: hmcts.azurecr.io/hmcts/tidam-api:latest
+    image: "44430747ae15"
     healthcheck:
       interval: 10s
       timeout: 10s
@@ -145,7 +145,7 @@ services:
       - smtp-server
 
   service-auth-provider-api:
-    image: hmcts/service-auth-provider-app
+    image: "2d3373051bc7"
     healthcheck:
       interval: 10s
       timeout: 10s
@@ -185,7 +185,7 @@ services:
       - ccd-docker-ccd-shared-database-data:/var/lib/postgresql/data
 
   stitching-api:
-    image: hmcts.azurecr.io/hmcts/em-stitching:latest
+    image: "de64702332a8"
     healthcheck:
       interval: 10s
       timeout: 10s
@@ -220,7 +220,7 @@ services:
       - POSTGRES_PASSWORD=emstitch
 
   rpa-em-ccd-orchestrator:
-    image: hmcts.azurecr.io/hmcts/em-ccd-orchestrator:latest
+    image: "067c5dc7b2ca"
     environment:
       SERVER_PORT: 8060
       IDAM_API_BASE_URI: http://idam-api:8080
