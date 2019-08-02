@@ -388,7 +388,13 @@ The `SERVICE_SECRET` must then also be provided to the container running the mic
 
 #### Address lookup
 
-To use UK address lookup feature an API key for https://postcodeinfo.service.justice.gov.uk is required. When API key is available it needs to be set on host side under `ADDRESS_LOOKUP_TOKEN` variable name.
+To use UK address lookup feature an API key for https://postcodeinfo.service.justice.gov.uk is required. Set the following environment variable locally:
+
+```
+
+export ADDRESS_LOOKUP_TOKEN=<ADDRESS_TOKEN_VALUE>
+
+```
 
 ## Containers
 

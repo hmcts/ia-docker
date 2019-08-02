@@ -3,7 +3,7 @@ version: '3'
 
 services:
   ccd-case-management-web:
-    image: "hmcts/ccd-case-management-web:${CCD_CASE_MANAGEMENT_WEB_TAG:-latest}"
+    image: hmcts.azurecr.io/hmcts/ccd-case-management-web:latest
     container_name: ccd-case-management-web
     environment:
       IDAM_LOGIN_URL: https://localhost:3501/login
@@ -17,8 +17,8 @@ services:
       - ccd-api-gateway
 
   ccd-api-gateway:
-    image: "hmcts/ccd-api-gateway:${CCD_API_GATEWAY_TAG:-latest}"
-    container_name: ccd-api-gateway
+    image: hmcts.azurecr.io/hmcts/ccd-api-gateway-web:latest
+    container_name: ccd-api-gateway-web
     environment:
       IDAM_BASE_URL: http://idam-api:8080
       IDAM_USER_URL: http://idam-api:8080
@@ -34,6 +34,7 @@ services:
       PROXY_DEFINITION_IMPORT: http://ccd-definition-store-api:4451
       PROXY_DEFINITION_DATA: http://ccd-definition-store-api:4451/api/data
       PROXY_DEFINITION_DISPLAY: http://ccd-definition-store-api:4451/api/display
+      ADDRESS_LOOKUP_TOKEN: "${ADDRESS_LOOKUP_TOKEN}"
       APPINSIGHTS_INSTRUMENTATIONKEY: key
     ports:
       - 3453:3453
