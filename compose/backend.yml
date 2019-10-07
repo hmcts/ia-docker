@@ -212,7 +212,7 @@ services:
       - 4630:8080
 
   stitching-db:
-    image: postgres
+    image: postgres:9.6
     restart: always
     environment:
       - POSTGRES_DB=emstitch
