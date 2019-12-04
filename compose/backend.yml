@@ -42,7 +42,7 @@ services:
       DEFINITION_STORE_IDAM_KEY: "${IDAM_KEY_CCD_DEFINITION_STORE}"
       DEFINITION_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_admin
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
-      IDAM_USER_URL: http://idam-api:8080
+      IDAM_USER_URL: http://sidam-api:5000
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       REFORM_SERVICE_NAME: ccd-definition-store-api
       REFORM_TEAM: ccd
@@ -60,7 +60,7 @@ services:
     links:
       - ccd-shared-database
       - ccd-user-profile-api
-      - idam-api
+      - sidam-api
       - service-auth-provider-api
 
   ccd-data-store-api:
@@ -76,7 +76,7 @@ services:
       DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac
       DEFINITION_STORE_HOST: http://ccd-definition-store-api:4451
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
-      IDAM_USER_URL: http://idam-api:8080
+      IDAM_USER_URL: http://sidam-api:5000
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       REFORM_SERVICE_NAME: ccd-data-store-api
       REFORM_TEAM: ccd
@@ -96,56 +96,11 @@ services:
       - ccd-shared-database
       - ccd-user-profile-api
       - ccd-definition-store-api
-      - idam-api
+      - sidam-api
       - service-auth-provider-api
 
-  idam-api:
-    image: hmctsprivate.azurecr.io/tidam/api:latest
-    healthcheck:
-      interval: 10s
-      timeout: 10s
-      retries: 10
-    environment:
-      IDAM_SUPERUSER_EMAIL: ccd@hmcts.net
-      SPRING_DATASOURCE_URL: jdbc:postgresql://ccd-shared-database:5432/idam
-      SPRING_DATASOURCE_USERNAME: "${DB_USERNAME}"
-      SPRING_DATASOURCE_PASSWORD: "${DB_PASSWORD}"
-      SPRING_MAIL_HOST: smtp-server
-      IDAM_TESTING_SUPPORT_ENABLED: "true"
-      NOTIFY_API_KEY: AAAAAAAAAAAAAAAA
-      NOTIFY_CMC_ACTIVATE_USER_TEMPLATE: 76aa8695-64e8-4afd-ae13-bc8385302b1f
-      IDAM_SECRET: idam_test_secret
-      IDAM_API_OAUTH2_CLIENT_CLIENT_SECRETS_CCD_GATEWAY: "${OAUTH2_CLIENT_CCD_GATEWAY}"
-      IDAM_API_OAUTH2_CLIENT_CLIENT_SECRETS_CCD_ADMIN: "${OAUTH2_CLIENT_CCD_ADMIN}"
-      IDAM_CCD_WHITELIST: http://localhost:3451/oauth2redirect
-      IDAM_CCD_ADMIN_WHITELIST: https://localhost:3100/oauth2redirect
-      NOTIFY: "false"
-      NOTIFY_CMC_WELCOME_USER_TEMPLATE: fake
-      NOTIFY_DIVORCE_WELCOME_USER_TEMPLATE: fake
-      NOTIFY_SSCS_WELCOME_USER_TEMPLATE: fake
-      NOTIFY_RESET_PASSWORD_TEMPLATE: fake
-      NOTIFY_PROBATE_ACTIVATE_USER_TEMPLATE: fake
-      NOTIFY_DIVORCE_ACTIVATE_USER_TEMPLATE: fake
-      NOTIFY_SSCS_ACTIVATE_USER_TEMPLATE: fake
-      NOTIFY_CCD_ACTIVATE_USER_TEMPLATE: fake
-      REFORM_SERVICE_NAME: idam-api
-      REFORM_TEAM: idam
-      REFORM_ENVIRONMENT: local
-      http_proxy:
-      https_proxy:
-      no_proxy:
-      JAVA_OPTS: -Xmx384m
-    ports:
-      - 4501:8080
-    links:
-      - smtp-server
-      - ccd-shared-database
-    depends_on:
-      - ccd-shared-database
-      - smtp-server
-
   service-auth-provider-api:
-    image: hmcts/service-auth-provider-app
+    image: hmctspublic.azurecr.io/rpe/service-auth-provider:latest
     healthcheck:
       interval: 10s
       timeout: 10s
@@ -180,7 +135,7 @@ services:
       DB_USERNAME:
       DB_PASSWORD:
     ports:
-      - 5000:5432
+      - 5050:5432
     volumes:
       - ccd-docker-ccd-shared-database-data:/var/lib/postgresql/data
 
@@ -195,7 +150,7 @@ services:
       SPRING_DATASOURCE_USERNAME: emstitch
       SPRING_DATASOURCE_PASSWORD: emstitch
       S2S_BASE_URI: http://service-auth-provider-api:8080
-      IDAM_API_BASE_URI: http://idam-api:8080
+      IDAM_API_BASE_URI: http://sidam-api:5000
       ENABLE_LIQUIBASE: "true"
       APPINSIGHTS_INSTRUMENTATIONKEY: key
       DM_STORE_APP_URL: http://dm-store:8080
@@ -223,7 +178,7 @@ services:
     image: hmctspublic.azurecr.io/em/ccd-orchestrator:latest
     environment:
       SERVER_PORT: 8060
-      IDAM_API_BASE_URI: http://idam-api:8080
+      IDAM_API_BASE_URI: http://sidam-api:5000
       S2S_BASE_URI: http://service-auth-provider-api:8080
       EM_STITCHING_API_URL: http://stitching-api:8080
       APPINSIGHTS_INSTRUMENTATIONKEY: key
