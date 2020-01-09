@@ -1,13 +1,21 @@
 #!/bin/bash
-## Usage: ./idam-user-token.sh [role] [user_id]
+## Usage: ./idam-user-token.sh [user] [password]
 ##
 ## Options:
-##    - role: Role assigned to user in generated token. Default to `ccd-import`.
-##    - user_id: ID assigned to user in generated token. Default to `1`.
+##    - username: Role assigned to user in generated token. Default to `ccd-import@fake.hmcts.net`.
+##    - password: ID assigned to user in generated token. Default to `London01`.
 ##
-## Returns a valid IDAM user token for the given role and user_id.
+## Returns a valid IDAM user token for the given username and password.
 
-ROLE="${1:-ccd-import}"
-USER_ID="${2:-1}"
+USERNAME=${1:-ccd-import@fake.hmcts.net}
+PASSWORD=${2:-London01}
+REDIRECT_URI="http://localhost:3451/oauth2redirect"
+CLIENT_ID="ccd_gateway"
+CLIENT_SECRET="OOOOOOOOOOOOOOOO"
 
-curl --silent http://localhost:4501/testing-support/lease -Fid="${USER_ID}" -Frole="${ROLE}"
+code=$(curl --silent --show-error -u "${USERNAME}:${PASSWORD}" -XPOST "${IDAM_URL}/oauth2/authorize?redirect_uri=${REDIRECT_URI}&response_type=code&client_id=${CLIENT_ID}" -d "" | jq -r .code)
+
+curl --silent --show-error \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    -u "${CLIENT_ID}:${CLIENT_SECRET}" \
+    -XPOST "${IDAM_URL}/oauth2/token?code=${code}&redirect_uri=${REDIRECT_URI}&grant_type=authorization_code" -d "" | jq -r .access_token
