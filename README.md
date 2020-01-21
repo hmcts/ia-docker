@@ -232,6 +232,7 @@ By default, `ccd-docker` runs the most commonly used backend and frontend projec
 Optional compose files will allow other projects to be enabled on demand using the `enable` and `disable` commands.
 
 * To enable **document-management-store-app**
+  * add the following entry to your `/etc/hosts` file: `127.0.0.1   dm-store` (required when running XUI locally i.e. outside ia-docker and dm-store running within ia-docker)
   * `./ccd enable backend frontend dm-store`
   * run docker-compose `./ccd compose up -d`
   * create Blob Store in Azurite `./bin/document-management-store-create-blob-store-container.sh`
