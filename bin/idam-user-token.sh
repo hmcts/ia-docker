@@ -12,10 +12,8 @@ PASSWORD=${2:-London01}
 REDIRECT_URI="http://localhost:3002/oauth2/callback"
 CLIENT_ID="ccd_gateway"
 CLIENT_SECRET="OOOOOOOOOOOOOOOO"
-
-code=$(curl --silent --show-error -u "${USERNAME}:${PASSWORD}" -XPOST "${IDAM_URL}/oauth2/authorize?redirect_uri=${REDIRECT_URI}&response_type=code&client_id=${CLIENT_ID}" -d "" | jq -r .code)
+SCOPE="openid%20profile%20roles"
 
 curl --silent --show-error \
     -H "Content-Type: application/x-www-form-urlencoded" \
-    -u "${CLIENT_ID}:${CLIENT_SECRET}" \
-    -X POST "${IDAM_URL}/oauth2/token?code=${code}&redirect_uri=${REDIRECT_URI}&grant_type=authorization_code" -d "" | jq -r .access_token
+    -XPOST "${IDAM_URL}/o/token?grant_type=password&redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&username=${USERNAME}&password=${PASSWORD}&scope=${SCOPE}" -d "" | jq -r .access_token

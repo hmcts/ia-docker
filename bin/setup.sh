@@ -2,7 +2,7 @@
 
 # Setup Services
 echo "Setting up Services..."
-./create-service.sh "ccd_gateway" "false" "ccd_gateway" "OOOOOOOOOOOOOOOO" "[\"http://localhost:3451/oauth2redirect\", \"http://localhost:3002/oauth2/callback\", \"https://localhost:3000/redirectUrl\"]" "[\"caseworker\", \"caseworker-ia\", \"caseworker-ia-legalrep-solicitor\", \"pui-case-manager\"]" "CCD Gateway" "CCD scope manage-user create-user"
+./create-service.sh "ccd_gateway" "false" "ccd_gateway" "OOOOOOOOOOOOOOOO" "[\"http://localhost:3451/oauth2redirect\", \"http://localhost:3002/oauth2/callback\", \"https://localhost:3000/redirectUrl\"]" "[\"caseworker\", \"caseworker-ia\", \"caseworker-ia-legalrep-solicitor\", \"pui-case-manager\"]" "CCD Gateway" "CCD scope manage-user create-user openid profile roles"
 
 
 # Setup Roles
@@ -70,7 +70,7 @@ echo "Setting up Users..."
 echo ""
 echo "Refreshing cache..."
 
-curl --silent --show-error -X POST "http://localhost:5000/testing-support/cache/refresh" -H "accept: */*"
+curl --silent --show-error -X POST "${IDAM_URL}/testing-support/cache/refresh" -H "accept: */*"
 
 
 # Setup Profiles in CCD
