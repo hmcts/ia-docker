@@ -19,6 +19,7 @@
 ./create-role.sh "caseworker-ia-homeofficelart"
 ./create-role.sh "caseworker-ia-homeofficepou"
 ./create-role.sh "caseworker-ia-respondentofficer"
+./create-role.sh "caseworker-ia-iacjudge"
 
 # Roles required for XUI
 ./create-role.sh "pui-case-manager"
@@ -56,6 +57,7 @@
 ./create-user.sh "${TEST_LAW_FIRM_SHARE_CASE_A_USERNAME}" "Share A" "Legal Rep" "${TEST_LAW_FIRM_SHARE_CASE_A_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"pui-case-manager\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_SHARE_CASE_B_USERNAME}" "Share B" "Legal Rep" "${TEST_LAW_FIRM_SHARE_CASE_B_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"pui-case-manager\"}]"
 
+./create-user.sh "${TEST_JUDGE_X_USERNAME}" "Judge" "X" "${TEST_JUDGE_X_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-iacjudge\"}]"
 
 # Refresh cache
 curl --silent --show-error -X POST "http://localhost:5000/testing-support/cache/refresh" -H "accept: */*"
@@ -74,6 +76,8 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "caseworker-ia-homeofficelart" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker-ia-homeofficepou" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker-ia-respondentofficer" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-ia-iacjudge" "$USER_TOKEN" "$SERVICE_TOKEN"
+
 ./register-role.sh "citizen" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "pui-case-manager" "$USER_TOKEN" "$SERVICE_TOKEN"
