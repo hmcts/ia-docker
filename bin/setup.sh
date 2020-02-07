@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Setup Service
-./create-service.sh "ccd_gateway" "false" "ccd_gateway" "OOOOOOOOOOOOOOOO" "[\"http://localhost:3451/oauth2redirect\"]" "[\"caseworker\", \"caseworker-ia\"]" "CCD Gateway" "CCD scope"
+./create-service.sh "ccd_gateway" "false" "ccd_gateway" "OOOOOOOOOOOOOOOO" "[\"http://localhost:3451/oauth2redirect\", \"https://localhost:3000/redirectUrl\"]" "[\"caseworker\", \"caseworker-ia\"]" "CCD Gateway" "CCD scope"
 
 
 # Setup Roles
