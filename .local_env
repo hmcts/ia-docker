@@ -1,0 +1,80 @@
+if [[ -z "${CCD_DOCKER_PATH}" ]]; then
+  echo "ERROR: need to set CCD_DOCKER_PATH environment variable in profile"
+fi
+if [[ -z "${ADDRESS_LOOKUP_TOKEN}" ]]; then
+  echo "ERROR: need to set ADDRESS_LOOKUP_TOKEN environment variable in profile"
+fi
+if [[ -z "${IA_GOV_NOTIFY_KEY}" ]]; then
+  echo "ERROR: need to set IA_GOV_NOTIFY_KEY environment variable in profile"
+fi
+if [[ -z "${DOCMOSIS_ACCESS_KEY}" ]]; then
+  echo "ERROR: need to set DOCMOSIS_ACCESS_KEY environment variable in profile"
+fi
+if [[ -z "${IDAM_ADMIN_PASSWORD}" ]]; then
+  echo "ERROR: need to set IDAM_ADMIN_PASSWORD environment variable in profile"
+fi
+source ${CCD_DOCKER_PATH}/.env
+
+export IA_IDAM_SECRET=$OAUTH2_CLIENT_CCD_GATEWAY
+export IA_S2S_SECRET=$IDAM_KEY_CCD_GATEWAY
+export IDAM_SECRET=$OAUTH2_CLIENT_CCD_GATEWAY
+export S2S_SECRET=$IDAM_KEY_CCD_GATEWAY
+
+
+export TEST_E2E_URL_GATEWAY=http://localhost:3453
+# Old ccd api
+#export TEST_E2E_URL_WEB=http://localhost:3451
+export TEST_E2E_URL_WEB=http://localhost:3000
+export TEST_E2E_USE_PROXY=false
+export TEST_CASEOFFICER_USERNAME=ia-caseofficer@fake.hmcts.net
+export TEST_CASEOFFICER_PASSWORD=London01
+export TEST_JUDICIARY_USERNAME=ia-judiciary@fake.hmcts.net
+export TEST_JUDICIARY_PASSWORD=London02
+export TEST_LAW_FIRM_A_USERNAME=ia-law-firm-a@fake.hmcts.net
+export TEST_LAW_FIRM_A_PASSWORD=London03
+export TEST_LAW_FIRM_B_USERNAME=ia-law-firm-b@fake.hmcts.net
+export TEST_LAW_FIRM_B_PASSWORD=London04
+export IA_SYSTEM_USERNAME=ia-system-user@fake.hmcts.net
+export IA_SYSTEM_PASSWORD=London05
+export TEST_ADMINOFFICER_USERNAME=ia-adminofficer@fake.hmcts.net
+export TEST_ADMINOFFICER_PASSWORD=London06
+export TEST_HOMEOFFICE_APC_USERNAME=ia-respondentapc@fake.hmcts.net
+export TEST_HOMEOFFICE_APC_PASSWORD=London10
+export TEST_HOMEOFFICE_LART_USERNAME=ia-respondentlart@fake.hmcts.net
+export TEST_HOMEOFFICE_LART_PASSWORD=London11
+export TEST_HOMEOFFICE_POU_USERNAME=ia-respondentpou@fake.hmcts.net
+export TEST_HOMEOFFICE_POU_PASSWORD=London12
+export TEST_HOMEOFFICE_GENERIC_USERNAME=ia-respondentgen@fake.hmcts.net
+export TEST_HOMEOFFICE_GENERIC_PASSWORD=London13
+export TEST_CITIZEN_USERNAME=ia-citizen@fake.hmcts.net
+export TEST_CITIZEN_PASSWORD=London14
+export TEST_CITIZEN_MOBILE=07797979797
+export TEST_LAW_FIRM_SHARE_CASE_ORG_USERNAME=ia-law-firm-org-sc@fake.hmcts.net
+export TEST_LAW_FIRM_SHARE_CASE_ORG_PASSWORD=London03
+export TEST_LAW_FIRM_SHARE_CASE_A_USERNAME=ia-law-firm-a-sc@fake.hmcts.net
+export TEST_LAW_FIRM_SHARE_CASE_A_PASSWORD=London03
+export TEST_LAW_FIRM_SHARE_CASE_B_USERNAME=ia-law-firm-b-sc@fake.hmcts.net
+export TEST_LAW_FIRM_SHARE_CASE_B_PASSWORD=London03
+export IDAM_ADMIN_USER=idamOwner@hmcts.net
+export POSTGRES_PORT=5050
+export IDAM_URL=http://localhost:5000
+export IA_IDAM_ID=ccd_gateway
+export IA_IDAM_CLIENT_ID=ccd_gateway
+
+export IA_IDAM_REDIRECT_URI=http://localhost:3451/oauth2redirect
+export IA_S2S_MICROSERVICE=iac
+export IA_APPEAL_SUBMISSION_TEMPLATE="TB-IAC-APP-ENG-00003 v0.2.docx"
+export IA_RESPONDENT_EVIDENCE_DIRECTION_EMAIL=respondentEvidenceDirection@example.com
+export IA_RESPONDENT_REVIEW_DIRECTION_EMAIL=respondentReviewDirection@example.com
+export IA_RESPONDENT_NON_STANDARD_DIRECTION_UNTIL_LISTING_EMAIL=respondentNonStandardDirectionUntilListing@example.com
+#export DM_URL=http://dm-store:4506
+# Docmosis
+export DOCMOSIS_ENDPOINT=https://docmosis-development.platform.hmcts.net
+export DOCMOSIS_URL=https://docmosis-development.platform.hmcts.net/rs
+# Docmosis on localhost
+#export DOCMOSIS_ACCESS_KEY={your licence key}
+#export DOCMOSIS_ENDPOINT=http://localhost:8091
+#export DOCMOSIS_URL=http://localhost:8091/rs
+# feature flags
+export IA_DOCMOSIS_ENABLED=true
+export IA_EM_STITCHING_ENABLED=true
