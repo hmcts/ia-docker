@@ -5,4 +5,5 @@
 
 # IntelliJ IDEA files
 .idea/
+.vscode/
 *.iml

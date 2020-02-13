@@ -9,7 +9,7 @@
 
 USERNAME=${1:-ccd-import@fake.hmcts.net}
 PASSWORD=${2:-London01}
-REDIRECT_URI="http://localhost:3451/oauth2redirect"
+REDIRECT_URI="http://localhost:3002/oauth2/callback"
 CLIENT_ID="ccd_gateway"
 CLIENT_SECRET="OOOOOOOOOOOOOOOO"
 
@@ -18,4 +18,4 @@ code=$(curl --silent --show-error -u "${USERNAME}:${PASSWORD}" -XPOST "${IDAM_UR
 curl --silent --show-error \
     -H "Content-Type: application/x-www-form-urlencoded" \
     -u "${CLIENT_ID}:${CLIENT_SECRET}" \
-    -XPOST "${IDAM_URL}/oauth2/token?code=${code}&redirect_uri=${REDIRECT_URI}&grant_type=authorization_code" -d "" | jq -r .access_token
+    -X POST "${IDAM_URL}/oauth2/token?code=${code}&redirect_uri=${REDIRECT_URI}&grant_type=authorization_code" -d "" | jq -r .access_token

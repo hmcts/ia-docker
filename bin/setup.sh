@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Setup Service
-./create-service.sh "ccd_gateway" "false" "ccd_gateway" "OOOOOOOOOOOOOOOO" "[\"http://localhost:3451/oauth2redirect\"]" "[\"caseworker\", \"caseworker-ia\"]" "CCD Gateway" "CCD scope"
+# Setup Services
+./create-service.sh "ccd_gateway" "false" "ccd_gateway" "OOOOOOOOOOOOOOOO" "[\"http://localhost:3451/oauth2redirect\", \"http://localhost:3002/oauth2/callback\", \"https://localhost:3000/redirectUrl\"]" "[\"caseworker\", \"caseworker-ia\", \"caseworker-ia-legalrep-solicitor\", \"pui-case-manager\"]" "CCD Gateway" "CCD scope manage-user create-user"
 
 
 # Setup Roles
@@ -20,10 +20,23 @@
 ./create-role.sh "caseworker-ia-homeofficepou"
 ./create-role.sh "caseworker-ia-respondentofficer"
 
+# Roles required for XUI
 ./create-role.sh "pui-case-manager"
-./create-role.sh "pui-manage-organisation"
 ./create-role.sh "pui-user-manager"
+./create-role.sh "pui-organisation-manager"
+./create-role.sh "pui-finance-manager"
 
+./create-role.sh "caseworker-divorce"
+./create-role.sh "caseworker-divorce-solicitor"
+./create-role.sh "caseworker-divorce-financialremedy"
+./create-role.sh "caseworker-divorce-financialremedy-solicitor"
+
+./create-role.sh "caseworker-publiclaw"
+./create-role.sh "caseworker-publiclaw-solicitor"
+./create-role.sh "caseworker-probate"
+./create-role.sh "caseworker-probate-solicitor"
+./create-role.sh "caseworker-sscs"
+./create-role.sh "caseworker-sscs-dwpresponsewriter"
 
 # Setup Users
 ./create-user.sh "ccd-import@fake.hmcts.net" "CCD" "Import" "London01" "ccd-import" "[{ \"code\": \"ccd-import\"}]"
@@ -39,7 +52,7 @@
 ./create-user.sh "${TEST_HOMEOFFICE_GENERIC_USERNAME}" "Home Office" "Generic" "${TEST_HOMEOFFICE_GENERIC_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-respondentofficer\"}]"
 ./create-user.sh "${TEST_CITIZEN_USERNAME}" "Citizen" "User" "${TEST_CITIZEN_PASSWORD}" "citizens" "[{ \"code\": \"citizen\"}]"
 
-./create-user.sh "${TEST_LAW_FIRM_SHARE_CASE_ORG_USERNAME}" "Org Creator" "Legal Rep" "${TEST_LAW_FIRM_SHARE_CASE_ORG_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"pui-case-manager\"}, { \"code\": \"pui-manage-organisation\"}, { \"code\": \"pui-user-manager\"}]"
+./create-user.sh "${TEST_LAW_FIRM_SHARE_CASE_ORG_USERNAME}" "Org Creator" "Legal Rep" "${TEST_LAW_FIRM_SHARE_CASE_ORG_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"pui-case-manager\"}, { \"code\": \"pui-user-manager\"}, { \"code\": \"pui-finance-manager\"}, { \"code\": \"pui-organisation-manager\"}, { \"code\": \"caseworker-divorce\"}, { \"code\": \"caseworker-divorce-financialremedy\"}, { \"code\": \"caseworker-divorce-financialremedy-solicitor\"}, { \"code\": \"caseworker-divorce-solicitor\"}, { \"code\": \"caseworker-publiclaw-solicitor\"}, { \"code\": \"caseworker-publiclaw\"}, { \"code\": \"caseworker-probate-solicitor\"}, { \"code\": \"caseworker-probate\"}, { \"code\": \"caseworker-sscs\"}, { \"code\": \"caseworker-sscs-dwpresponsewriter\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_SHARE_CASE_A_USERNAME}" "Share A" "Legal Rep" "${TEST_LAW_FIRM_SHARE_CASE_A_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"pui-case-manager\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_SHARE_CASE_B_USERNAME}" "Share B" "Legal Rep" "${TEST_LAW_FIRM_SHARE_CASE_B_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"pui-case-manager\"}]"
 
@@ -64,8 +77,24 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "citizen" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "pui-case-manager" "$USER_TOKEN" "$SERVICE_TOKEN"
-./register-role.sh "pui-manage-organisation" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "pui-user-manager" "$USER_TOKEN" "$SERVICE_TOKEN"
+
+./register-role.sh "pui-finance-manager" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "pui-organisation-manager" "$USER_TOKEN" "$SERVICE_TOKEN"
+
+./register-role.sh "caseworker-divorce" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-divorce-financialremedy" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-divorce-financialremedy-solicitor" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-divorce-solicitor" "$USER_TOKEN" "$SERVICE_TOKEN"
+
+./register-role.sh "caseworker-publiclaw-solicitor" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-publiclaw" "$USER_TOKEN" "$SERVICE_TOKEN"
+
+./register-role.sh "caseworker-probate-solicitor" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-probate" "$USER_TOKEN" "$SERVICE_TOKEN"
+
+./register-role.sh "caseworker-sscs" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-sscs-dwpresponsewriter" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 echo ""
 echo "Setting CCD Roles and Users is finished"
