@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
 # Setup Services
+echo "Setting up Services. Press ENTER to continue..."
+read
 ./create-service.sh "ccd_gateway" "false" "ccd_gateway" "OOOOOOOOOOOOOOOO" "[\"http://localhost:3451/oauth2redirect\", \"http://localhost:3002/oauth2/callback\", \"https://localhost:3000/redirectUrl\"]" "[\"caseworker\", \"caseworker-ia\", \"caseworker-ia-legalrep-solicitor\", \"pui-case-manager\"]" "CCD Gateway" "CCD scope manage-user create-user"
 
 
 # Setup Roles
+echo "Setting up Roles. Press ENTER to continue..."
+read
 ./create-role.sh "ccd-import"
 ./create-role.sh "citizen"
 ./create-role.sh "citizens"
@@ -22,6 +26,8 @@
 ./create-role.sh "caseworker-ia-iacjudge"
 
 # Roles required for XUI
+echo "Setting up Roles required for XUI. Press ENTER to continue..."
+read
 ./create-role.sh "pui-case-manager"
 ./create-role.sh "pui-user-manager"
 ./create-role.sh "pui-organisation-manager"
@@ -40,6 +46,8 @@
 ./create-role.sh "caseworker-sscs-dwpresponsewriter"
 
 # Setup Users
+echo "Setting up Users. Press ENTER to continue..."
+read
 ./create-user.sh "ccd-import@fake.hmcts.net" "CCD" "Import" "London01" "ccd-import" "[{ \"code\": \"ccd-import\"}]"
 ./create-user.sh "${IA_SYSTEM_USERNAME}" "System" "user" "${IA_SYSTEM_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-system\"}]"
 ./create-user.sh "${TEST_CASEOFFICER_USERNAME}" "Case" "Officer" "${TEST_CASEOFFICER_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-caseofficer\"}]"
@@ -60,10 +68,16 @@
 ./create-user.sh "${TEST_JUDGE_X_USERNAME}" "Judge" "X" "${TEST_JUDGE_X_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-iacjudge\"}]"
 
 # Refresh cache
+echo "Refreshing cache. Press ENTER to continue..."
+read
+
 curl --silent --show-error -X POST "http://localhost:5000/testing-support/cache/refresh" -H "accept: */*"
 
 
 # Setup Profiles in CCD
+echo "Setting up profiles in CCD. Press ENTER to continue..."
+read
+
 USER_TOKEN="$(sh ./idam-user-token.sh)"
 SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 
