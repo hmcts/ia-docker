@@ -103,6 +103,56 @@ curl -X POST \
         }' \
 http://localhost:8991/__admin/mappings/new
 
+curl -X POST \
+--data '{
+    "request": {
+        "method": "GET",
+        "url": "/health"
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "jsonBody": {
+            "status": "UP",
+            "components": {
+                "db": {
+                    "status": "UP",
+                    "details": {
+                        "database": "PostgreSQL",
+                        "result": 1,
+                        "validationQuery": "SELECT 1"
+                    }
+                },
+                "diskSpace": {
+                    "status": "UP",
+                    "details": {
+                        "total": 33685291008,
+                        "free": 9184305152,
+                        "threshold": 10485760
+                    }
+                },
+                "hystrix": {
+                    "status": "UP"
+                },
+                "liveness": {
+                    "status": "UP"
+                },
+                "ping": {
+                    "status": "UP"
+                },
+                "refreshScope": {
+                    "status": "UP"
+                },
+                "serviceAuth": {
+                    "status": "UP"
+                }
+            }
+        }
+    }
+}' \
+http://localhost:8991/__admin/mappings/new
 
 # make responses persistent in Docker volume
 curl -X POST http://localhost:8991/__admin/mappings/save
