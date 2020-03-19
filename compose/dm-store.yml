@@ -67,11 +67,11 @@ services:
     #    JAVA_OPTS: -Xmx384m -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
     links:
       - ccd-shared-database
-      - sidam-api
+#      - sidam-api
       - service-auth-provider-api
     depends_on:
       - ccd-shared-database
-      - sidam-api
+#      - sidam-api
       - service-auth-provider-api
       - azure-storage-emulator-azurite
     ports:

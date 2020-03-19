@@ -81,3 +81,7 @@ export DOCMOSIS_URL=https://docmosis-development.platform.hmcts.net/rs
 # feature flags
 export IA_DOCMOSIS_ENABLED=true
 export IA_EM_STITCHING_ENABLED=true
+
+export WIREMOCK_SERVER_MAPPINGS_PATH=wiremock
+export IDAM_STUB_SERVICE_NAME=http://ccd-test-stubs-service:5555
+export IDAM_STUB_LOCALHOST=http://localhost:5555
