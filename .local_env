@@ -64,7 +64,7 @@ export IA_IDAM_ID=ccd_gateway
 export IA_IDAM_CLIENT_ID=ccd_gateway
 export S2S_URL=http://localhost:4502
 
-export IA_IDAM_REDIRECT_URI=http://localhost:3451/oauth2redirect
+#export IA_IDAM_REDIRECT_URI=http://localhost:3451/oauth2redirect
 export IA_S2S_MICROSERVICE=iac
 export IA_APPEAL_SUBMISSION_TEMPLATE="TB-IAC-APP-ENG-00003 v0.2.docx"
 export IA_RESPONDENT_EVIDENCE_DIRECTION_EMAIL=respondentEvidenceDirection@example.com
