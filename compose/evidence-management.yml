@@ -5,6 +5,7 @@ services:
 
   stitching-api:
     image: hmctspublic.azurecr.io/em/stitching:latest
+    restart: on-failure
     healthcheck:
       interval: 10s
       timeout: 10s
@@ -15,6 +16,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: emstitch
       S2S_BASE_URI: http://service-auth-provider-api:8080
       IDAM_API_BASE_URI: http://sidam-api:5000
+      OPEN_ID_API_BASE_URI: http://sidam-api:5000/o
       ENABLE_LIQUIBASE: "true"
       APPINSIGHTS_INSTRUMENTATIONKEY: key
       DM_STORE_APP_URL: http://dm-store:4506
@@ -22,9 +24,12 @@ services:
       S2S_NAMES_WHITELIST: jui_webapp,em_ccd_orchestrator,em_gw,iac
       JAVA_OPTS: -Xmx512m
     depends_on:
+      - sidam-api
       - stitching-db
       - dm-store
     links:
+      - service-auth-provider-api
+      - sidam-api
       - stitching-db
       - dm-store
     ports:
@@ -40,12 +45,16 @@ services:
       
   rpa-em-ccd-orchestrator:
     image: hmctspublic.azurecr.io/em/ccd-orchestrator:latest
+    restart: on-failure
     environment:
       SERVER_PORT: 8060
       IDAM_API_BASE_URI: http://sidam-api:5000
+      OPEN_ID_API_BASE_URI: http://sidam-api:5000/o
       S2S_BASE_URI: http://service-auth-provider-api:8080
       EM_STITCHING_API_URL: http://stitching-api:8080
+      CALLBACK_DOMAIN: rpa-em-ccd-orchestrator
       APPINSIGHTS_INSTRUMENTATIONKEY: key
+      ENABLE_LIQUIBASE: "true"
       # these environment variables are used by java-logging library
       JSON_CONSOLE_PRETTY_PRINT: "false"
       ROOT_LOGGING_LEVEL:
@@ -56,3 +65,10 @@ services:
       JAVA_OPTS: -Xmx486m
     ports:
       - 4623:8060
+    depends_on:
+      - sidam-api
+      - stitching-api
+    links:
+      - service-auth-provider-api
+      - sidam-api
+      - stitching-api

@@ -118,7 +118,3 @@ echo "Setting CCD Roles and Users is finished"
 echo ""
 echo "Setup Wiremock responses for Professional Reference Data based on existing Idam users..."
 ./wiremock.sh
-
-echo ""
-echo "Create a container in Azurite - Blob Store emulator..."
-./document-management-store-create-blob-store-container.sh
