@@ -555,6 +555,40 @@ DRIVER              VOLUME NAME
 # better be empty
 ```
 
+## Test IDAM environment scripts
+There are couple of test scripts added under /bin/test-env-scripts. These scripts needs the following environment variables set on your local.
+```
+IDAM_DEMO_URL
+IDAM_AAT_URL
+IDAM_ITHC_URL
+IDAM_PERFTEST_URL
+```
+The above variables should point to corresponding IDAM API base URL.
+
+* #### `setup-users.sh`
+
+This script to be used by QA for setting up all the users in a test environment.
+
+Usage:
+ 
+    ./setup-users.sh [csv file to read the user records from] [environment - demo/ithc/aat/perftest]
+
+The records in input csv file follows the format:
+
+    Format: <user_email>,<first_name>,<last_name>,<password>,<semi-colon (;) seperated roles to be associated with user>
+    Example: test-user1@fake.hmcts.net,test-user1,tester,London01,caseworker;caseworker-ia;caseworker-ia-caseofficer
+    
+* #### `delete-users.sh`
+
+This script to be used by QA for deleting users from test environment.
+The input file should contain user email ids to be deleted in each line
+
+Usage:
+ 
+    ./delete-user.sh [csv file with user emails] [environment - demo/ithc/aat/perftest]
+
+NOTE: If you want to delete all users from an environment the same input file used for creating users can be used in which case the email ids from the first field will be picked for deletion. 
+   
 ## Notes
 
 This project should aim to keep upto date with the [base CCD Docker project](https://github.com/hmcts/ccd-docker)
