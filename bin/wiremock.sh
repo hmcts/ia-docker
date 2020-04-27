@@ -154,5 +154,27 @@ curl -X POST \
 }' \
 http://localhost:8991/__admin/mappings/new
 
+
+curl -X POST \
+--data '{
+    "request": {
+        "method": "GET",
+        "url": "/fees-register/fees/lookup?channel=default&event=issue&jurisdiction1=tribunal&jurisdiction2=immigration%20and%20asylum%20chamber&keyword=ABC&service=other"
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "jsonBody": {
+            "code": "FEE0238",
+            "description": "Appeal determined with a hearing",
+            "version": 2,
+            "fee_amount": "140.00"
+        }
+    }
+}' \
+http://localhost:8991/__admin/mappings/new
+
 # make responses persistent in Docker volume
 curl -X POST http://localhost:8991/__admin/mappings/save
