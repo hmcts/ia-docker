@@ -24,6 +24,7 @@ https://github.com/hmcts/ia-ccd-e2e-tests/tree/master/bin
 - [Local development](#local-development)
 - [Variables](#variables)
 - [Remarks](#remarks)
+- [Windows Users](#windows-users)
 - [License](#license)
 
 ## Prerequisites
@@ -554,6 +555,13 @@ DRIVER              VOLUME NAME
 
 # better be empty
 ```
+
+## Windows Users
+- Make sure you have Windows Pro or Enterprise version. Docker for Desktop will not run on Home edition. Untested idea is using Docker Toolbox instead of Docker for Desktop.
+- Install 3rd party libs, applications like Azure CLI to custom folder for example `c:\utils`. Avoid spaces and special characters in folder and file names.
+- Use PowerShell with git-bash `sh` command to run bash scripts
+- Command `./ccd login` might not work because ccd script expects `az` command in the PATH. Windows Azure CLI brings `az.cmd`. PowerShell recognizes `az` and `az.cmd` as the same, but git-bash can't. Login to Azure directly from command line.
+- Expose your localhost interface to your Docker processes. Go to Settings -> Network & Internet -> Status -> View your internet properties. Find operational Hyper-V vEthernetAdapter IPv4 address. Add IP entry to `C:\Windows\System32\drivers\etc\hosts` file with desired domain name.
 
 ## Notes
 
