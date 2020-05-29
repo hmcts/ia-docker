@@ -1,0 +1,23 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/details"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "active": true,
+      "email": "ia-law-firm-a@fake.hmcts.net",
+      "forename": "Legal",
+      "id": "a1b59459-9c63-488d-9e6d-d40ffb4ed7ce",
+      "roles": [
+        "caseworker-ia",
+        "caseworker-ia-legalrep-solicitor"
+      ],
+      "surname": "Rep (Stub)"
+    }
+  }
+}
