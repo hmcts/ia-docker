@@ -7,7 +7,7 @@ CLIENT_SECRET="${4:-OOOOOOOOOOOOOOOO}"
 REDIRECT_URLS="${5:-[\"http://localhost:3451/oauth2redirect\"]}"
 ALLOWED_ROLES="${6:-[\"caseworker\", \"caseworker-ia\"]}"
 DESCRIPTION="${7:-CCD Gateway}"
-SCOPE="${8:-CCD scope}"
+SCOPE="${8:-openid profile roles}"
 
 apiToken=$(sh ./authenticate.sh "${IDAM_URL}" "${IDAM_ADMIN_USER}" "${IDAM_ADMIN_PASSWORD}")
 
