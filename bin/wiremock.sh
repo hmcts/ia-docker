@@ -176,5 +176,39 @@ curl -X POST \
 }' \
 http://localhost:8991/__admin/mappings/new
 
+
+curl -X POST \
+--data '{
+          "request": {
+            "method": "POST",
+            "url": "/credit-account-payments",
+            "headers": {
+              "Content-Type": {
+                "equalTo": "application/json"
+              }
+            }
+          },
+          "response": {
+            "status": 201,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+                "reference": "RC-1590-6786-1063-9996",
+                "date_created": "2020-05-28T15:10:10.694+0000",
+                "status": "Success",
+                "payment_group_reference": "2020-1590678609071",
+                "status_histories": [
+                  {
+                    "status": "success",
+                    "date_created": "2020-05-28T15:10:10.700+0000",
+                    "date_updated": "2020-05-28T15:10:10.700+0000"
+                  }
+                ]
+            }
+          }
+        }' \
+http://localhost:8991/__admin/mappings/new
+
 # make responses persistent in Docker volume
 curl -X POST http://localhost:8991/__admin/mappings/save
