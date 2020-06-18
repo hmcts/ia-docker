@@ -413,6 +413,10 @@ Store where the versioned instances of cases are recorded.
 
 Display preferences for the CCD users.
 
+#### ia-timed-event-service
+
+Schedule CCD events in future.
+
 ### Front-end
 
 #### ccd-api-gateway
