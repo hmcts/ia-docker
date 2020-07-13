@@ -231,5 +231,43 @@ curl -X POST \
         }' \
 http://localhost:8991/__admin/mappings/new
 
+#PBA accounts
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/external/v1/organisations/pbas"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+              "organisationEntityResponse" : {
+                "organisationIdentifier": "0UFUG4Z",
+                "name": "ia-legal-rep-org",
+                "status": "ACTIVE",
+                "sraId": null,
+                "sraRegulated": false,
+                "companyNumber": null,
+                "companyUrl": null,
+                "superUser": {
+                  "firstName": "legalrep",
+                  "lastName": "orgcreator",
+                  "email": "'"${TEST_LAW_FIRM_SHARE_CASE_ORG_USERNAME}"'"
+                },
+                "paymentAccount": [
+                  "PBA1234567",
+                  "PBA7654321",
+                  "PBA1232123"
+                ],
+                "contactInformation": null
+              }
+            }
+          }
+        }' \
+http://localhost:8991/__admin/mappings/new
+
 # make responses persistent in Docker volume
 curl -X POST http://localhost:8991/__admin/mappings/save
