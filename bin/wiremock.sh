@@ -154,7 +154,7 @@ curl -X POST \
 }' \
 http://localhost:8991/__admin/mappings/new
 
-# fee-register response for oral fee
+# fee-register response for fee with hearinng
 curl -X POST \
 --data '{
     "request": {
@@ -176,6 +176,27 @@ curl -X POST \
 }' \
 http://localhost:8991/__admin/mappings/new
 
+# fee-register response for fee without hearing
+curl -X POST \
+--data '{
+    "request": {
+        "method": "GET",
+        "url": "/fees-register/fees/lookup?channel=default&event=issue&jurisdiction1=tribunal&jurisdiction2=immigration%20and%20asylum%20chamber&keyword=DEF&service=other"
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "jsonBody": {
+            "code": "FEE0456",
+            "description": "Appeal determined with a hearing",
+            "version": 2,
+            "fee_amount": "80.00"
+        }
+    }
+}' \
+http://localhost:8991/__admin/mappings/new
 
 curl -X POST \
 --data '{
@@ -205,6 +226,44 @@ curl -X POST \
                     "date_updated": "2020-05-28T15:10:10.700+0000"
                   }
                 ]
+            }
+          }
+        }' \
+http://localhost:8991/__admin/mappings/new
+
+#PBA accounts
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/external/v1/organisations/pbas"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+              "organisationEntityResponse" : {
+                "organisationIdentifier": "0UFUG4Z",
+                "name": "ia-legal-rep-org",
+                "status": "ACTIVE",
+                "sraId": null,
+                "sraRegulated": false,
+                "companyNumber": null,
+                "companyUrl": null,
+                "superUser": {
+                  "firstName": "legalrep",
+                  "lastName": "orgcreator",
+                  "email": "'"${TEST_LAW_FIRM_SHARE_CASE_ORG_USERNAME}"'"
+                },
+                "paymentAccount": [
+                  "PBA1234567",
+                  "PBA7654321",
+                  "PBA1232123"
+                ],
+                "contactInformation": null
+              }
             }
           }
         }' \
