@@ -34,6 +34,8 @@ services:
       - dm-store
     ports:
       - 4630:8080
+    extra_hosts:
+      - "docmosis-development.platform.hmcts.net:172.16.0.6"
 
   stitching-db:
     image: postgres:9.6
@@ -44,10 +46,11 @@ services:
       - POSTGRES_PASSWORD=emstitch
       
   rpa-em-ccd-orchestrator:
-    image: hmctspublic.azurecr.io/em/ccd-orchestrator:latest
+    image: hmctspublic.azurecr.io/em/ccdorc:latest
     restart: on-failure
     environment:
-      SERVER_PORT: 8060
+      SERVER_PORT: 8080
+      CCD_DATA_API_URL: http://ccd-data-store-api:4452
       IDAM_API_BASE_URI: http://sidam-api:5000
       OPEN_ID_API_BASE_URI: http://sidam-api:5000/o
       S2S_BASE_URI: http://service-auth-provider-api:8080
@@ -64,7 +67,7 @@ services:
       REFORM_ENVIRONMENT: docker
       JAVA_OPTS: -Xmx486m
     ports:
-      - 4623:8060
+      - 4623:8080
     depends_on:
       - sidam-api
       - stitching-api
@@ -72,3 +75,4 @@ services:
       - service-auth-provider-api
       - sidam-api
       - stitching-api
+      - ccd-data-store-api
