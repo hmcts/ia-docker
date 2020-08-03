@@ -61,6 +61,12 @@ export TEST_LAW_FIRM_SHARE_CASE_B_USERNAME=ia-law-firm-b-sc@fake.hmcts.net
 export TEST_LAW_FIRM_SHARE_CASE_B_PASSWORD=London03
 export TEST_JUDGE_X_USERNAME=ia.iacjudge.ccd@fake.hmcts.net
 export TEST_JUDGE_X_PASSWORD=London20
+
+export TEST_LAW_FIRM_ORG_SUCCESS_USERNAME=ia-law-firm-success@fake.hmcts.net
+export TEST_LAW_FIRM_ORG_SUCCESS_PASSWORD=London08
+export TEST_LAW_FIRM_ORG_DELETED_USERNAME=ia-law-firm-deleted@fake.hmcts.net
+export TEST_LAW_FIRM_ORG_DELETED_PASSWORD=London09
+
 export IDAM_ADMIN_USER=idamOwner@hmcts.net
 export IDAM_URL=http://localhost:5000
 export IA_IDAM_ID=ccd_gateway

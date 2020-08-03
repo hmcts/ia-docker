@@ -67,6 +67,9 @@ echo "Setting up Users..."
 
 ./create-user.sh "${TEST_JUDGE_X_USERNAME}" "Judge" "X" "${TEST_JUDGE_X_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-iacjudge\"}]"
 
+./create-user.sh "${TEST_LAW_FIRM_ORG_SUCCESS_USERNAME}" "PBA Success" "Legal Rep" "${TEST_LAW_FIRM_ORG_SUCCESS_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
+./create-user.sh "${TEST_LAW_FIRM_ORG_DELETED_USERNAME}" "PBA Deleted" "Legal Rep" "${TEST_LAW_FIRM_ORG_DELETED_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
+
 # Refresh cache
 echo ""
 echo "Refreshing cache..."
