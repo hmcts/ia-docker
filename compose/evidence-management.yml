@@ -22,7 +22,8 @@ services:
       DM_STORE_APP_URL: http://dm-store:4506
       DOCMOSIS_ACCESS_KEY: "${DOCMOSIS_ACCESS_KEY}"
       S2S_NAMES_WHITELIST: jui_webapp,em_ccd_orchestrator,em_gw,iac
-      JAVA_OPTS: -Xmx512m
+      ROOT_LOGGING_LEVEL: WARN
+      JAVA_TOOL_OPTIONS: -Xmx384m
     depends_on:
       - sidam-api
       - stitching-db
@@ -60,12 +61,12 @@ services:
       ENABLE_LIQUIBASE: "true"
       # these environment variables are used by java-logging library
       JSON_CONSOLE_PRETTY_PRINT: "false"
-      ROOT_LOGGING_LEVEL:
+      ROOT_LOGGING_LEVEL: WARN
       REFORM_SERVICE_TYPE: java
       REFORM_SERVICE_NAME: rpa-em-ccd-orchestrator
       REFORM_TEAM: em-ccd-orchestrator
       REFORM_ENVIRONMENT: docker
-      JAVA_OPTS: -Xmx486m
+      JAVA_TOOL_OPTIONS: -Xmx384m
     ports:
       - 4623:8080
     depends_on:

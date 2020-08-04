@@ -29,7 +29,7 @@ services:
       REFORM_TEAM: ccd
       REFORM_ENVIRONMENT: local
       APPINSIGHTS_INSTRUMENTATIONKEY: key
-      JAVA_OPTS: -Xmx384m
+      JAVA_TOOL_OPTIONS: -Xmx384m
     ports:
       - 4453:4453
     depends_on:
@@ -58,12 +58,13 @@ services:
       ELASTIC_SEARCH_ENABLED: "${ES_ENABLED_DOCKER}"
       ELASTIC_SEARCH_HOST: "ccd-elasticsearch"
       ELASTIC_SEARCH_FAIL_ON_IMPORT: "true"
-      JAVA_OPTS: -Xmx384m
+      JAVA_TOOL_OPTIONS: -Xmx384m
     ports:
       - 4451:4451
     depends_on:
       - ccd-shared-database
       - ccd-user-profile-api
+      - sidam-api
     links:
       - ccd-shared-database
       - ccd-user-profile-api
@@ -92,13 +93,14 @@ services:
       ELASTIC_SEARCH_ENABLED: "${ES_ENABLED_DOCKER}"
       ELASTIC_SEARCH_HOSTS: ccd-elasticsearch:9200
       ELASTIC_SEARCH_DATA_NODES_HOSTS: "http://ccd-elasticsearch:9200"
-      JAVA_OPTS: -Xmx384m
+      JAVA_TOOL_OPTIONS: -Xmx384m
     ports:
       - 4452:4452
     depends_on:
       - ccd-shared-database
       - ccd-user-profile-api
       - ccd-definition-store-api
+      - sidam-api
     links:
       - ccd-shared-database
       - ccd-user-profile-api
@@ -127,7 +129,7 @@ services:
       MICROSERVICEKEYS_EM_STITCHING_API: "${IDAM_KEY_EM_STITCHING_API}"
       MICROSERVICEKEYS_EM_CCD_ORCHESTRATOR: "${IDAM_KEY_EM_CCD_ORCHESTRATOR}"
       TESTING_SUPPORT_ENABLED: "true"
-      JAVA_OPTS: -Xmx384m
+      JAVA_TOOL_OPTIONS: -Xmx384m
 
   smtp-server:
     image: mailhog/mailhog
