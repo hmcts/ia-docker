@@ -35,6 +35,8 @@ services:
       - dm-store
     ports:
       - 4630:8080
+    # it is needed to generate bundle cover page - there is an issue with VPN dns settings and docker environment
+    # ping docmosis-development.platform.hmcts.net to get latest IP if there is a change
     extra_hosts:
       - "docmosis-development.platform.hmcts.net:172.16.0.6"
 
