@@ -6,7 +6,7 @@ services:
   sidam-api:
     image: hmctspublic.azurecr.io/idam/api:stable
     environment:
-      JAVA_OPTS: -Xms128m -Xms512m
+      JAVA_TOOL_OPTIONS: -Xms128m -Xmx512m
       SPRING_PROFILES_ACTIVE: local
       CACHING_ENABLED: "false"
       APPSETTING_NODE_PATH: /opt/app
@@ -46,7 +46,7 @@ services:
   idam-web-admin:
     image: hmctspublic.azurecr.io/idam/web-admin:stable
     environment:
-      JAVA_OPTS: -Xms128m -Xmx512m
+      JAVA_TOOL_OPTIONS: -Xms128m -Xmx384m
       STRATEGIC_SERVICE_URL: http://sidam-api:5000
       STRATEGIC_PUBLIC_URL: http://idam-web-public:3501
     ports:
@@ -64,7 +64,7 @@ services:
      REFORM_SERVICE_NAME: sidam-api
      REFORM_TEAM: idam
      REFORM_ENVIRONMENT: local
-     JAVA_OPTS: -Xms128m -Xmx512m
+     JAVA_TOOL_OPTIONS: -Xms128m -Xmx384m
     ports:
       - 3501:8080
     links:
@@ -75,7 +75,7 @@ services:
   fr-am:
     image: hmctsprivate.azurecr.io/idam/idam-fr-am:latest
     environment:
-      JAVA_OPTS: -Xms128m -Xmx512m
+      JAVA_TOOL_OPTIONS: -Xms128m -Xmx384m
     ports:
       - 8097:8080
       - 1389:1389
@@ -88,8 +88,7 @@ services:
       - 18080:18080
       - 9010:9010
     environment:
-      JAVA_TOOL_OPTIONS: -Dcom.sun.management.jmxremote.port=9010 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=vm-ubuntu16 -Dcom.sun.management.jmxremote.rmi.port=9010
-      JAVA_OPTS: -Xms128m -Xmx512m
+      JAVA_TOOL_OPTIONS: -Xms128m -Xmx384m -Dcom.sun.management.jmxremote.port=9010 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=vm-ubuntu16 -Dcom.sun.management.jmxremote.rmi.port=9010
     depends_on:
       - fr-am
       - shared-db

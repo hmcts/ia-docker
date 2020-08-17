@@ -62,7 +62,10 @@ services:
       PACKAGES_PROJECT: evidence
       PACKAGES_NAME: document-management-store
       PACKAGES_VERSION: unknown
-      JAVA_OPTS: -Xmx384m
+      LOG_LEVEL_SPRING_WEB: WARN
+      LOG_LEVEL_SPRING_BATCH: WARN
+      LOG_LEVEL_DM: WARN
+      JAVA_TOOL_OPTIONS: -Xmx384m
     #      debug mode
     #    JAVA_OPTS: -Xmx384m -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
     links:

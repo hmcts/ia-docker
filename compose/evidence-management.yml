@@ -22,7 +22,8 @@ services:
       DM_STORE_APP_URL: http://dm-store:4506
       DOCMOSIS_ACCESS_KEY: "${DOCMOSIS_ACCESS_KEY}"
       S2S_NAMES_WHITELIST: jui_webapp,em_ccd_orchestrator,em_gw,iac
-      JAVA_OPTS: -Xmx512m
+      ROOT_LOGGING_LEVEL: WARN
+      JAVA_TOOL_OPTIONS: -Xmx384m
     depends_on:
       - sidam-api
       - stitching-db
@@ -34,6 +35,10 @@ services:
       - dm-store
     ports:
       - 4630:8080
+    # it is needed to generate bundle cover page - there is an issue with VPN dns settings and docker environment
+    # ping docmosis-development.platform.hmcts.net to get latest IP if there is a change
+    extra_hosts:
+      - "docmosis-development.platform.hmcts.net:172.16.0.6"
 
   stitching-db:
     image: postgres:9.6
@@ -44,10 +49,11 @@ services:
       - POSTGRES_PASSWORD=emstitch
       
   rpa-em-ccd-orchestrator:
-    image: hmctspublic.azurecr.io/em/ccd-orchestrator:latest
+    image: hmctspublic.azurecr.io/em/ccdorc:latest
     restart: on-failure
     environment:
-      SERVER_PORT: 8060
+      SERVER_PORT: 8080
+      CCD_DATA_API_URL: http://ccd-data-store-api:4452
       IDAM_API_BASE_URI: http://sidam-api:5000
       OPEN_ID_API_BASE_URI: http://sidam-api:5000/o
       S2S_BASE_URI: http://service-auth-provider-api:8080
@@ -57,14 +63,14 @@ services:
       ENABLE_LIQUIBASE: "true"
       # these environment variables are used by java-logging library
       JSON_CONSOLE_PRETTY_PRINT: "false"
-      ROOT_LOGGING_LEVEL:
+      ROOT_LOGGING_LEVEL: WARN
       REFORM_SERVICE_TYPE: java
       REFORM_SERVICE_NAME: rpa-em-ccd-orchestrator
       REFORM_TEAM: em-ccd-orchestrator
       REFORM_ENVIRONMENT: docker
-      JAVA_OPTS: -Xmx486m
+      JAVA_TOOL_OPTIONS: -Xmx384m
     ports:
-      - 4623:8060
+      - 4623:8080
     depends_on:
       - sidam-api
       - stitching-api
@@ -72,3 +78,4 @@ services:
       - service-auth-provider-api
       - sidam-api
       - stitching-api
+      - ccd-data-store-api
