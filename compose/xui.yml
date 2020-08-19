@@ -18,9 +18,11 @@ services:
       SERVICES_IDAM_OAUTH_CALLBACK_URL: oauth2/callback
       SERVICES_IDAM_CLIENT_ID: ccd_gateway
       SERVICES_PAYMENTS_URL: http://wiremock:8080
+      REDISCLOUD_URL: http://dummyrediscloudurl
 
       SERVICES_EM_ANNO_API: http://localhost:3453
 
+      FEATURE_REDIS_ENABLED: "false"
       FEATURE_APP_INSIGHTS_ENABLED: "false"
       FEATURE_SECURE_COOKIE_ENABLED: "false"
       APPINSIGHTS_INSTRUMENTATIONKEY: fake
