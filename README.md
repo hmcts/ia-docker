@@ -24,6 +24,7 @@ https://github.com/hmcts/ia-ccd-e2e-tests/tree/master/bin
 - [Local development](#local-development)
 - [Variables](#variables)
 - [Remarks](#remarks)
+- [Performance troubleshooting](#performance-troubleshooting)
 - [License](#license)
 
 ## Prerequisites
@@ -554,6 +555,47 @@ DRIVER              VOLUME NAME
 
 # better be empty
 ```
+
+## Performance troubleshooting 
+
+Running `ia-docker` locally is memory intensive. When running ia-docker alongside your IDE and the required Spring Boot applications, you may encounter performance issues, especially when developing new features.
+
+You may wish to consider the following local environment optimizations: 
+
+### 1. Docker Desktop
+
+Consider using the following settings in Resources (Advanced):
+
+- CPUs: 4
+- Memory: 11 GB
+- Swap: 3 GB
+- Disk image size: 60 GB
+
+### 2. Containers not required
+
+Consider stopping the following containers that may not be required during development: 
+
+- `ccd-case-management-web`
+- `idam-web-admin_1`
+
+The following containers may not be required unless running the full e2e tests:
+
+- `compose_stitching-db_1`
+- `compose_stitching-api_1`
+
+The containers can be stopped using the following command:
+
+```bash
+docker stop [container_name]
+```
+
+### 3. Container memory settings
+
+Consider adjusting maximum java memory settings in the container `.yml` configuration files to `JAVA_TOOL_OPTIONS: -Xmx384m`
+
+### 4. Container logging levels
+
+Consider adjusting the log level in container `.yml` configurations files to have a `LOGGING_LEVEL: WARN` to reduce overhead.
 
 ## Notes
 
