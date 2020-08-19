@@ -10,6 +10,7 @@ services:
 
   wiremock:
     image: rodolpheche/wiremock
+    command: " --verbose "
     ports:
       - 8991:8080
     volumes:
@@ -49,7 +50,7 @@ services:
       DEFINITION_STORE_IDAM_KEY: "${IDAM_KEY_CCD_DEFINITION_STORE}"
       DEFINITION_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_admin
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
-      IDAM_USER_URL: http://sidam-api:5000
+      IDAM_USER_URL: http://wiremock:8080
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       REFORM_SERVICE_NAME: ccd-definition-store-api
       REFORM_TEAM: ccd
@@ -64,11 +65,11 @@ services:
     depends_on:
       - ccd-shared-database
       - ccd-user-profile-api
-      - sidam-api
+      - wiremock
     links:
       - ccd-shared-database
       - ccd-user-profile-api
-      - sidam-api
+      - wiremock
       - service-auth-provider-api
 
   ccd-data-store-api:
@@ -84,7 +85,7 @@ services:
       DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac,em_stitching_api,em_gw,em_ccd_orchestrator
       DEFINITION_STORE_HOST: http://ccd-definition-store-api:4451
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
-      IDAM_USER_URL: http://sidam-api:5000
+      IDAM_USER_URL: http://wiremock:8080
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       REFORM_SERVICE_NAME: ccd-data-store-api
       REFORM_TEAM: ccd
@@ -100,12 +101,12 @@ services:
       - ccd-shared-database
       - ccd-user-profile-api
       - ccd-definition-store-api
-      - sidam-api
+      - wiremock
     links:
       - ccd-shared-database
       - ccd-user-profile-api
       - ccd-definition-store-api
-      - sidam-api
+      - wiremock
       - service-auth-provider-api
 
   service-auth-provider-api:

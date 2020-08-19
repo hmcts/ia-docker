@@ -14,7 +14,7 @@ services:
       SERVICES_DOCUMENTS_API: http://dm-store:4506
       SERVICES_S2S: http://service-auth-provider-api:8080
       SERVICES_IDAM_LOGIN_URL: http://localhost:3501
-      SERVICES_IDAM_API_URL: http://sidam-api:5000
+      SERVICES_IDAM_API_URL: http://wiremock:8080
       SERVICES_IDAM_OAUTH_CALLBACK_URL: oauth2/callback
       SERVICES_IDAM_CLIENT_ID: ccd_gateway
       SERVICES_PAYMENTS_URL: http://wiremock:8080
@@ -35,12 +35,11 @@ services:
     ports:
       - 3002:3000
     links:
-      - sidam-api
       - ccd-data-store-api
       - ccd-api-gateway
       - dm-store
       - service-auth-provider-api
       - wiremock
     depends_on:
-      - sidam-api
+      - wiremock
       - ccd-api-gateway
