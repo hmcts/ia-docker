@@ -131,6 +131,36 @@ services:
       TESTING_SUPPORT_ENABLED: "true"
       JAVA_TOOL_OPTIONS: -Xmx384m
 
+  ia-timed-event-service:
+    image: hmctspublic.azurecr.io/ia/timed-event-service:latest
+    ports:
+      - 8095:8095
+    depends_on:
+      - ccd-shared-database
+      - ccd-data-store-api
+      - sidam-api
+      - service-auth-provider-api
+    links:
+      - ccd-shared-database
+      - ccd-data-store-api
+      - sidam-api
+      - service-auth-provider-api
+    environment:
+      IDAM_URL: http://sidam-api:5000
+      S2S_URL: http://service-auth-provider-api:8080
+      CCD_URL: http://ccd-data-store-api:4452
+      POSTGRES_HOST: ccd-shared-database
+      POSTGRES_PORT: 5432
+      IA_IDAM_CLIENT_ID: "${IA_IDAM_CLIENT_ID}"
+      IA_IDAM_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
+      IA_IDAM_REDIRECT_URI: "${IA_IDAM_REDIRECT_URI}"
+      IA_SYSTEM_USERNAME: "${IA_SYSTEM_USERNAME}"
+      IA_SYSTEM_PASSWORD: "${IA_SYSTEM_PASSWORD}"
+      IA_S2S_MICROSERVICE: "${IA_S2S_MICROSERVICE}"
+      IA_S2S_SECRET: "${IDAM_KEY_IAC}"
+      IA_S2S_AUTHORIZED_SERVICES: "${IA_S2S_MICROSERVICE}"
+      SPRING_PROFILES_ACTIVE: test
+
   smtp-server:
     image: mailhog/mailhog
 
