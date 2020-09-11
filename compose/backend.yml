@@ -161,6 +161,11 @@ services:
       IA_S2S_AUTHORIZED_SERVICES: "${IA_S2S_MICROSERVICE}"
       SPRING_PROFILES_ACTIVE: test
 
+  ia-home-office-mock-api:
+    image: hmctspublic.azurecr.io/ia/home-office-mock-api:latest
+    ports:
+      - 8098:8098
+
   smtp-server:
     image: mailhog/mailhog
 
