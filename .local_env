@@ -91,3 +91,5 @@ export DOCMOSIS_URL=https://docmosis-development.platform.hmcts.net/rs
 export IA_DOCMOSIS_ENABLED=true
 export IA_EM_STITCHING_ENABLED=true
 export IS_SAVE_AND_CONTINUE_ENABLED=false
+export FEES_ADMIN_OFFICER_EMAIL=fees-ao@example.com
+export IA_HOME_OFFICE_APC_EMAIL=ho-end-appeal@example.com
