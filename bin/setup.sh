@@ -24,6 +24,7 @@ echo "Setting up Roles..."
 ./create-role.sh "caseworker-ia-respondentofficer"
 ./create-role.sh "caseworker-ia-iacjudge"
 ./create-role.sh "payments"
+./create-role.sh "caseworker-wa"
 
 # Roles required for XUI
 echo ""
@@ -49,6 +50,7 @@ echo "Setting up Roles required for XUI..."
 echo ""
 echo "Setting up Users..."
 ./create-user.sh "ccd-import@fake.hmcts.net" "CCD" "Import" "London01" "ccd-import" "[{ \"code\": \"ccd-import\"}]"
+./create-user.sh "caseworker-wa@fake.hmcts.net" "Work" "Allocation" "London23" "caseworker-wa" "[{ \"code\": \"caseworker-wa\"}]"
 ./create-user.sh "${IA_SYSTEM_USERNAME}" "System" "user" "${IA_SYSTEM_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-system\"}]"
 ./create-user.sh "${TEST_CASEOFFICER_USERNAME}" "Case" "Officer" "${TEST_CASEOFFICER_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-caseofficer\"}, { \"code\": \"payments\"}]"
 ./create-user.sh "${TEST_JUDICIARY_USERNAME}" "Tribunal" "Judge" "${TEST_JUDICIARY_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-judiciary\"}]"
@@ -118,6 +120,7 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "caseworker-sscs-dwpresponsewriter" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "payments" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-wa" "$USER_TOKEN" "$SERVICE_TOKEN"
 echo ""
 echo "Setting CCD Roles and Users is finished"
 
