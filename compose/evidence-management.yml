@@ -49,7 +49,7 @@ services:
       - POSTGRES_PASSWORD=emstitch
       
   rpa-em-ccd-orchestrator:
-    image: hmctspublic.azurecr.io/em/ccdorc:latest
+    image: hmctspublic.azurecr.io/em/ccdorc:pr-424-d805f46a
     restart: on-failure
     environment:
       SERVER_PORT: 8080
