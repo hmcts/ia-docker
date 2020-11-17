@@ -5,11 +5,6 @@ services:
 
   stitching-api:
     image: hmctspublic.azurecr.io/em/stitching:latest
-    restart: on-failure
-    healthcheck:
-      interval: 10s
-      timeout: 10s
-      retries: 10
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://stitching-db:5432/emstitch
       SPRING_DATASOURCE_USERNAME: emstitch
@@ -50,7 +45,6 @@ services:
       
   rpa-em-ccd-orchestrator:
     image: hmctspublic.azurecr.io/em/ccdorc:latest
-    restart: on-failure
     environment:
       SERVER_PORT: 8080
       CCD_DATA_API_URL: http://ccd-data-store-api:4452
