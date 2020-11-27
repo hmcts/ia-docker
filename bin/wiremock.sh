@@ -617,7 +617,7 @@ curl -X POST \
         }' \
 http://localhost:8991/__admin/mappings/new
 
-#PBA accounts
+#PBA accounts and OrganisationPolicy
 curl -X POST \
 --data '{
           "request": {
@@ -630,7 +630,7 @@ curl -X POST \
               "Content-Type": "application/json"
             },
             "jsonBody": {
-                "organisationIdentifier": "0UFUG4Z",
+                "organisationIdentifier": "D1HRWLA",
                 "name": "ia-legal-rep-org",
                 "status": "ACTIVE",
                 "sraRegulated": false,
