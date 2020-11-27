@@ -16,6 +16,9 @@ fi
 if [[ -z "${LAUNCH_DARKLY_SDK_KEY}" ]]; then
   echo "ERROR: need to set LAUNCH_DARKLY_SDK_KEY environment variable in profile"
 fi
+if [[ -z "${LAUNCH_DARKLY_CLIENT_ID}" ]]; then
+  echo "ERROR: need to set LAUNCH_DARKLY_CLIENT_ID environment variable in profile"
+fi
 source ${CCD_DOCKER_PATH}/.env
 
 export IA_IDAM_SECRET=$OAUTH2_CLIENT_CCD_GATEWAY
@@ -99,3 +102,5 @@ export HOME_OFFICE_EMAIL_LART=ho-lart-appeal@example.com
 
 # Local user prefix for identifying local Idam User in Launch Darkly UI, leave it empty if you do not need Launch Darkly custom rules
 export IA_USER_PREFIX=
+
+export LAUNCH_DARKLY_CLIENT_ID=$LAUNCH_DARKLY_CLIENT_ID
