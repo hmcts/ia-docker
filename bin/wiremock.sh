@@ -403,7 +403,7 @@ curl -X POST \
         }' \
 http://localhost:8991/__admin/mappings/new
 
-#PBA accounts
+#PBA accounts and OrganisationPolicy
 curl -X POST \
 --data '{
           "request": {
