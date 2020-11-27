@@ -386,8 +386,63 @@ curl -X POST \
                   "PBA0088063",
                   "PBA0087442"
                 ],
-                "contactInformation": null
+                "contactInformation": [
+                  {
+                    "addressLine1": "45 Lunar House",
+                    "addressLine2": "Spa Road",
+                    "addressLine3": "Woolworth",
+                    "country": "UK",
+                    "county": "London",
+                    "postCode": "SE1 3HP",
+                    "townCity": "London"
+                  }
+                ]
               }
+            }
+          }
+        }' \
+http://localhost:8991/__admin/mappings/new
+
+#PBA accounts
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/external/v1/organisations"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+                "organisationIdentifier": "0UFUG4Z",
+                "name": "ia-legal-rep-org",
+                "status": "ACTIVE",
+                "sraRegulated": false,
+                "superUser": {
+                  "firstName": "legalrep",
+                  "lastName": "orgcreator",
+                  "email": "'"${TEST_LAW_FIRM_SHARE_CASE_ORG_USERNAME}"'"
+                },
+                "paymentAccount": [
+                  "PBA0087535",
+                  "PBA0087240",
+                  "PBA0088063",
+                  "PBA0087442"
+                ],
+                "contactInformation": [
+                  {
+                    "addressLine1": "45 Lunar House",
+                    "addressLine2": "Spa Road",
+                    "addressLine3": "Woolworth",
+                    "country": "UK",
+                    "county": "London",
+                    "postCode": "SE1 3HP",
+                    "townCity": "London",
+                    "dxAddress": []
+                  }
+                ]
             }
           }
         }' \
