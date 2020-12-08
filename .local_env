@@ -95,12 +95,13 @@ export IA_DOCMOSIS_ENABLED=true
 export IA_EM_STITCHING_ENABLED=true
 export IS_SAVE_AND_CONTINUE_ENABLED=false
 export FEES_ADMIN_OFFICER_EMAIL=fees-ao@example.com
+export PAYMENT_EXCEPTIONS_ADMIN_OFFICER_EMAIL=payment-exceptions-ao-aat@example.com
 export IA_HOME_OFFICE_APC_EMAIL=ho-end-appeal@example.com
 
 export HOME_OFFICE_EMAIL_APC=ho-apc-appeal@example.com
 export HOME_OFFICE_EMAIL_LART=ho-lart-appeal@example.com
+export IA_UPPER_TRIBUNAL_NOTICES_EMAIL=upper-tribunal-notices@example.com
 
 # Local user prefix for identifying local Idam User in Launch Darkly UI, leave it empty if you do not need Launch Darkly custom rules
 export IA_USER_PREFIX=
-
 export LAUNCH_DARKLY_CLIENT_ID=$EXUI_LAUNCH_DARKLY_CLIENT_ID
