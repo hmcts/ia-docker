@@ -93,6 +93,8 @@ services:
       ELASTIC_SEARCH_ENABLED: "${ES_ENABLED_DOCKER}"
       ELASTIC_SEARCH_HOSTS: ccd-elasticsearch:9200
       ELASTIC_SEARCH_DATA_NODES_HOSTS: "http://ccd-elasticsearch:9200"
+      ELASTIC_SEARCH_CASE_INDEX_NAME_FORMAT: '%s_cases'
+      ELASTIC_SEARCH_CASE_INDEX_TYPE: _doc
       JAVA_TOOL_OPTIONS: -Xmx384m
     ports:
       - 4452:4452

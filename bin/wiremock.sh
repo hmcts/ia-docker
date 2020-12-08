@@ -393,5 +393,40 @@ curl -X POST \
         }' \
 http://localhost:8991/__admin/mappings/new
 
+#Share a case assignments
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/case-assignments"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+              "status_message": "Assignments returned successfully",
+              "case_assignments": [
+                {
+                  "case_id": "8b019576-9c45-4b0e-b92b-e9253e49fbe3",
+                  "shared_with": [
+                    {
+                      "idam_id": "066f30ce-3797-49aa-a095-9c1be6741483",
+                      "first_name": "Alex",
+                      "last_name": "White",
+                      "email": "alex.white@test.com",
+                      "case_roles": [
+                        "caseworker-ia-legalrep-solicitor"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }' \
+http://localhost:8991/__admin/mappings/new
+
 # make responses persistent in Docker volume
 curl -X POST http://localhost:8991/__admin/mappings/save

@@ -45,6 +45,11 @@ echo "Setting up Roles required for XUI..."
 ./create-role.sh "caseworker-sscs"
 ./create-role.sh "caseworker-sscs-dwpresponsewriter"
 
+# Roles required for Share A Case
+echo ""
+echo "Setting up Roles required for Share A Case..."
+./create-role.sh "caseworker-caa"
+
 # Setup Users
 echo ""
 echo "Setting up Users..."
@@ -118,6 +123,9 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "caseworker-sscs-dwpresponsewriter" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "payments" "$USER_TOKEN" "$SERVICE_TOKEN"
+
+./register-role.sh "caseworker-caa" "$USER_TOKEN" "$SERVICE_TOKEN"
+
 echo ""
 echo "Setting CCD Roles and Users is finished"
 
