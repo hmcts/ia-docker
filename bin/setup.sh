@@ -52,6 +52,12 @@ echo ""
 echo "Setting up Roles required for Share A Case..."
 ./create-role.sh "caseworker-caa"
 
+# Roles required for Notice of Change
+echo ""
+echo "Setting up Roles required for Notice of Change..."
+./create-role.sh "caseworker-approver"
+./create-role.sh "prd-aac-system"
+
 # Setup Users
 echo ""
 echo "Setting up Users..."
@@ -83,6 +89,8 @@ echo "Setting up Users..."
 ./create-user.sh "${TEST_LAW_FIRM_ORG_DELETED_USERNAME}" "${IA_USER_PREFIX}PBA Deleted" "Legal Rep" "${TEST_LAW_FIRM_ORG_DELETED_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
 
 ./create-user.sh "caa-caseworker@fake.hmcts.net" "${USER_PREFIX}CAA-System" "user" "London21" "caseworker" "[{ \"code\": \"caseworker-caa\"}]"
+./create-user.sh "approver-caseworker@fake.hmcts.net" "${USER_PREFIX}Approver-System" "user" "London22" "caseworker" "[{ \"code\": \"caseworker-approver\"}, { \"code\": \"prd-aac-system\"}]"
+./create-user.sh "approver-noc@fake.com" "${USER_PREFIX}Approver-NoC" "user" "Pa55word11" "caseworker" "[{ \"code\": \"caseworker-approver\"}, { \"code\": \"prd-aac-system\"}]"
 
 # Refresh cache
 echo ""
@@ -135,6 +143,8 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "payments" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "caseworker-caa" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-approver" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "prd-aac-system" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "caseworker-wa-task-configuration" "$USER_TOKEN" "$SERVICE_TOKEN"
 

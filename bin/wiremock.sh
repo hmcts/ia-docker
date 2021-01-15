@@ -679,6 +679,142 @@ curl -X POST \
       }' \
 http://localhost:8991/__admin/mappings/new
 
+#Internal AAC call to PRD for NoC auto approval
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/internal/v1/organisations",
+            "queryParameters": {
+              "id": {
+              "equalTo": "D1HRWLA"
+              }
+            }
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+              "contactInformation": [
+                {
+                  "addressLine1": "45 Lunar House",
+                  "addressLine2": "Spa Road",
+                  "addressLine3": "Woolworth",
+                  "county": "London",
+                  "townCity": "London",
+                  "country": "UK",
+                  "postCode": "SE1 3HP"
+                }
+              ],
+              "organisationIdentifier": "D1HRWLA",
+              "name": "Fake Org Ltd"
+          }
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
+#Internal AAC call to PRD for NoC auto approval
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/internal/v1/organisations",
+            "queryParameters": {
+              "id": {
+              "equalTo": "0UFUG4Z"
+              }
+            }
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+              "contactInformation": [
+                {
+                  "addressLine1": "145A",
+                  "addressLine2": "Putney High Street",
+                  "addressLine3": "Putney",
+                  "county": "London",
+                  "townCity": "London",
+                  "country": "UK",
+                  "postCode": "SW15 1SU"
+                }
+              ],
+              "organisationIdentifier": "0UFUG4Z",
+              "name": "Fake Org2 Ltd"
+          }
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
+#Internal AAC call to PRD for NoC auto approval
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/internal/v1/organisations/D1HRWLA/users",
+            "queryParameters": {
+              "returnRoles": {
+                "equalTo": "false"
+              }
+            }
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "Original body",
+            "transformers": ["body-transformer"],
+            "transformerParameters" : {
+              "shareCaseOrgId" : "'"${share_case_org_id}"'",
+              "shareCaseAid" : "'"${share_case_a_id}"'",
+              "shareCaseBid" : "'"${share_case_b_id}"'",
+              "shareCaseOrg2Id" : "'"${share_case_org2_id}"'",
+              "shareCaseCid" : "'"${share_case_c_id}"'",
+              "shareCaseDid" : "'"${share_case_d_id}"'"
+            }
+          }
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
+#Internal AAC call to PRD for NoC auto approval
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/internal/v1/organisations/0UFUG4Z/users",
+            "queryParameters": {
+              "returnRoles": {
+                "equalTo": "false"
+              }
+            }
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "Original body",
+            "transformers": ["body-transformer"],
+            "transformerParameters" : {
+              "shareCaseOrgId" : "'"${share_case_org_id}"'",
+              "shareCaseAid" : "'"${share_case_a_id}"'",
+              "shareCaseBid" : "'"${share_case_b_id}"'",
+              "shareCaseOrg2Id" : "'"${share_case_org2_id}"'",
+              "shareCaseCid" : "'"${share_case_c_id}"'",
+              "shareCaseDid" : "'"${share_case_d_id}"'"
+            }
+          }
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
 curl -X POST \
 --data '{
           "request": {
