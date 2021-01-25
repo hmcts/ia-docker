@@ -121,7 +121,8 @@ curl -X POST --data '{
         }
     }
 
-}' ${WIREMOCK_URL}/__admin/mappings/new
+}' \
+http://localhost:8991/__admin/mappings/new
 
 # rd-casewoker-ref-api. It's used for the RWA-318, RWA-319 and RWA-340 tickets
 curl -X POST \
@@ -222,7 +223,7 @@ curl -X POST \
             }
           }
         }' \
-  ${WIREMOCK_URL}/__admin/mappings/new
+http://localhost:8991/__admin/mappings/new
 
 curl -X POST \
 --data '{
