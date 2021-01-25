@@ -22,7 +22,7 @@ services:
       LOGBACK_REQUIRE_ERROR_CODE: "false"
       # custom variables for IA
       SERVER_PORT: 5000
-      SIMULATOR_OPENID_BASE_URL: http://sidam-api
+      SIMULATOR_OPENID_BASE_URL: http://sidam-api:5000
 
     ports:
       - 5000:5000
