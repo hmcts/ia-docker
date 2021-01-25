@@ -11,6 +11,219 @@ share_case_a_id="$(curl --silent --show-error -X GET "${IDAM_URL}/details" -H "a
 share_case_b_code="$(sh ./idam-user-token.sh "${TEST_LAW_FIRM_SHARE_CASE_B_USERNAME}" "${TEST_LAW_FIRM_SHARE_CASE_B_PASSWORD}")"
 share_case_b_id="$(curl --silent --show-error -X GET "${IDAM_URL}/details" -H "accept: application/json" -H "authorization: Bearer ${share_case_b_code}" | jq -r .id )"
 
+# role-assignment-api. It's used for the RWA-318, RWA-319 and RWA-340 tickets
+curl -X POST --data '{
+    "request": {
+        "method": "POST",
+        "urlPath": "/am/role-assignments/query",
+        "headers": {
+              "Content-Type": {
+                "equalTo": "application/json"
+              },
+              "Authorization": {
+                "contains": "Bearer"
+              },
+              "ServiceAuthorization": {
+                "contains": "Bearer"
+              }
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "roleAssignmentResponse": [
+            {
+              "id": "a5b06398-211e-409a-b67b-2dd96aac340b",
+              "actorIdType": "IDAM",
+              "actorId": "ef55eb66-cf39-4019-be0e-dad496f8d679",
+              "roleType": "ORGANISATION",
+              "roleName": "tribunal-caseworker",
+              "classification": "PUBLIC",
+              "grantType": "STANDARD",
+              "roleCategory": "STAFF",
+              "readOnly": false,
+              "created": "2021-01-25T12:47:04.447419Z",
+              "attributes": {
+                "primaryLocation": "765324",
+                "jurisdiction": "IA"
+              }
+            },
+            {
+              "id": "01c70226-e60a-49ad-95e1-58518e70fea1",
+              "actorIdType": "IDAM",
+              "actorId": "ed04c6e1-a698-43ef-88dc-ec5e2259174d",
+              "roleType": "ORGANISATION",
+              "roleName": "tribunal-caseworker",
+              "classification": "PUBLIC",
+              "grantType": "STANDARD",
+              "roleCategory": "STAFF",
+              "readOnly": false,
+              "created": "2021-01-25T12:47:09.036703Z",
+              "attributes": {
+                "primaryLocation": "765324",
+                "jurisdiction": "IA",
+                "region": "east-england"
+              }
+            },
+            {
+              "id": "baf8d3b9-681c-4a16-945f-599b4fb12b46",
+              "actorIdType": "IDAM",
+              "actorId": "a3a48ddf-1333-417c-a2d5-217c0769bb90",
+              "roleType": "ORGANISATION",
+              "roleName": "tribunal-caseworker",
+              "classification": "PUBLIC",
+              "grantType": "STANDARD",
+              "roleCategory": "STAFF",
+              "readOnly": false,
+              "created": "2021-01-25T12:47:12.945805Z",
+              "attributes": {
+                "primaryLocation": "765324",
+                "jurisdiction": "IA"
+              }
+            },
+            {
+              "id": "fe39073e-b4d3-4f77-be05-51b6a4dcc116",
+              "actorIdType": "IDAM",
+              "actorId": "89b13415-97a7-4c4b-9af9-3052fb1e426c",
+              "roleType": "ORGANISATION",
+              "roleName": "tribunal-caseworker",
+              "classification": "PUBLIC",
+              "grantType": "STANDARD",
+              "roleCategory": "STAFF",
+              "readOnly": false,
+              "created": "2021-01-25T12:47:17.455627Z",
+              "attributes": {
+                "primaryLocation": "765324",
+                "jurisdiction": "IA",
+                "region": "east-england"
+              }
+            },
+            {
+              "id": "d8580b8b-ffa8-4bcd-85fc-673959ffafe8",
+              "actorIdType": "IDAM",
+              "actorId": "6806c6b9-c6af-435e-b586-fcbdb94effae",
+              "roleType": "ORGANISATION",
+              "roleName": "tribunal-caseworker",
+              "classification": "PUBLIC",
+              "grantType": "STANDARD",
+              "roleCategory": "STAFF",
+              "readOnly": false,
+              "created": "2021-01-25T12:47:24.807941Z",
+              "attributes": {
+                "primaryLocation": "765324",
+                "jurisdiction": "IA"
+              }
+            }
+          ]
+        }
+    }
+
+}' ${WIREMOCK_URL}/__admin/mappings/new
+
+# rd-casewoker-ref-api. It's used for the RWA-318, RWA-319 and RWA-340 tickets
+curl -X POST \
+  --data '{
+          "request": {
+            "method": "POST",
+            "urlPath": "/refdata/case-worker/users/fetchUsersById",
+            "headers": {
+              "Content-Type": {
+                "equalTo": "application/json"
+              },
+              "Authorization": {
+                "contains": "Bearer"
+              },
+              "ServiceAuthorization": {
+                "contains": "Bearer"
+              }
+            },
+            "bodyPatterns" : [{
+              "equalToJson" : { "userIds": ["${json-unit.any-string}"]}
+            }]
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+              "caseWorkerId": "string",
+              "caseWorkerLocations": [
+                {
+                  "caseWorkerId": "string",
+                  "caseWorkerLocationId": 0,
+                  "createdDate": "2021-01-18T16:35:45.194Z",
+                  "lastUpdate": "2021-01-18T16:35:45.194Z",
+                  "location": "string",
+                  "locationId": 0,
+                  "primaryFlag": true
+                }
+              ],
+              "caseWorkerRoles": [
+                {
+                  "caseWorkerId": "string",
+                  "caseWorkerRoleId": 0,
+                  "createdDate": "2021-01-18T16:35:45.194Z",
+                  "lastUpdate": "2021-01-18T16:35:45.194Z",
+                  "primaryFlag": true,
+                  "roleId": 0,
+                  "roleType": {
+                    "caseWorkerIdamRoleAssociations": [
+                      {
+                        "createdDate": "2021-01-18T16:35:45.194Z",
+                        "cwIdamRoleAssociationId": 0,
+                        "idamRole": "string",
+                        "lastUpdate": "2021-01-18T16:35:45.194Z",
+                        "roleId": 0,
+                        "serviceCode": "string"
+                      }
+                    ],
+                    "caseWorkerRoles": [
+                      null
+                    ],
+                    "createdDate": "2021-01-18T16:35:45.194Z",
+                    "description": "string",
+                    "lastUpdate": "2021-01-18T16:35:45.194Z",
+                    "roleId": 0
+                  }
+                }
+              ],
+              "caseWorkerWorkAreas": [
+                {
+                  "areaOfWork": "string",
+                  "caseWorkerId": "string",
+                  "caseWorkerWorkAreaId": 0,
+                  "createdDate": "2021-01-18T16:35:45.194Z",
+                  "lastUpdate": "2021-01-18T16:35:45.194Z",
+                  "serviceCode": "string"
+                }
+              ],
+              "createdDate": "2021-01-18T16:35:45.194Z",
+              "emailId": "string",
+              "firstName": "firstName",
+              "lastName": "lastName",
+              "lastUpdate": "2021-01-18T16:35:45.194Z",
+              "region": "string",
+              "regionId": 0,
+              "suspended": true,
+              "userType": {
+                "caseWorkerProfiles": [
+                  null
+                ],
+                "createdDate": "2021-01-18T16:35:45.194Z",
+                "description": "string",
+                "lastUpdate": "2021-01-18T16:35:45.194Z",
+                "userTypeId": 0
+              },
+              "userTypeId": 0
+            }
+          }
+        }' \
+  ${WIREMOCK_URL}/__admin/mappings/new
+
 curl -X POST \
 --data '{
           "request": {
