@@ -14,6 +14,9 @@ services:
       - 8991:8080
     volumes:
       - ccd-docker-wiremock-data:/home/wiremock
+      - ../libs:/var/wiremock/extensions
+    command:
+      --extensions uk.gov.hmcts.reform.iadevtools.wiremock.WiremockResponseTransformer
 
   ccd-user-profile-api:
     image: hmctspublic.azurecr.io/ccd/user-profile-api:latest
@@ -183,6 +186,8 @@ services:
       IDAM_CLIENT_REDIRECT_URL: http://localhost:3002/oauth2/callback
       IDAM_CAA_USERNAME: "caa-caseworker@fake.hmcts.net"
       IDAM_CAA_PASSWORD: "London21"
+      IDAM_SYSTEM_USER_USERNAME: "caa-caseworker@fake.hmcts.net"
+      IDAM_SYSTEM_USER_PASSWORD: "London21"
       IDAM_URL: http://sidam-api:5000
       S2S_URL: http://service-auth-provider-api:8080
       MANAGE_CASE_S2S_KEY: "AAAAAAAAAAAAAAAA" # use aat key from vault

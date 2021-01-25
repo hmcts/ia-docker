@@ -62,6 +62,14 @@ export TEST_LAW_FIRM_SHARE_CASE_A_USERNAME=ia-law-firm-a-sc@fake.hmcts.net
 export TEST_LAW_FIRM_SHARE_CASE_A_PASSWORD=London03
 export TEST_LAW_FIRM_SHARE_CASE_B_USERNAME=ia-law-firm-b-sc@fake.hmcts.net
 export TEST_LAW_FIRM_SHARE_CASE_B_PASSWORD=London03
+
+export TEST_LAW_FIRM_SHARE_CASE_ORG2_USERNAME=ia-law-firm-org2-sc@fake2.hmcts.net
+export TEST_LAW_FIRM_SHARE_CASE_ORG2_PASSWORD=London03
+export TEST_LAW_FIRM_SHARE_CASE_C_USERNAME=ia-law-firm-c-sc@fake2.hmcts.net
+export TEST_LAW_FIRM_SHARE_CASE_C_PASSWORD=London03
+export TEST_LAW_FIRM_SHARE_CASE_D_USERNAME=ia-law-firm-d-sc@fake2.hmcts.net
+export TEST_LAW_FIRM_SHARE_CASE_D_PASSWORD=London03
+
 export TEST_JUDGE_X_USERNAME=ia.iacjudge.ccd@fake.hmcts.net
 export TEST_JUDGE_X_PASSWORD=London20
 
