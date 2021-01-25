@@ -34,7 +34,7 @@ services:
       IDAM_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
 
       #real LAUNCH_DARKLY_CLIENT_ID must be set to enable share a case functionality
-      LAUNCH_DARKLY_CLIENT_ID: "${EXUI_LAUNCH_DARKLY_CLIENT_ID}"
+      LAUNCH_DARKLY_CLIENT_ID: 5de6610b23ce5408280f2268
 
       JURISDICTIONS: IA
 

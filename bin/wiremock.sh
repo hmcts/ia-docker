@@ -409,7 +409,7 @@ curl -X POST \
 --data '{
           "request": {
             "method": "GET",
-            "urlPath": "/refdata/external/v1/organisations"
+            "urlPath": "/refdata/external/v1/organisations_original"
           },
           "response": {
             "status": 200,
@@ -466,6 +466,24 @@ curl -X POST \
             }
           }
         }' \
+http://localhost:8991/__admin/mappings/new
+
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/external/v1/organisations"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "Original body",
+            "transformers": ["body-transformer"]
+          }
+        }
+      }' \
 http://localhost:8991/__admin/mappings/new
 
 # make responses persistent in Docker volume
