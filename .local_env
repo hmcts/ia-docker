@@ -77,9 +77,6 @@ export IDAM_URL=http://sidam-api:5000
 export OPEN_ID_IDAM_URL=http://sidam-api:5000
 export IDAM_API_URL=http://sidam-api:5000
 
-#export IDAM_URL=http://localhost:5000
-#export OPEN_ID_IDAM_URL=http://localhost:5000
-#export IDAM_API_URL=http://localhost:5000
 export IA_IDAM_ID=ccd_gateway
 export IA_IDAM_CLIENT_ID=ccd_gateway
 export S2S_URL=http://localhost:4502
@@ -111,6 +108,5 @@ export HOME_OFFICE_EMAIL_LART=ho-lart-appeal@example.com
 export IA_UPPER_TRIBUNAL_NOTICES_EMAIL=upper-tribunal-notices@example.com
 
 # Local user prefix for identifying local Idam User in Launch Darkly UI, leave it empty if you do not need Launch Darkly custom rules
-export IA_USER_PREFIX=ho-test
-export RAS_USER_PREFIX=ras
+export IA_USER_PREFIX=
 export LAUNCH_DARKLY_CLIENT_ID=$EXUI_LAUNCH_DARKLY_CLIENT_ID
