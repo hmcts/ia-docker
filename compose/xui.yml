@@ -3,7 +3,7 @@ version: '3'
 
 services:
   xui:
-    image: "hmctspublic.azurecr.io/xui/webapp:latest"
+    image: "hmctspublic.azurecr.io/xui/webapp:pr-827"
     environment:
       MICROSERVICE: iac
       PROTOCOL: http
@@ -19,7 +19,7 @@ services:
       SERVICES_IDAM_ISS_URL: http://sidam-api:5000
       SERVICES_IDAM_CLIENT_ID: ccd_gateway
       SERVICES_PAYMENTS_URL: http://wiremock:8080
-      SERVICES_CCD_CASE_ASSIGNMENT_API: http://wiremock:8080
+      SERVICES_CCD_CASE_ASSIGNMENT_API: http://manage-case-assignment:4454
       SERVICES_PRD_API: http://wiremock:8080
       REDISCLOUD_URL: http://dummyrediscloudurl
 
@@ -34,7 +34,7 @@ services:
       IDAM_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
 
       #real LAUNCH_DARKLY_CLIENT_ID must be set to enable share a case functionality
-      LAUNCH_DARKLY_CLIENT_ID: "${EXUI_LAUNCH_DARKLY_CLIENT_ID}"
+      LAUNCH_DARKLY_CLIENT_ID: 5de6610b23ce5408280f2268
 
       JURISDICTIONS: IA
 

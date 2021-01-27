@@ -229,7 +229,7 @@ curl -X POST \
 --data '{
           "request": {
             "method": "GET",
-            "url": "/refdata/external/v1/organisations/users"
+            "urlPath": "/refdata/external/v1/organisations/users"
           },
           "response": {
             "status": 200,
@@ -237,6 +237,7 @@ curl -X POST \
               "Content-Type": "application/json"
             },
             "jsonBody": {
+              "organisationIdentifier": "D1HRWLA",
               "users": [
                 {
                   "userIdentifier": "'"${share_case_org_id}"'",
@@ -600,19 +601,29 @@ curl -X POST \
                   "PBA0088063",
                   "PBA0087442"
                 ],
-                "contactInformation": null
+                "contactInformation": [
+                  {
+                    "addressLine1": "45 Lunar House",
+                    "addressLine2": "Spa Road",
+                    "addressLine3": "Woolworth",
+                    "country": "UK",
+                    "county": "London",
+                    "postCode": "SE1 3HP",
+                    "townCity": "London"
+                  }
+                ]
               }
             }
           }
         }' \
 http://localhost:8991/__admin/mappings/new
 
-#Share a case assignments
+#PBA accounts and OrganisationPolicy
 curl -X POST \
 --data '{
           "request": {
             "method": "GET",
-            "urlPath": "/case-assignments"
+            "urlPath": "/refdata/external/v1/organisations_original"
           },
           "response": {
             "status": 200,
@@ -620,26 +631,73 @@ curl -X POST \
               "Content-Type": "application/json"
             },
             "jsonBody": {
-              "status_message": "Assignments returned successfully",
-              "case_assignments": [
-                {
-                  "case_id": "8b019576-9c45-4b0e-b92b-e9253e49fbe3",
-                  "shared_with": [
-                    {
-                      "idam_id": "066f30ce-3797-49aa-a095-9c1be6741483",
-                      "first_name": "Alex",
-                      "last_name": "White",
-                      "email": "alex.white@test.com",
-                      "case_roles": [
-                        "caseworker-ia-legalrep-solicitor"
-                      ]
-                    }
-                  ]
-                }
-              ]
+                "organisationIdentifier": "D1HRWLA",
+                "name": "ia-legal-rep-org",
+                "status": "ACTIVE",
+                "sraRegulated": false,
+                "superUser": {
+                  "firstName": "legalrep",
+                  "lastName": "orgcreator",
+                  "email": "'"${TEST_LAW_FIRM_SHARE_CASE_ORG_USERNAME}"'"
+                },
+                "paymentAccount": [
+                  "PBA0087535",
+                  "PBA0087240",
+                  "PBA0088063",
+                  "PBA0087442"
+                ],
+                "contactInformation": [
+                  {
+                    "addressLine1": "45 Lunar House",
+                    "addressLine2": "Spa Road",
+                    "addressLine3": "Woolworth",
+                    "country": "UK",
+                    "county": "London",
+                    "postCode": "SE1 3HP",
+                    "townCity": "London",
+                    "dxAddress": []
+                  }
+                ]
             }
           }
         }' \
+http://localhost:8991/__admin/mappings/new
+
+#Assign Case User and Role Ownership
+curl -X POST \
+--data '{
+          "request": {
+            "method": "POST",
+            "urlPath": "/case-users"
+          },
+          "response": {
+            "status": 201,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+              "status_message": "Case-User-Role assignments created successfully"
+            }
+          }
+        }' \
+http://localhost:8991/__admin/mappings/new
+
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/external/v1/organisations"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "Original body",
+            "transformers": ["body-transformer"]
+          }
+        }
+      }' \
 http://localhost:8991/__admin/mappings/new
 
 # make responses persistent in Docker volume
