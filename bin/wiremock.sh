@@ -507,7 +507,15 @@ curl -X POST \
               "Content-Type": "application/json"
             },
             "body": "Original body",
-            "transformers": ["body-transformer"]
+            "transformers": ["body-transformer"],
+            "transformerParameters" : {
+              "shareCaseOrgId" : "'"${share_case_org_id}"'",
+              "shareCaseAid" : "'"${share_case_a_id}"'",
+              "shareCaseBid" : "'"${share_case_b_id}"'",
+              "shareCaseOrg2Id" : "'"${share_case_org2_id}"'",
+              "shareCaseCid" : "'"${share_case_c_id}"'",
+              "shareCaseDid" : "'"${share_case_d_id}"'"
+            }
           }
         }
       }' \
