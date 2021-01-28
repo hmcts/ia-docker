@@ -43,6 +43,8 @@ export TEST_LAW_FIRM_B_USERNAME=ia-law-firm-b@fake.hmcts.net
 export TEST_LAW_FIRM_B_PASSWORD=London04
 export IA_SYSTEM_USERNAME=ia-system-user@fake.hmcts.net
 export IA_SYSTEM_PASSWORD=London05
+export RAS_SYSTEM_USERNAME=ras-system-user@fake.hmcts.net
+export RAS_SYSTEM_PASSWORD=London30
 export TEST_ADMINOFFICER_USERNAME=ia-adminofficer@fake.hmcts.net
 export TEST_ADMINOFFICER_PASSWORD=London06
 export TEST_HOMEOFFICE_APC_USERNAME=ia-respondentapc@fake.hmcts.net
@@ -71,7 +73,10 @@ export TEST_LAW_FIRM_ORG_DELETED_USERNAME=ia-law-firm-deleted@fake.hmcts.net
 export TEST_LAW_FIRM_ORG_DELETED_PASSWORD=London09
 
 export IDAM_ADMIN_USER=idamOwner@hmcts.net
-export IDAM_URL=http://localhost:5000
+export IDAM_URL=http://sidam-api:5000
+export OPEN_ID_IDAM_URL=http://sidam-api:5000
+export IDAM_API_URL=http://sidam-api:5000
+
 export IA_IDAM_ID=ccd_gateway
 export IA_IDAM_CLIENT_ID=ccd_gateway
 export S2S_URL=http://localhost:4502
