@@ -229,7 +229,7 @@ curl -X POST \
 --data '{
           "request": {
             "method": "GET",
-            "url": "/refdata/external/v1/organisations/users"
+            "urlPath": "/refdata/external/v1/organisations/users"
           },
           "response": {
             "status": 200,
@@ -237,6 +237,7 @@ curl -X POST \
               "Content-Type": "application/json"
             },
             "jsonBody": {
+              "organisationIdentifier": "D1HRWLA",
               "users": [
                 {
                   "userIdentifier": "'"${share_case_org_id}"'",
@@ -617,7 +618,7 @@ curl -X POST \
         }' \
 http://localhost:8991/__admin/mappings/new
 
-#PBA accounts
+#PBA accounts and OrganisationPolicy
 curl -X POST \
 --data '{
           "request": {
@@ -630,7 +631,7 @@ curl -X POST \
               "Content-Type": "application/json"
             },
             "jsonBody": {
-                "organisationIdentifier": "0UFUG4Z",
+                "organisationIdentifier": "D1HRWLA",
                 "name": "ia-legal-rep-org",
                 "status": "ACTIVE",
                 "sraRegulated": false,
@@ -662,36 +663,20 @@ curl -X POST \
         }' \
 http://localhost:8991/__admin/mappings/new
 
-#Share a case assignments
+#Assign Case User and Role Ownership
 curl -X POST \
 --data '{
           "request": {
-            "method": "GET",
-            "urlPath": "/case-assignments"
+            "method": "POST",
+            "urlPath": "/case-users"
           },
           "response": {
-            "status": 200,
+            "status": 201,
             "headers": {
               "Content-Type": "application/json"
             },
             "jsonBody": {
-              "status_message": "Assignments returned successfully",
-              "case_assignments": [
-                {
-                  "case_id": "8b019576-9c45-4b0e-b92b-e9253e49fbe3",
-                  "shared_with": [
-                    {
-                      "idam_id": "066f30ce-3797-49aa-a095-9c1be6741483",
-                      "first_name": "Alex",
-                      "last_name": "White",
-                      "email": "alex.white@test.com",
-                      "case_roles": [
-                        "caseworker-ia-legalrep-solicitor"
-                      ]
-                    }
-                  ]
-                }
-              ]
+              "status_message": "Case-User-Role assignments created successfully"
             }
           }
         }' \
