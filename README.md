@@ -150,7 +150,6 @@ Usage of the command is:
   * ccd-definition-store-api
   * ccd-user-profile-api
   * ccd-api-gateway
-  * ccd-case-management-web
 * `<branch>` must be an existing **remote** branch for the selected project.
 * `[file://local_repository_path]` path of the local repository in case you want to switch to a local branch 
 
@@ -208,7 +207,7 @@ The output can either be of the form:
 when no branches are used; or:
 
 > Current overrides:
-> ccd-case-management-web branch:RDM-2414 hash:ced648d
+> ccd-user-profile-api branch:RDM-2414 hash:ced648d
 
 when branches are in use.
 
@@ -227,7 +226,6 @@ By default, `ccd-docker` runs the most commonly used backend and frontend projec
 * Front-end:
   * **authentication-web**: IDAM's login UI
   * **ccd-api-gateway**: Proxy with IDAM and S2S integration
-  * **ccd-case-management-web**: Caseworker UI
 
 Optional compose files will allow other projects to be enabled on demand using the `enable` and `disable` commands.
 
@@ -421,11 +419,7 @@ Schedule CCD events in future.
 
 #### ccd-api-gateway
 
-API gateway securing interactions between `ccd-case-management-web` and the back-end services.
-
-#### ccd-case-management-web
-
-Caseworker frontend, exposed on port `3451`.
+API gateway securing interactions between `ccd-user-profile-api` and the back-end services.
 
 ## Local development
 
