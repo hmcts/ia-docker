@@ -25,6 +25,8 @@ echo "Setting up Users..."
 ./create-user-simulator.sh "${TEST_LAW_FIRM_ORG_SUCCESS_USERNAME}" "${IA_USER_PREFIX}PBA Success" "Legal Rep" "${TEST_LAW_FIRM_ORG_SUCCESS_PASSWORD}" "caseworker" "[\"caseworker\", \"caseworker-ia\", \"caseworker-ia-legalrep-solicitor\", \"payments\"]"
 ./create-user-simulator.sh "${TEST_LAW_FIRM_ORG_DELETED_USERNAME}" "${IA_USER_PREFIX}PBA Deleted" "Legal Rep" "${TEST_LAW_FIRM_ORG_DELETED_PASSWORD}" "caseworker" "[\"caseworker\", \"caseworker-ia\", \"caseworker-ia-legalrep-solicitor\", \"payments\"]"
 
+./create-user-simulator.sh "caa-caseworker@fake.hmcts.net" "${USER_PREFIX}CAA-System" "user" "London21" "caseworker" "[\"caseworker\", \"caseworker-caa\"]"
+
 # Setup Profiles in CCD
 echo ""
 echo "Setting up profiles in CCD..."
@@ -66,6 +68,8 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "caseworker-sscs-dwpresponsewriter" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "payments" "$USER_TOKEN" "$SERVICE_TOKEN"
+
+./register-role.sh "caseworker-caa" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 echo ""
 echo "Setting CCD Roles and Users is finished"
