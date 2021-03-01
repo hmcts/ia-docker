@@ -25,6 +25,7 @@ echo "Setting up Roles..."
 ./create-role.sh "caseworker-ia-respondentofficer"
 ./create-role.sh "caseworker-ia-iacjudge"
 ./create-role.sh "payments"
+./create-role.sh "caseworker-wa-task-configuration"
 
 # Roles required for XUI
 echo ""
@@ -130,6 +131,8 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "payments" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "caseworker-caa" "$USER_TOKEN" "$SERVICE_TOKEN"
+
+./register-role.sh "caseworker-wa-task-configuration" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 echo ""
 echo "Setting CCD Roles and Users is finished"
