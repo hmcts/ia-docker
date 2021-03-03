@@ -33,6 +33,9 @@ services:
       S2S_SECRET:  "${IDAM_KEY_CCD_GATEWAY}"
       IDAM_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
 
+      SYSTEM_USER_NAME: "dummy"
+      SYSTEM_USER_PASSWORD: "dummy"
+
       #real LAUNCH_DARKLY_CLIENT_ID must be set to enable share a case functionality
       LAUNCH_DARKLY_CLIENT_ID: "${EXUI_LAUNCH_DARKLY_CLIENT_ID}"
 
