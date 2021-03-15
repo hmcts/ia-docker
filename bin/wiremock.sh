@@ -11,6 +11,15 @@ share_case_a_id="$(curl --silent --show-error -X GET "${IDAM_URL}/details" -H "a
 share_case_b_code="$(sh ./idam-user-token.sh "${TEST_LAW_FIRM_SHARE_CASE_B_USERNAME}" "${TEST_LAW_FIRM_SHARE_CASE_B_PASSWORD}")"
 share_case_b_id="$(curl --silent --show-error -X GET "${IDAM_URL}/details" -H "accept: application/json" -H "authorization: Bearer ${share_case_b_code}" | jq -r .id )"
 
+share_case_org2_code="$(sh ./idam-user-token.sh "${TEST_LAW_FIRM_SHARE_CASE_ORG2_USERNAME}" "${TEST_LAW_FIRM_SHARE_CASE_ORG2_PASSWORD}")"
+share_case_org2_id="$(curl --silent --show-error -X GET "${IDAM_URL}/details" -H "accept: application/json" -H "authorization: Bearer ${share_case_org2_code}" | jq -r .id )"
+
+share_case_c_code="$(sh ./idam-user-token.sh "${TEST_LAW_FIRM_SHARE_CASE_C_USERNAME}" "${TEST_LAW_FIRM_SHARE_CASE_C_PASSWORD}")"
+share_case_c_id="$(curl --silent --show-error -X GET "${IDAM_URL}/details" -H "accept: application/json" -H "authorization: Bearer ${share_case_c_code}" | jq -r .id )"
+
+share_case_d_code="$(sh ./idam-user-token.sh "${TEST_LAW_FIRM_SHARE_CASE_D_USERNAME}" "${TEST_LAW_FIRM_SHARE_CASE_D_PASSWORD}")"
+share_case_d_id="$(curl --silent --show-error -X GET "${IDAM_URL}/details" -H "accept: application/json" -H "authorization: Bearer ${share_case_d_code}" | jq -r .id )"
+
 # role-assignment-api. It's used for the RWA-318, RWA-319 and RWA-340 tickets
 curl -X POST --data '{
     "request": {
@@ -199,7 +208,7 @@ curl -X POST \
 --data '{
           "request": {
             "method": "GET",
-            "urlPath": "/refdata/external/v1/organisations/users"
+            "urlPath": "/refdata/external/v1/organisations/users_original"
           },
           "response": {
             "status": 200,
@@ -593,7 +602,7 @@ curl -X POST \
 --data '{
           "request": {
             "method": "GET",
-            "urlPath": "/refdata/external/v1/organisations"
+            "urlPath": "/refdata/external/v1/organisations_original"
           },
           "response": {
             "status": 200,
@@ -650,6 +659,50 @@ curl -X POST \
             }
           }
         }' \
+http://localhost:8991/__admin/mappings/new
+
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/external/v1/organisations"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "Original body",
+            "transformers": ["body-transformer"]
+          }
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/external/v1/organisations/users"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "Original body",
+            "transformers": ["body-transformer"],
+            "transformerParameters" : {
+              "shareCaseOrgId" : "'"${share_case_org_id}"'",
+              "shareCaseAid" : "'"${share_case_a_id}"'",
+              "shareCaseBid" : "'"${share_case_b_id}"'",
+              "shareCaseOrg2Id" : "'"${share_case_org2_id}"'",
+              "shareCaseCid" : "'"${share_case_c_id}"'",
+              "shareCaseDid" : "'"${share_case_d_id}"'"
+            }
+          }
+        }
+      }' \
 http://localhost:8991/__admin/mappings/new
 
 # make responses persistent in Docker volume
