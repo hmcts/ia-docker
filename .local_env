@@ -115,3 +115,7 @@ export IA_UPPER_TRIBUNAL_NOTICES_EMAIL=upper-tribunal-notices@example.com
 # Local user prefix for identifying local Idam User in Launch Darkly UI, leave it empty if you do not need Launch Darkly custom rules
 export IA_USER_PREFIX=
 export LAUNCH_DARKLY_CLIENT_ID=$EXUI_LAUNCH_DARKLY_CLIENT_ID
+
+#EM settings for Docmosis
+export EM_DOCMOSIS_CONVERT_ENDPOINT=https://docmosis.aat.platform.hmcts.net/rs/convert
+export EM_DOCMOSIS_RENDER_ENDPOINT=https://docmosis.aat.platform.hmcts.net/rs/render
