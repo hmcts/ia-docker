@@ -206,99 +206,6 @@ http://localhost:8991/__admin/mappings/new
 
 curl -X POST \
 --data '{
-          "request": {
-            "method": "GET",
-            "urlPath": "/refdata/external/v1/organisations/users_original"
-          },
-          "response": {
-            "status": 200,
-            "headers": {
-              "Content-Type": "application/json"
-            },
-            "jsonBody": {
-              "organisationIdentifier": "D1HRWLA",
-              "users": [
-                {
-                  "userIdentifier": "'"${share_case_org_id}"'",
-                  "firstName": "Org Creator",
-                  "lastName": "Legal Rep",
-                  "email": "'"${TEST_LAW_FIRM_SHARE_CASE_ORG_USERNAME}"'",
-                  "roles": [
-                    "caseworker-publiclaw-solicitor",
-                    "pui-case-manager",
-                    "caseworker",
-                    "caseworker-divorce-solicitor",
-                    "caseworker-ia",
-                    "pui-user-manager",
-                    "caseworker-publiclaw",
-                    "caseworker-ia-legalrep-solicitor",
-                    "caseworker-probate-solicitor",
-                    "pui-organisation-manager",
-                    "caseworker-divorce",
-                    "caseworker-divorce-financialremedy",
-                    "prd-admin",
-                    "pui-finance-manager",
-                    "caseworker-probate",
-                    "caseworker-divorce-financialremedy-solicitor"
-                  ],
-                  "idamStatus": "ACTIVE",
-                  "idamStatusCode": "200",
-                  "idamMessage": "11 OK"
-                },
-                {
-                  "userIdentifier": "'"${share_case_a_id}"'",
-                  "firstName": "Share A",
-                  "lastName": "Legal Rep",
-                  "email": "'"${TEST_LAW_FIRM_SHARE_CASE_A_USERNAME}"'",
-                  "roles": [
-                    "caseworker-publiclaw-solicitor",
-                    "pui-case-manager",
-                    "caseworker",
-                    "caseworker-divorce",
-                    "caseworker-divorce-financialremedy",
-                    "caseworker-divorce-solicitor",
-                    "caseworker-probate",
-                    "caseworker-ia",
-                    "caseworker-divorce-financialremedy-solicitor",
-                    "caseworker-publiclaw",
-                    "caseworker-ia-legalrep-solicitor",
-                    "caseworker-probate-solicitor"
-                  ],
-                  "idamStatus": "ACTIVE",
-                  "idamStatusCode": "200",
-                  "idamMessage": "11 OK"
-                },
-                {
-                  "userIdentifier": "'"${share_case_b_id}"'",
-                  "firstName": "Share B",
-                  "lastName": "Legal Rep",
-                  "email": "'"${TEST_LAW_FIRM_SHARE_CASE_B_USERNAME}"'",
-                  "roles": [
-                    "caseworker-publiclaw-solicitor",
-                    "pui-case-manager",
-                    "caseworker",
-                    "caseworker-divorce",
-                    "caseworker-divorce-financialremedy",
-                    "caseworker-divorce-solicitor",
-                    "caseworker-probate",
-                    "caseworker-ia",
-                    "caseworker-divorce-financialremedy-solicitor",
-                    "caseworker-publiclaw",
-                    "caseworker-ia-legalrep-solicitor",
-                    "caseworker-probate-solicitor"
-                  ],
-                  "idamStatus": "ACTIVE",
-                  "idamStatusCode": "200",
-                  "idamMessage": "11 OK"
-                }
-              ]
-            }
-          }
-        }' \
-http://localhost:8991/__admin/mappings/new
-
-curl -X POST \
---data '{
     "request": {
         "method": "GET",
         "url": "/health"
@@ -597,51 +504,6 @@ curl -X POST \
         }' \
 http://localhost:8991/__admin/mappings/new
 
-#PBA accounts and OrganisationPolicy
-curl -X POST \
---data '{
-          "request": {
-            "method": "GET",
-            "urlPath": "/refdata/external/v1/organisations_original"
-          },
-          "response": {
-            "status": 200,
-            "headers": {
-              "Content-Type": "application/json"
-            },
-            "jsonBody": {
-                "organisationIdentifier": "D1HRWLA",
-                "name": "ia-legal-rep-org",
-                "status": "ACTIVE",
-                "sraRegulated": false,
-                "superUser": {
-                  "firstName": "legalrep",
-                  "lastName": "orgcreator",
-                  "email": "'"${TEST_LAW_FIRM_SHARE_CASE_ORG_USERNAME}"'"
-                },
-                "paymentAccount": [
-                  "PBA0087535",
-                  "PBA0087240",
-                  "PBA0088063",
-                  "PBA0087442"
-                ],
-                "contactInformation": [
-                  {
-                    "addressLine1": "45 Lunar House",
-                    "addressLine2": "Spa Road",
-                    "addressLine3": "Woolworth",
-                    "country": "UK",
-                    "county": "London",
-                    "postCode": "SE1 3HP",
-                    "townCity": "London",
-                    "dxAddress": []
-                  }
-                ]
-            }
-          }
-        }' \
-http://localhost:8991/__admin/mappings/new
-
 #Assign Case User and Role Ownership
 curl -X POST \
 --data '{
@@ -674,6 +536,142 @@ curl -X POST \
             },
             "body": "Original body",
             "transformers": ["body-transformer"]
+          }
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
+#Internal AAC call to PRD for NoC auto approval
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/internal/v1/organisations",
+            "queryParameters": {
+              "id": {
+              "equalTo": "D1HRWLA"
+              }
+            }
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+              "contactInformation": [
+                {
+                  "addressLine1": "45 Lunar House",
+                  "addressLine2": "Spa Road",
+                  "addressLine3": "Woolworth",
+                  "county": "London",
+                  "townCity": "London",
+                  "country": "UK",
+                  "postCode": "SE1 3HP"
+                }
+              ],
+              "organisationIdentifier": "D1HRWLA",
+              "name": "Fake Org Ltd"
+          }
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
+#Internal AAC call to PRD for NoC auto approval
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/internal/v1/organisations",
+            "queryParameters": {
+              "id": {
+              "equalTo": "0UFUG4Z"
+              }
+            }
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": {
+              "contactInformation": [
+                {
+                  "addressLine1": "145A",
+                  "addressLine2": "Putney High Street",
+                  "addressLine3": "Putney",
+                  "county": "London",
+                  "townCity": "London",
+                  "country": "UK",
+                  "postCode": "SW15 1SU"
+                }
+              ],
+              "organisationIdentifier": "0UFUG4Z",
+              "name": "Fake Org2 Ltd"
+          }
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
+#Internal AAC call to PRD for NoC auto approval
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/internal/v1/organisations/D1HRWLA/users",
+            "queryParameters": {
+              "returnRoles": {
+                "equalTo": "false"
+              }
+            }
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "Original body",
+            "transformers": ["body-transformer"],
+            "transformerParameters" : {
+              "shareCaseOrgId" : "'"${share_case_org_id}"'",
+              "shareCaseAid" : "'"${share_case_a_id}"'",
+              "shareCaseBid" : "'"${share_case_b_id}"'",
+              "shareCaseOrg2Id" : "'"${share_case_org2_id}"'",
+              "shareCaseCid" : "'"${share_case_c_id}"'",
+              "shareCaseDid" : "'"${share_case_d_id}"'"
+            }
+          }
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
+#Internal AAC call to PRD for NoC auto approval
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/internal/v1/organisations/0UFUG4Z/users",
+            "queryParameters": {
+              "returnRoles": {
+                "equalTo": "false"
+              }
+            }
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "Original body",
+            "transformers": ["body-transformer"],
+            "transformerParameters" : {
+              "shareCaseOrgId" : "'"${share_case_org_id}"'",
+              "shareCaseAid" : "'"${share_case_a_id}"'",
+              "shareCaseBid" : "'"${share_case_b_id}"'",
+              "shareCaseOrg2Id" : "'"${share_case_org2_id}"'",
+              "shareCaseCid" : "'"${share_case_c_id}"'",
+              "shareCaseDid" : "'"${share_case_d_id}"'"
+            }
           }
         }
       }' \

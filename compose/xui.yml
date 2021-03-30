@@ -3,7 +3,7 @@ version: '3'
 
 services:
   xui:
-    image: "hmctspublic.azurecr.io/xui/webapp:latest"
+    image: hmctspublic.azurecr.io/xui/webapp:latest
     environment:
       MICROSERVICE: iac
       PROTOCOL: http
@@ -30,7 +30,7 @@ services:
       FEATURE_SECURE_COOKIE_ENABLED: "false"
       APPINSIGHTS_INSTRUMENTATIONKEY: fake
 
-      S2S_SECRET:  "${IDAM_KEY_CCD_GATEWAY}"
+      S2S_SECRET: "${IDAM_KEY_CCD_GATEWAY}"
       IDAM_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
 
       SYSTEM_USER_NAME: "dummy"
