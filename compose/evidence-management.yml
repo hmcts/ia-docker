@@ -19,7 +19,7 @@ services:
       OPEN_ID_API_BASE_URI: http://sidam-api:5000/o
       ENABLE_LIQUIBASE: "true"
       APPINSIGHTS_INSTRUMENTATIONKEY: key
-      DM_STORE_APP_URL: http://dm-store:4506
+      DM_STORE_APP_URL: http://dm-store:8080
       DOCMOSIS_ENDPOINT: "${EM_DOCMOSIS_CONVERT_ENDPOINT}"
       DOCMOSIS_RENDER_ENDPOINT: "${EM_DOCMOSIS_RENDER_ENDPOINT}"
       DOCMOSIS_ACCESS_KEY: "${DOCMOSIS_ACCESS_KEY}"
@@ -38,9 +38,9 @@ services:
     ports:
       - 4630:8080
     # it is needed to generate bundle cover page - there is an issue with VPN dns settings and docker environment
-    # ping docmosis-development.platform.hmcts.net to get latest IP if there is a change
+    # ping docmosis.aat.platform.hmcts.net to get latest IP if there is a change
     extra_hosts:
-      - "docmosis-development.platform.hmcts.net:172.16.0.6"
+      - "docmosis.aat.platform.hmcts.net:10.10.24.121"
 
   stitching-db:
     image: postgres:9.6

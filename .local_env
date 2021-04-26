@@ -92,7 +92,7 @@ export IA_APPEAL_SUBMISSION_TEMPLATE="TB-IAC-APP-ENG-00003 v0.2.docx"
 export IA_RESPONDENT_EVIDENCE_DIRECTION_EMAIL=respondentEvidenceDirection@example.com
 export IA_RESPONDENT_REVIEW_DIRECTION_EMAIL=respondentReviewDirection@example.com
 export IA_RESPONDENT_NON_STANDARD_DIRECTION_UNTIL_LISTING_EMAIL=respondentNonStandardDirectionUntilListing@example.com
-#export DM_URL=http://dm-store:4506
+#export DM_URL=http://dm-store:8080
 # Docmosis
 export DOCMOSIS_ENDPOINT=https://docmosis-development.platform.hmcts.net
 export DOCMOSIS_URL=https://docmosis-development.platform.hmcts.net/rs
