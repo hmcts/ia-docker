@@ -11,7 +11,9 @@ services:
 
   ccd-data-store-api:
     environment:
-      CCD_DM_DOMAIN: http://dm-store:8080
+      CCD_DOCUMENT_URL_PATTERN: http://dm-store.*
+    depends_on:
+      - dm-store  
 
   service-auth-provider-api:
     environment:
