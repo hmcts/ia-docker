@@ -153,6 +153,7 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "prd-aac-system" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "caseworker-wa-task-configuration" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-ia-srcaseofficer" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 echo ""
 echo "Setting CCD Roles and Users is finished"
