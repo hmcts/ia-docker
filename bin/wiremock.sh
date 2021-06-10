@@ -268,9 +268,9 @@ curl -X POST \
             "Content-Type": "application/json"
         },
         "jsonBody": {
-            "code": "FEE0239",
+            "code": "FEE0238",
             "description": "Appeal determined with a hearing",
-            "version": 1,
+            "version": 2,
             "fee_amount": "140.00"
         }
     }
@@ -290,9 +290,9 @@ curl -X POST \
             "Content-Type": "application/json"
         },
         "jsonBody": {
-            "code": "FEE0373",
+            "code": "FEE0372",
             "description": "Notice of Appeal - appellant consents without hearing A",
-            "version": 1,
+            "version": 2,
             "fee_amount": "80.00"
         }
     }
