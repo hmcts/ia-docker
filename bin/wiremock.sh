@@ -260,7 +260,7 @@ curl -X POST \
 --data '{
     "request": {
         "method": "GET",
-        "url": "/fees-register/fees/lookup?channel=default&event=issue&jurisdiction1=tribunal&jurisdiction2=immigration%20and%20asylum%20chamber&keyword=ABC&service=other"
+        "url": "/fees-register/fees/lookup?channel=default&event=issue&jurisdiction1=tribunal&jurisdiction2=immigration%20and%20asylum%20chamber&keyword=HearingOral&service=other"
     },
     "response": {
         "status": 200,
@@ -282,7 +282,7 @@ curl -X POST \
 --data '{
     "request": {
         "method": "GET",
-        "url": "/fees-register/fees/lookup?channel=default&event=issue&jurisdiction1=tribunal&jurisdiction2=immigration%20and%20asylum%20chamber&keyword=DEF&service=other"
+        "url": "/fees-register/fees/lookup?channel=default&event=issue&jurisdiction1=tribunal&jurisdiction2=immigration%20and%20asylum%20chamber&keyword=HearingPaper&service=other"
     },
     "response": {
         "status": 200,
