@@ -2,6 +2,30 @@
 version: '3'
 
 services:
+  ccd-case-document-am-api:
+    build:
+      context: .
+    image: "${CCD_CASE_DOCUMENT_AM_API_USE_LOCAL-hmctspublic.azurecr.io/}ccd/case-document-am-api:${CCD_CASE_DOCUMENT_AM_API_TAG:-latest}"
+    container_name: ccd-case-document-am-api
+    environment:
+      CASE_DOCUMENT_AM_API_S2S_SECRET: "${IDAM_KEY_CASE_DOCUMENT}"
+      CASE_DOCUMENT_S2S_AUTHORISED_SERVICES: ccd_case_document_am_api,ccd_gw,xui_webapp,ccd_data,bulk_scan_processor,iac,ia
+      DM_STORE_BASE_URL: http://dm-store:8080
+      CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api:4452
+      IDAM_OIDC_URL: http://sidam-api:5000
+      IDAM_API_URL: http://sidam-api:5000
+      S2S_URL: http://service-auth-provider-api:8080
+      REFORM_SERVICE_NAME: ccd-case-document-am-api
+      REFORM_TEAM: ccd
+      REFORM_ENVIRONMENT: local
+      APPINSIGHTS_INSTRUMENTATIONKEY: key
+      DOCUMENT_TTL: 3600000
+    ports:
+      - 4455:4455
+    depends_on:
+      - ccd-data-store-api
+      - dm-store
+      - service-auth-provider-api
 
   ccd-api-gateway:
     environment:
@@ -13,7 +37,7 @@ services:
     environment:
       CCD_DOCUMENT_URL_PATTERN: http://dm-store.*
     depends_on:
-      - dm-store  
+      - dm-store
 
   service-auth-provider-api:
     environment:
@@ -42,7 +66,7 @@ services:
       LOGGING_LEVEL_UK_GOV_HMCTS_IDAM: DEBUG
       IDAM_USER_BASE_URI: http://sidam-api:5000
       IDAM_S2S_BASE_URI: http://service-auth-provider-api:8080
-      S2S_NAMES_WHITELIST: sscs,divorce,ccd,em_gw,document-management-store,ccd_gw,idam-api,fpl_case_service,em_stitching_api,iac,sidam-api
+      S2S_NAMES_WHITELIST: sscs,divorce,ccd,em_gw,document-management-store,ccd_gw,idam-api,fpl_case_service,em_stitching_api,iac,sidam-api,ccd_case_document_am_api
       http_proxy:
       https_proxy:
       no_proxy:
