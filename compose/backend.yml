@@ -102,6 +102,12 @@ services:
       ELASTIC_SEARCH_DATA_NODES_HOSTS: "http://ccd-elasticsearch:9200"
       ELASTIC_SEARCH_CASE_INDEX_NAME_FORMAT: '%s_cases'
       ELASTIC_SEARCH_CASE_INDEX_TYPE: _doc
+      IDAM_CLIENT_ID: ccd_gateway
+      IDAM_CLIENT_REDIRECT_URI: "http://localhost:3002/oauth2/callback"
+      IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET: OOOOOOOOOOOOOOOO
+      IDAM_DATA_STORE_SYSTEM_USER_USERNAME: "${CCD_SYSTEM_USERNAME}"
+      IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: "${CCD_SYSTEM_PASSWORD}"
+      CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api:4455
       JAVA_TOOL_OPTIONS: -Xmx384m
     ports:
       - 4452:4452
@@ -115,6 +121,31 @@ services:
       - ccd-user-profile-api
       - ccd-definition-store-api
       - sidam-api
+      - service-auth-provider-api
+
+  ccd-case-document-am-api:
+    build:
+      context: .
+    image: "${CCD_CASE_DOCUMENT_AM_API_USE_LOCAL-hmctspublic.azurecr.io/}ccd/case-document-am-api:${CCD_CASE_DOCUMENT_AM_API_TAG:-latest}"
+    container_name: ccd-case-document-am-api
+    environment:
+      CASE_DOCUMENT_AM_API_S2S_SECRET: "AAAAAAAAAAAAAAAA"
+      CASE_DOCUMENT_S2S_AUTHORISED_SERVICES: ccd_case_document_am_api,ccd_gw,xui_webapp,ccd_data,bulk_scan_processor,iac,ia
+      DM_STORE_BASE_URL: http://dm-store:8080
+      CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api:4452
+      IDAM_OIDC_URL: http://sidam-api:5000
+      IDAM_API_URL: http://sidam-api:5000
+      S2S_URL: http://service-auth-provider-api:8080
+      REFORM_SERVICE_NAME: ccd-case-document-am-api
+      REFORM_TEAM: ccd
+      REFORM_ENVIRONMENT: local
+      APPINSIGHTS_INSTRUMENTATIONKEY: key
+      DOCUMENT_TTL: 3600000
+    ports:
+      - 4455:4455
+    depends_on:
+      - ccd-data-store-api
+      - dm-store
       - service-auth-provider-api
 
   service-auth-provider-api:
@@ -135,6 +166,7 @@ services:
       MICROSERVICEKEYS_FPL_CASE_SERVICE: "${IDAM_KEY_FPL_CASE_SERVICE}"
       MICROSERVICEKEYS_IAC: "${IDAM_KEY_IAC}"
       MICROSERVICEKEYS_AAC_MANAGE_CASE_ASSIGNMENT: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_CCD_CASE_DOCUMENT_AM_API: "AAAAAAAAAAAAAAAA"
       MICROSERVICEKEYS_EM_GW: "${IDAM_KEY_EM_GW}"
       MICROSERVICEKEYS_EM_STITCHING_API: "${IDAM_KEY_EM_STITCHING_API}"
       MICROSERVICEKEYS_EM_CCD_ORCHESTRATOR: "${IDAM_KEY_EM_CCD_ORCHESTRATOR}"
