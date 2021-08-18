@@ -21,6 +21,8 @@ services:
       SERVICES_PAYMENTS_URL: http://wiremock:8080
       SERVICES_CCD_CASE_ASSIGNMENT_API: http://manage-case-assignment:4454
       SERVICES_PRD_API: http://wiremock:8080
+      SERVICES_DOCUMENTS_API_V2: http://ccd-case-document-am-api:4455
+      SERVICES_EM_DOCASSEMBLY_API: http://wiremock:8080
       REDISCLOUD_URL: http://dummyrediscloudurl
 
       SERVICES_EM_ANNO_API: http://localhost:3453
@@ -49,6 +51,7 @@ services:
       - ccd-api-gateway
       - dm-store
       - service-auth-provider-api
+      - ccd-case-document-am-api
       - wiremock
     depends_on:
       - sidam-api
