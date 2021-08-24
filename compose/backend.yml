@@ -85,8 +85,8 @@ services:
       DATA_STORE_DB_USE_SSL: "${DB_USE_SSL}"
       DATA_STORE_IDAM_KEY: "${IDAM_KEY_CCD_DATA_STORE}"
       DATA_STORE_TOKEN_SECRET: iuasbcuasdcbasdgcasdgcuysachjsacyasdgjcgasdj
-      DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac,em_stitching_api,em_gw,em_ccd_orchestrator,aac_manage_case_assignment,ccd_case_document_am_api
-      CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: ccd_gw,iac,ia,aac_manage_case_assignment
+      DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac,em_stitching_api,em_gw,em_ccd_orchestrator,aac_manage_case_assignment,ccd_case_document_am_api,xui_webapp
+      CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: ccd_gw,iac,ia,aac_manage_case_assignment,xui_webapp
       DEFINITION_STORE_HOST: http://ccd-definition-store-api:4451
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
       IDAM_API_BASE_URL: http://sidam-api:5000
@@ -135,6 +135,7 @@ services:
       CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api:4452
       IDAM_OIDC_URL: http://sidam-api:5000
       IDAM_API_URL: http://sidam-api:5000
+      IDAM_S2S_URL: http://service-auth-provider-api:8080
       S2S_URL: http://service-auth-provider-api:8080
       REFORM_SERVICE_NAME: ccd-case-document-am-api
       REFORM_TEAM: ccd
@@ -164,6 +165,7 @@ services:
       MICROSERVICEKEYS_CCD_DEFINITION: "${IDAM_KEY_CCD_DEFINITION_STORE}"
       MICROSERVICEKEYS_CCD_ADMIN: "${IDAM_KEY_CCD_ADMIN}"
       MICROSERVICEKEYS_FPL_CASE_SERVICE: "${IDAM_KEY_FPL_CASE_SERVICE}"
+      MICROSERVICEKEYS_XUI_WEBAPP: "AAAAAAAAAAAAAAAA"
       MICROSERVICEKEYS_IAC: "${IDAM_KEY_IAC}"
       MICROSERVICEKEYS_AAC_MANAGE_CASE_ASSIGNMENT: "AAAAAAAAAAAAAAAA"
       MICROSERVICEKEYS_CCD_CASE_DOCUMENT_AM_API: "AAAAAAAAAAAAAAAA"
