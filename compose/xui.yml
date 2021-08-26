@@ -5,7 +5,7 @@ services:
   xui:
     image: hmctspublic.azurecr.io/xui/webapp:latest
     environment:
-      MICROSERVICE: iac
+      MICROSERVICE: xui_webapp
       PROTOCOL: http
       XUI_ENV: local
 
@@ -18,6 +18,8 @@ services:
       SERVICES_IDAM_OAUTH_CALLBACK_URL: /oauth2/callback
       SERVICES_IDAM_ISS_URL: http://sidam-api:5000
       SERVICES_IDAM_CLIENT_ID: ccd_gateway
+      # Look to use  SERVICES_IDAM_CLIENT_ID: xui_webapp
+      # at some point. Create client and point to this
       SERVICES_PAYMENTS_URL: http://wiremock:8080
       SERVICES_CCD_CASE_ASSIGNMENT_API: http://manage-case-assignment:4454
       SERVICES_PRD_API: http://wiremock:8080
@@ -32,7 +34,8 @@ services:
       FEATURE_SECURE_COOKIE_ENABLED: "false"
       APPINSIGHTS_INSTRUMENTATIONKEY: fake
 
-      S2S_SECRET: "${IDAM_KEY_CCD_GATEWAY}"
+      # S2S_SECRET: "${IDAM_KEY_CCD_GATEWAY}"
+      S2S_SECRET: "AAAAAAAAAAAAAAAA"
       IDAM_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
 
       SYSTEM_USER_NAME: "dummy"
