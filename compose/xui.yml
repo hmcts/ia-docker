@@ -26,6 +26,7 @@ services:
       SERVICES_DOCUMENTS_API_V2: http://ccd-case-document-am-api:4455
       SERVICES_EM_DOCASSEMBLY_API: http://wiremock:8080
       REDISCLOUD_URL: http://dummyrediscloudurl
+      SERVICES_ROLE_ASSIGNMENT_API: http://am-role-assignment-service:4096
 
       SERVICES_EM_ANNO_API: http://localhost:3453
 

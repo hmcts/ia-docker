@@ -70,7 +70,7 @@ Usage and commands available:
 
 Once the containers are running, CCD's frontend can be accessed at [http://localhost:3451](http://localhost:3451).
 
-However, 3 more steps are required to correctly configure IDAM and CCD before it can be used:
+However, 4 more steps are required to correctly configure IDAM and CCD before it can be used:
 
 ### 1. Create a caseworker user
 
@@ -103,7 +103,29 @@ Parameters:
 - `role`: Name of the role, e.g: `caseworker-divorce`.
 - `classification`: Optional. One of `PUBLIC`, `PRIVATE` or `RESTRICTED`. Defaults to `PUBLIC`.
 
-### 3. Import case definition
+### 3. Create the local role_assignment database with configured role assignments
+
+Ensure the following environment variables are set in your profile:
+
+```
+export AM_ROLE_ASSIGNMENT_ADMIN_PWD=Pa55word11
+export DB_EXTERNAL_PORT=5050
+export IDAM_KEY_AM_ROLE_ASSIGNMENT=AAAAAAAAAAAAAAAA
+```
+
+Create the local role_assignment database by running the following:
+
+```bash
+./bin/create-role-assignment-db.sh
+```
+
+Import the configured role definitions by running the following:
+
+```bash
+./bin/add-role-assignments.sh
+```
+
+### 4. Import case definition
 
 To reduce impact on performances, case definitions are imported via the command line rather than using CCD's dedicated UI:
 

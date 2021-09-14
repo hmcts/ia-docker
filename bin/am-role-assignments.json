@@ -1,0 +1,50 @@
+[
+
+  {
+    "email": "ia-law-firm-a-sc@fake.hmcts.net",
+    "roleAssignments": [
+      {
+        "roleType": "ORGANISATION",
+        "roleName": "caseworker-ia",
+        "grantType": "STANDARD",
+        "roleCategory": "PROFESSIONAL",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": { "jurisdiction":"J1", "caseType":"CT1" },
+        "authorisations": []
+      },
+      {
+        "roleType": "ORGANISATION",
+        "roleName": "caseworker-ia-legalrep-solicitor",
+        "grantType": "STANDARD",
+        "roleCategory": "PROFESSIONAL",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": { "jurisdiction":"J1", "caseType":"CT2" },
+        "authorisations": []
+      },
+      {
+        "roleType": "ORGANISATION",
+        "roleName": "pui-case-manager",
+        "grantType": "STANDARD",
+        "roleCategory": "PROFESSIONAL",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": { "jurisdiction":"J1", "caseType":"CT2" },
+        "authorisations": []
+      },
+      {
+        "roleType": "ORGANISATION",
+        "roleName": "payments",
+        "grantType": "STANDARD",
+        "roleCategory": "PROFESSIONAL",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": { "jurisdiction":"J1", "caseType":"CT2" },
+        "authorisations": []
+      }
+    ],
+    "overrideAll": true
+  }
+
+]
