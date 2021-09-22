@@ -85,7 +85,7 @@ services:
       DATA_STORE_DB_USE_SSL: "${DB_USE_SSL}"
       DATA_STORE_IDAM_KEY: "${IDAM_KEY_CCD_DATA_STORE}"
       DATA_STORE_TOKEN_SECRET: iuasbcuasdcbasdgcasdgcuysachjsacyasdgjcgasdj
-      DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac,em_stitching_api,em_gw,em_ccd_orchestrator,aac_manage_case_assignment,ccd_case_document_am_api,xui_webapp
+      DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac,em_stitching_api,em_gw,em_ccd_orchestrator,aac_manage_case_assignment,ccd_case_document_am_api,xui_webapp,am_role_assignment_service
       CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: ccd_gw,iac,ia,aac_manage_case_assignment,xui_webapp
       DEFINITION_STORE_HOST: http://ccd-definition-store-api:4451
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
@@ -108,6 +108,7 @@ services:
       IDAM_DATA_STORE_SYSTEM_USER_USERNAME: "${CCD_SYSTEM_USERNAME}"
       IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: "${CCD_SYSTEM_PASSWORD}"
       CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api:4455
+      ROLE_ASSIGNMENT_URL: "${ROLE_ASSIGNMENT_URL:-http://am-role-assignment-service:4096}"
       JAVA_TOOL_OPTIONS: -Xmx384m
     ports:
       - 4452:4452
@@ -172,6 +173,7 @@ services:
       MICROSERVICEKEYS_EM_GW: "${IDAM_KEY_EM_GW}"
       MICROSERVICEKEYS_EM_STITCHING_API: "${IDAM_KEY_EM_STITCHING_API}"
       MICROSERVICEKEYS_EM_CCD_ORCHESTRATOR: "${IDAM_KEY_EM_CCD_ORCHESTRATOR}"
+      MICROSERVICEKEYS_AM_ROLE_ASSIGNMENT: "AAAAAAAAAAAAAAAA"
       TESTING_SUPPORT_ENABLED: "true"
       JAVA_TOOL_OPTIONS: -Xmx384m
 
@@ -204,6 +206,45 @@ services:
       IA_S2S_SECRET: "${IDAM_KEY_IAC}"
       IA_S2S_AUTHORIZED_SERVICES: "${IA_S2S_MICROSERVICE}"
       SPRING_PROFILES_ACTIVE: test
+
+  am-role-assignment-service:
+    image: "${AM_ROLE_ASSIGNMENT_SERVICE_USE_LOCAL-hmctspublic.azurecr.io/}am/role-assignment-service:${AM_ROLE_ASSIGNMENT_SERVICE_TAG:-latest}"
+    environment:
+      ROLE_ASSIGNMENT_DB_HOST: "${CCD_POSTGRES_11:-ccd-shared-database}"
+      ROLE_ASSIGNMENT_DB_NAME: role_assignment
+      ROLE_ASSIGNMENT_DB_PORT: 5432
+      ROLE_ASSIGNMENT_DB_USERNAME: "${DB_USERNAME}"
+      ROLE_ASSIGNMENT_DB_PASSWORD: "${DB_PASSWORD}"
+      ROLE_ASSIGNMENT_DB_OPTIONS:
+      AM_ROLE_ASSIGNMENT_SERVICE_SECRET: "AAAAAAAAAAAAAAAA"
+      LD_SDK_KEY:
+      ROLE_ASSIGNMENT_IDAM_KEY:
+      ROLE_ASSIGNMENT_TOKEN_SECRET:
+      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data
+      IDAM_USER_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-api:5000}"
+      IDAM_S2S_URL: http://service-auth-provider-api:8080
+      OPEN_ID_API_BASE_URI: "${IDAM_STUB_SERVICE_NAME:-http://sidam-api:5000}/o"
+      OIDC_ISSUER_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-api:5000}/openam/oauth2/hmcts"
+      ROLE_ASSIGNMENT_IDAM_CLIENT_ID: am_role_assignment
+      ROLE_ASSIGNMENT_IDAM_CLIENT_SECRET: am_role_assignment_secret
+      ROLE_ASSIGNMENT_IDAM_ADMIN_USERID: role.assignment.admin@gmail.com
+      ROLE_ASSIGNMENT_IDAM_ADMIN_PASSWORD: "${AM_ROLE_AADMINGMENT_ADMIN_PWD:-Pa55word11}"
+      ROLE_ASSIGNMENT_IDAM_ADMIN_SCOPE: profile openid roles search-user
+      CCD_DATA_STORE_URL: http://ccd-data-store-api:4452
+      AZURE_APPLICATIONINSIGHTS_INSTRUMENTATIONKEY:
+      REFORM_SERVICE_NAME: am-role-assignment-service
+      REFORM_TEAM: am
+      REFORM_ENVIRONMENT: local
+      # Uncomment this line to enable JVM debugging and uncomment the port mapping below
+      #  JAVA_TOOL_OPTIONS: -XX:InitialRAMPercentage=30.0 -XX:MaxRAMPercentage=65.0 -XX:MinRAMPercentage=30.0 -XX:+UseConcMarkSweepGC -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
+    ports:
+      - 4096:4096
+    depends_on:
+      - ccd-shared-database
+      - ccd-data-store-api
+      - sidam-api
+      - service-auth-provider-api
+
 
   manage-case-assignment:
     build:
