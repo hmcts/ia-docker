@@ -131,7 +131,7 @@ services:
     container_name: ccd-case-document-am-api
     environment:
       CASE_DOCUMENT_AM_API_S2S_SECRET: "AAAAAAAAAAAAAAAA"
-      CASE_DOCUMENT_S2S_AUTHORISED_SERVICES: ccd_case_document_am_api,ccd_gw,xui_webapp,ccd_data,bulk_scan_processor,iac,ia
+      CASE_DOCUMENT_S2S_AUTHORISED_SERVICES: ccd_case_document_am_api,ccd_gw,xui_webapp,ccd_data,bulk_scan_processor,iac,ia,stitching-api,rpa-em-ccd-orchestrator
       DM_STORE_BASE_URL: http://dm-store:8080
       CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api:4452
       IDAM_OIDC_URL: http://sidam-api:5000
