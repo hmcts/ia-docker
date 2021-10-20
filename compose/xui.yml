@@ -20,7 +20,7 @@ services:
       SERVICES_IDAM_CLIENT_ID: ccd_gateway
       # Look to use  SERVICES_IDAM_CLIENT_ID: xui_webapp
       # at some point. Create client and point to this
-      SERVICES_PAYMENTS_URL: http://wiremock:8080
+      SERVICES_PAYMENTS_URL: http://payments-api:8080
       SERVICES_CCD_CASE_ASSIGNMENT_API: http://manage-case-assignment:4454
       SERVICES_PRD_API: http://wiremock:8080
       SERVICES_DOCUMENTS_API_V2: http://ccd-case-document-am-api:4455
@@ -57,6 +57,8 @@ services:
       - service-auth-provider-api
       - ccd-case-document-am-api
       - wiremock
+      - payments-api
     depends_on:
       - sidam-api
       - ccd-api-gateway
+      - payments-api
