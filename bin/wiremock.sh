@@ -299,6 +299,24 @@ curl -X POST \
 }' \
 http://localhost:8991/__admin/mappings/new
 
+# fee-register response for all IAC fees
+curl -X POST \
+--data '{
+    "request": {
+        "method": "GET",
+        "url": "/fees-register/fees"
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "jsonBody":
+            [{"code":"FEE0238","fee_type":"fixed","channel_type":{"name":"default"},"event_type":{"name":"issue"},"jurisdiction1":{"name":"tribunal"},"jurisdiction2":{"name":"immigration and asylum chamber"},"service_type":{"name":"other"},"applicant_type":{"name":"all"},"keyword":"HearingOral","fee_versions":[{"description":"Appeal determined with a hearing","status":"approved","author":"124756","approvedBy":"39907","version":1,"valid_from":"2011-12-18T00:00:00.000+00:00","valid_to":"2011-12-18T00:00:00.000+00:00","flat_amount":{"amount":140.00},"memo_line":"RECEIPT OF FEES - Tribunal issue other","statutory_instrument":"2011 No 2841","si_ref_id":"2a","natural_account_code":"4481102178","last_amending_si":"The First Tier (immigration & Asylum Chamber)","direction":"partial cost recovery"},{"description":"Appeal determined with a hearing","status":"approved","author":"300856","approvedBy":"39907","version":2,"valid_from":"2011-12-18T00:00:00.000+00:00","flat_amount":{"amount":140.00},"memo_line":"RECEIPT OF FEES - Tribunal issue other","statutory_instrument":"2016 No 1149","si_ref_id":"3(3)(b)","natural_account_code":"4481102178","last_amending_si":"The First-tier Tribunal (Immigration and Asylum Chamber) Fees (Amendment) (No. 2) Order 2016","consolidated_fee_order_name":"First-tier Tribunal (Immigration and Asylum Chamber) Fees Order 2011","direction":"partial cost recovery"}],"current_version":{"description":"Appeal determined with a hearing","status":"approved","author":"300856","approvedBy":"39907","version":2,"valid_from":"2011-12-18T00:00:00.000+00:00","flat_amount":{"amount":140.00},"memo_line":"RECEIPT OF FEES - Tribunal issue other","statutory_instrument":"2016 No 1149","si_ref_id":"3(3)(b)","natural_account_code":"4481102178","last_amending_si":"The First-tier Tribunal (Immigration and Asylum Chamber) Fees (Amendment) (No. 2) Order 2016","consolidated_fee_order_name":"First-tier Tribunal (Immigration and Asylum Chamber) Fees Order 2011","direction":"partial cost recovery"},"unspecified_claim_amount":false},{"code":"FEE0372","fee_type":"fixed","channel_type":{"name":"default"},"event_type":{"name":"issue"},"jurisdiction1":{"name":"tribunal"},"jurisdiction2":{"name":"immigration and asylum chamber"},"service_type":{"name":"other"},"applicant_type":{"name":"all"},"keyword":"HearingPaper","fee_versions":[{"description":"Notice of Appeal - appellant consents without hearing A","status":"approved","author":"124756","approvedBy":"39907","version":1,"valid_from":"2011-12-18T00:00:00.000+00:00","valid_to":"2011-12-18T00:00:00.000+00:00","flat_amount":{"amount":80.00},"memo_line":"RECEIPT OF FEES - Tribunal issue other","statutory_instrument":"2011 No 2841","si_ref_id":"1a","natural_account_code":"4481102178","last_amending_si":"The First Tier (immigration & Asylum Chamber)","direction":"partial cost recovery"},{"description":"Notice of Appeal - appellant consents without hearing A","status":"approved","author":"300856","approvedBy":"39907","version":2,"valid_from":"2011-12-18T00:00:00.000+00:00","flat_amount":{"amount":80.00},"memo_line":"RECEIPT OF FEES - Tribunal issue other","statutory_instrument":"2016 No 1149","si_ref_id":"3(3)(a)","natural_account_code":"4481102178","last_amending_si":"The First-tier Tribunal (Immigration and Asylum Chamber) Fees (Amendment) (No. 2) Order 2016","consolidated_fee_order_name":"First-tier Tribunal (Immigration and Asylum Chamber) Fees Order 2011","direction":"partial cost recovery"}],"current_version":{"description":"Notice of Appeal - appellant consents without hearing A","status":"approved","author":"300856","approvedBy":"39907","version":2,"valid_from":"2011-12-18T00:00:00.000+00:00","flat_amount":{"amount":80.00},"memo_line":"RECEIPT OF FEES - Tribunal issue other","statutory_instrument":"2016 No 1149","si_ref_id":"3(3)(a)","natural_account_code":"4481102178","last_amending_si":"The First-tier Tribunal (Immigration and Asylum Chamber) Fees (Amendment) (No. 2) Order 2016","consolidated_fee_order_name":"First-tier Tribunal (Immigration and Asylum Chamber) Fees Order 2011","direction":"partial cost recovery"},"unspecified_claim_amount":false}]
+    }
+}' \
+http://localhost:8991/__admin/mappings/new
+
 # pba account successful
 curl -X POST \
 --data '{
