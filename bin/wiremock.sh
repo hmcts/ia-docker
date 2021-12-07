@@ -522,6 +522,45 @@ curl -X POST \
         }' \
 http://localhost:8991/__admin/mappings/new
 
+
+#Ref data location service response for the Case-type Asylum (IAC)
+curl -X POST \
+--data '{
+          "request": {
+            "method": "GET",
+            "urlPath": "/refdata/location/orgServices",
+            "queryParameters" : {
+              "ccdCaseType": {
+                "equalTo": "Asylum"
+              }
+            }
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "jsonBody": [
+                {
+                  "jurisdiction": "Immigration and Asylum Chamber",
+                  "service_id": 39,
+                  "org_unit": "HMCTS",
+                  "business_area": "Civil, Family and Tribunals",
+                  "sub_business_area": "Tribunals",
+                  "service_description": "Immigration and Asylum Appeals",
+                  "service_code": "BFA1",
+                  "service_short_description": "Immigration and Asylum Appeals",
+                  "ccd_service_name": "IA",
+                  "last_update": "2020-11-02T16:28:37.259752",
+                  "ccd_case_types": [
+                    "Asylum"
+                  ]
+                }
+              ]
+        }
+      }' \
+http://localhost:8991/__admin/mappings/new
+
 #Assign Case User and Role Ownership
 curl -X POST \
 --data '{
