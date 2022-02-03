@@ -50,7 +50,6 @@ echo "Setting up Roles required for XUI..."
 ./create-role.sh "caseworker-sscs"
 ./create-role.sh "caseworker-sscs-dwpresponsewriter"
 
-
 # Roles required for Share A Case
 echo ""
 echo "Setting up Roles required for Share A Case..."
