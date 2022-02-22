@@ -21,7 +21,7 @@ services:
   ccd-user-profile-api:
     image: hmctspublic.azurecr.io/ccd/user-profile-api:latest
     environment:
-      USER_PROFILE_DB_HOST: ccd-shared-database
+      USER_PROFILE_DB_HOST: ccd-shared-database-v11
       USER_PROFILE_DB_PORT: 5432
       USER_PROFILE_DB_USERNAME: "${DB_USERNAME}"
       USER_PROFILE_DB_PASSWORD: "${DB_PASSWORD}"
@@ -36,15 +36,15 @@ services:
     ports:
       - 4453:4453
     depends_on:
-      - ccd-shared-database
+      - ccd-shared-database-v11
     links:
-      - ccd-shared-database
+      - ccd-shared-database-v11
       - service-auth-provider-api
 
   ccd-definition-store-api:
     image: hmctspublic.azurecr.io/ccd/definition-store-api:latest
     environment:
-      DEFINITION_STORE_DB_HOST: ccd-shared-database
+      DEFINITION_STORE_DB_HOST: ccd-shared-database-v11
       DEFINITION_STORE_DB_PORT: 5432
       DEFINITION_STORE_DB_USERNAME: "${DB_USERNAME}"
       DEFINITION_STORE_DB_PASSWORD: "${DB_PASSWORD}"
@@ -66,11 +66,11 @@ services:
     ports:
       - 4451:4451
     depends_on:
-      - ccd-shared-database
+      - ccd-shared-database-v11
       - ccd-user-profile-api
       - sidam-api
     links:
-      - ccd-shared-database
+      - ccd-shared-database-v11
       - ccd-user-profile-api
       - sidam-api
       - service-auth-provider-api
@@ -78,7 +78,7 @@ services:
   ccd-data-store-api:
     image: hmctspublic.azurecr.io/ccd/data-store-api:latest
     environment:
-      DATA_STORE_DB_HOST: ccd-shared-database
+      DATA_STORE_DB_HOST: ccd-shared-database-v11
       DATA_STORE_DB_PORT: 5432
       DATA_STORE_DB_USERNAME: "${DB_USERNAME}"
       DATA_STORE_DB_PASSWORD: "${DB_PASSWORD}"
@@ -113,12 +113,12 @@ services:
     ports:
       - 4452:4452
     depends_on:
-      - ccd-shared-database
+      - ccd-shared-database-v11
       - ccd-user-profile-api
       - ccd-definition-store-api
       - sidam-api
     links:
-      - ccd-shared-database
+      - ccd-shared-database-v11
       - ccd-user-profile-api
       - ccd-definition-store-api
       - sidam-api
@@ -183,12 +183,12 @@ services:
     ports:
       - 8095:8095
     depends_on:
-      - ccd-shared-database
+      - ccd-shared-database-v11
       - ccd-data-store-api
       - sidam-api
       - service-auth-provider-api
     links:
-      - ccd-shared-database
+      - ccd-shared-database-v11
       - ccd-data-store-api
       - sidam-api
       - service-auth-provider-api
@@ -196,7 +196,7 @@ services:
       IDAM_URL: http://sidam-api:5000
       S2S_URL: http://service-auth-provider-api:8080
       CCD_URL: http://ccd-data-store-api:4452
-      POSTGRES_HOST: ccd-shared-database
+      POSTGRES_HOST: ccd-shared-database-v11
       POSTGRES_PORT: 5432
       IA_IDAM_CLIENT_ID: "${IA_IDAM_CLIENT_ID}"
       IA_IDAM_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
@@ -211,7 +211,7 @@ services:
   am-role-assignment-service:
     image: "${AM_ROLE_ASSIGNMENT_SERVICE_USE_LOCAL-hmctspublic.azurecr.io/}am/role-assignment-service:${AM_ROLE_ASSIGNMENT_SERVICE_TAG:-latest}"
     environment:
-      ROLE_ASSIGNMENT_DB_HOST: "${CCD_POSTGRES_11:-ccd-shared-database}"
+      ROLE_ASSIGNMENT_DB_HOST: "${CCD_POSTGRES_11:-ccd-shared-database-v11}"
       ROLE_ASSIGNMENT_DB_NAME: role_assignment
       ROLE_ASSIGNMENT_DB_PORT: 5432
       ROLE_ASSIGNMENT_DB_USERNAME: "${DB_USERNAME}"
@@ -241,7 +241,7 @@ services:
     ports:
       - 4096:4096
     depends_on:
-      - ccd-shared-database
+      - ccd-shared-database-v11
       - ccd-data-store-api
       - sidam-api
       - service-auth-provider-api
@@ -291,8 +291,8 @@ services:
   smtp-server:
     image: mailhog/mailhog
 
-  ccd-shared-database:
-    build: ../database
+  ccd-shared-database-v11:
+    build: ../database-v11
     healthcheck:
       interval: 10s
       timeout: 10s
@@ -304,8 +304,8 @@ services:
     ports:
       - 5050:5432
     volumes:
-      - ccd-docker-ccd-shared-database-data:/var/lib/postgresql/data
+      - ccd-docker-ccd-shared-database-data-v11:/var/lib/postgresql/data
 
 volumes:
-  ccd-docker-ccd-shared-database-data:
+  ccd-docker-ccd-shared-database-data-v11:
   ccd-docker-wiremock-data:

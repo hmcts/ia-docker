@@ -29,7 +29,7 @@ services:
           - "ccd-elasticsearch"
     environment:
       - XPACK_MONITORING_ENABLED=false
-      - DB_URL=jdbc:postgresql://ccd-shared-database:5432/ccd_data?stringtype=unspecified&ssl=false
+      - DB_URL=jdbc:postgresql://ccd-shared-database-v11:5432/ccd_data?stringtype=unspecified&ssl=false
       - DB_USER=ccd
       - DB_PWD=ccd
       - ES_DATA_NODES_URL=http://ccd-elasticsearch:9200

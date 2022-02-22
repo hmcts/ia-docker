@@ -43,7 +43,7 @@ services:
       - "docmosis.aat.platform.hmcts.net:10.10.161.121"
 
   stitching-db:
-    image: postgres:9.6
+    image: postgres:11.5
     restart: always
     environment:
       - POSTGRES_DB=emstitch
