@@ -78,7 +78,7 @@ echo "Setting up Users..."
 ./create-user.sh "${TEST_HOMEOFFICE_APC_USERNAME}" "${IA_USER_PREFIX}Home Office" "APC" "${TEST_HOMEOFFICE_APC_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficeapc\"}]"
 ./create-user.sh "${TEST_HOMEOFFICE_LART_USERNAME}" "${IA_USER_PREFIX}Home Office" "LART" "${TEST_HOMEOFFICE_LART_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficelart\"}]"
 ./create-user.sh "${TEST_HOMEOFFICE_POU_USERNAME}" "${IA_USER_PREFIX}Office" "POU" "${TEST_HOMEOFFICE_POU_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficepou\"}]"
-./create-user.sh "${TEST_HOMEOFFICE_GENERIC_USERNAME}" "${IA_USER_PREFIX}Home Office" "Generic" "${TEST_HOMEOFFICE_GENERIC_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-respondentofficer\"}]"
+./create-user.sh "${TEST_HOMEOFFICE_GENERIC_USERNAME}" "${IA_USER_PREFIX}Home Office" "Generic" "${TEST_HOMEOFFICE_GENERIC_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-respondentofficer\"}, { \"code\": \"caseworker-ia-homeofficebail\"}]"
 ./create-user.sh "${TEST_HOMEOFFICE_BAIL_USERNAME}" "${IA_USER_PREFIX}Home Office" "Bail" "${TEST_HOMEOFFICE_BAIL_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficebail\"}]"
 ./create-user.sh "${TEST_CITIZEN_USERNAME}" "${IA_USER_PREFIX}Citizen" "User" "${TEST_CITIZEN_PASSWORD}" "citizens" "[{ \"code\": \"citizen\"}]"
 
