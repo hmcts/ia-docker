@@ -13,7 +13,7 @@ services:
     image: hmctspublic.azurecr.io/payment/api
     environment:
       AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: http://service-auth-provider-api:8080
-      AUTH_IDAM_CLIENT_BASEURL: http://sidam-api:5000
+      AUTH_IDAM_CLIENT_BASEURL: http://sidam-simulator:5000
       IDAM_S2S_AUTH_URL: http://service-auth-provider-api:8080
       GOV_PAY_URL: https://publicapi.payments.service.gov.uk/v1/payments
       FEES_REGISTER_URL: http://wiremock:8080
@@ -39,7 +39,7 @@ services:
       - payments-db
       - wiremock
     links:
-      - sidam-api
+      - sidam-simulator
       - wiremock
       - service-auth-provider-api
 
