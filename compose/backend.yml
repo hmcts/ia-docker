@@ -53,7 +53,7 @@ services:
       DEFINITION_STORE_TX_TIMEOUT_DEFAULT: 60
       DEFINITION_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_admin,aac_manage_case_assignment
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
-      IDAM_USER_URL: http://sidam-api:5000
+      IDAM_USER_URL: http://sidam-simulator:5000
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       REFORM_SERVICE_NAME: ccd-definition-store-api
       REFORM_TEAM: ccd
@@ -68,11 +68,11 @@ services:
     depends_on:
       - ccd-shared-database-v11
       - ccd-user-profile-api
-      - sidam-api
+      - sidam-simulator
     links:
       - ccd-shared-database-v11
       - ccd-user-profile-api
-      - sidam-api
+      - sidam-simulator
       - service-auth-provider-api
 
   ccd-data-store-api:
@@ -85,13 +85,13 @@ services:
       DATA_STORE_DB_USE_SSL: "${DB_USE_SSL}"
       DATA_STORE_IDAM_KEY: "${IDAM_KEY_CCD_DATA_STORE}"
       DATA_STORE_TOKEN_SECRET: iuasbcuasdcbasdgcasdgcuysachjsacyasdgjcgasdj
-      DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac,em_stitching_api,em_gw,em_ccd_orchestrator,aac_manage_case_assignment,ccd_case_document_am_api,xui_webapp,am_role_assignment_service
+      DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac,em_stitching_api,em_gw,em_ccd_orchestrator,aac_manage_case_assignment,ccd_case_document_am_api,xui_webapp,am_role_assignment_service,wa_workflow_api,wa_task_management_api,wa_task_monitor,wa_case_event_handler
       CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: ccd_gw,iac,ia,aac_manage_case_assignment,xui_webapp
       DEFINITION_STORE_HOST: http://ccd-definition-store-api:4451
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
-      IDAM_API_BASE_URL: http://sidam-api:5000
-      IDAM_OIDC_URL: http://sidam-api:5000
-      IDAM_USER_URL: http://sidam-api:5000
+      IDAM_API_BASE_URL: http://sidam-simulator:5000
+      IDAM_OIDC_URL: http://sidam-simulator:5000
+      IDAM_USER_URL: http://sidam-simulator:5000
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       REFORM_SERVICE_NAME: ccd-data-store-api
       REFORM_TEAM: ccd
@@ -116,12 +116,12 @@ services:
       - ccd-shared-database-v11
       - ccd-user-profile-api
       - ccd-definition-store-api
-      - sidam-api
+      - sidam-simulator
     links:
       - ccd-shared-database-v11
       - ccd-user-profile-api
       - ccd-definition-store-api
-      - sidam-api
+      - sidam-simulator
       - service-auth-provider-api
 
   ccd-case-document-am-api:
@@ -134,8 +134,8 @@ services:
       CASE_DOCUMENT_S2S_AUTHORISED_SERVICES: ccd_case_document_am_api,ccd_gw,xui_webapp,ccd_data,bulk_scan_processor,iac,ia,stitching-api,rpa-em-ccd-orchestrator
       DM_STORE_BASE_URL: http://dm-store:8080
       CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api:4452
-      IDAM_OIDC_URL: http://sidam-api:5000
-      IDAM_API_URL: http://sidam-api:5000
+      IDAM_OIDC_URL: http://sidam-simulator:5000
+      IDAM_API_URL: http://sidam-simulator:5000
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       S2S_URL: http://service-auth-provider-api:8080
       REFORM_SERVICE_NAME: ccd-case-document-am-api
@@ -176,6 +176,12 @@ services:
       MICROSERVICEKEYS_AM_ROLE_ASSIGNMENT: "AAAAAAAAAAAAAAAA"
       MICROSERVICEKEYS_PAYMENT_APP: "AAAAAAAAAAAAAAAA"
       MICROSERVICEKEYS_PAYMENTOUTCOME_WEB: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_WA_WORKFLOW_API: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_WA_TASK_MANAGEMENT_API: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_WA_TASK_CONFIGURATION_API: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_WA_CASE_EVENT_HANDLER: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_WA_TASK_MONITOR: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_CAMUNDA_BPM: "AAAAAAAAAAAAAAAA"
       TESTING_SUPPORT_ENABLED: "true"
       JAVA_TOOL_OPTIONS: -Xmx384m
 
@@ -222,11 +228,11 @@ services:
       LD_SDK_KEY:
       ROLE_ASSIGNMENT_IDAM_KEY:
       ROLE_ASSIGNMENT_TOKEN_SECRET:
-      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data,iac
-      IDAM_USER_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-api:5000}"
+      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data,iac,wa_task_monitor,wa_case_event_handler
+      IDAM_USER_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}"
       IDAM_S2S_URL: http://service-auth-provider-api:8080
-      OPEN_ID_API_BASE_URI: "${IDAM_STUB_SERVICE_NAME:-http://sidam-api:5000}/o"
-      OIDC_ISSUER_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-api:5000}/openam/oauth2/hmcts"
+      OPEN_ID_API_BASE_URI: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}/o"
+      OIDC_ISSUER_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}/openam/oauth2/hmcts"
       ROLE_ASSIGNMENT_IDAM_CLIENT_ID: am_role_assignment
       ROLE_ASSIGNMENT_IDAM_CLIENT_SECRET: am_role_assignment_secret
       ROLE_ASSIGNMENT_IDAM_ADMIN_USERID: role.assignment.admin@gmail.com
@@ -237,6 +243,7 @@ services:
       REFORM_SERVICE_NAME: am-role-assignment-service
       REFORM_TEAM: am
       REFORM_ENVIRONMENT: local
+      BYPASS_ORG_DROOL_RULE: "true"
       # Uncomment this line to enable JVM debugging and uncomment the port mapping below
       #  JAVA_TOOL_OPTIONS: -XX:InitialRAMPercentage=30.0 -XX:MaxRAMPercentage=65.0 -XX:MinRAMPercentage=30.0 -XX:+UseConcMarkSweepGC -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
     ports:
@@ -244,7 +251,7 @@ services:
     depends_on:
       - ccd-shared-database-v11
       - ccd-data-store-api
-      - sidam-api
+      - sidam-simulator
       - service-auth-provider-api
 
 
@@ -259,8 +266,8 @@ services:
     ports:
       - 4454:4454
     environment:
-      IDAM_OIDC_URL: http://sidam-api:5000
-      IDAM_API_URL: http://sidam-api:5000
+      IDAM_OIDC_URL: http://sidam-simulator:5000
+      IDAM_API_URL: http://sidam-simulator:5000
       IDAM_CLIENT_ID: ccd_gateway
       IDAM_CLIENT_SECRET: OOOOOOOOOOOOOOOO
       IDAM_CLIENT_REDIRECT_URL: http://localhost:3002/oauth2/callback
@@ -270,7 +277,7 @@ services:
       IDAM_NOC_APPROVER_PASSWORD: "Pa55word11"
       IDAM_SYSTEM_USER_USERNAME: "caa-caseworker@fake.hmcts.net"
       IDAM_SYSTEM_USER_PASSWORD: "London21"
-      IDAM_URL: http://sidam-api:5000
+      IDAM_URL: http://sidam-simulator:5000
       S2S_URL: http://service-auth-provider-api:8080
       MANAGE_CASE_S2S_KEY: "AAAAAAAAAAAAAAAA" # use aat key from vault
       MANAGE_CASE_S2S_AUTHORISED_SERVICES: ccd_gw,xui_webapp,ccd_data,iac

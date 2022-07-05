@@ -13,7 +13,7 @@ services:
     environment:
       CCD_DOCUMENT_URL_PATTERN: http://dm-store.*
     depends_on:
-      - dm-store  
+      - dm-store
 
   service-auth-provider-api:
     environment:
@@ -43,9 +43,9 @@ services:
       SPRING_PROFILES_ACTIVE: dev
       IDAM_TESTING_SUPPORT_ENABLED: "true"
       LOGGING_LEVEL_UK_GOV_HMCTS_IDAM: DEBUG
-      IDAM_USER_BASE_URI: http://sidam-api:5000
+      IDAM_USER_BASE_URI: http://sidam-simulator:5000
       IDAM_S2S_BASE_URI: http://service-auth-provider-api:8080
-      S2S_NAMES_WHITELIST: sscs,divorce,ccd,em_gw,document-management-store,ccd_gw,idam-api,fpl_case_service,em_stitching_api,iac,sidam-api,ccd_case_document_am_api,am-role-assignment-service,xui_webapp
+      S2S_NAMES_WHITELIST: sscs,divorce,ccd,em_gw,document-management-store,ccd_gw,idam-api,fpl_case_service,em_stitching_api,iac,sidam-simulator,ccd_case_document_am_api,am-role-assignment-service,xui_webapp,wa_task_management_api,wa_workflow_api,wa_case_event_handler,wa_task_monitor
       http_proxy:
       https_proxy:
       no_proxy:
@@ -68,11 +68,11 @@ services:
     #    JAVA_OPTS: -Xmx384m -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
     links:
       - ccd-shared-database-v11
-      - sidam-api
+      - sidam-simulator
       - service-auth-provider-api
     depends_on:
       - ccd-shared-database-v11
-      - sidam-api
+      - sidam-simulator
       - service-auth-provider-api
       - azure-storage-emulator-azurite
     ports:

@@ -14,9 +14,9 @@ services:
       SERVICES_DOCUMENTS_API: http://dm-store:8080
       SERVICES_S2S: http://service-auth-provider-api:8080
       SERVICES_IDAM_LOGIN_URL: http://localhost:3501
-      SERVICES_IDAM_API_URL: http://sidam-api:5000
+      SERVICES_IDAM_API_URL: http://sidam-simulator:5000
       SERVICES_IDAM_OAUTH_CALLBACK_URL: /oauth2/callback
-      SERVICES_IDAM_ISS_URL: http://sidam-api:5000
+      SERVICES_IDAM_ISS_URL: http://sidam-simulator:5000
       SERVICES_IDAM_CLIENT_ID: ccd_gateway
       # Look to use  SERVICES_IDAM_CLIENT_ID: xui_webapp
       # at some point. Create client and point to this
@@ -51,7 +51,7 @@ services:
     ports:
       - 3002:3000
     links:
-      - sidam-api
+      - sidam-simulator
       - ccd-data-store-api
       - ccd-api-gateway
       - dm-store
@@ -60,6 +60,6 @@ services:
       - wiremock
       - payments-api
     depends_on:
-      - sidam-api
+      - sidam-simulator
       - ccd-api-gateway
       - payments-api
