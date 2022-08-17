@@ -22,6 +22,7 @@ https://github.com/hmcts/ia-ccd-e2e-tests/tree/master/bin
 - [Under the hood](#under-the-hood-speedboat)
 - [Containers](#containers)
 - [Local development](#local-development)
+- [Wa integration for running post deployment tests](#Wa integration for running post deployment tests)
 - [Variables](#variables)
 - [Remarks](#remarks)
 - [License](#license)
@@ -533,7 +534,21 @@ and finally, Login to the Azure Container registry:
 ```bash
 ./ccd login
 ```
-
+## Wa integration for running post deployment tests
+* switch to https://github.com/hmcts/ia-docker/tree/WA-IA-integration branch
+* run command "az login"
+* run command ./ccd compose pull
+* run command ./ccd compose up -d (several times to make all apps are running)
+* change to bin folder
+* run command ROLE_ASSIGNMENT_URL=http://localhost:4096 CCD_URL=http://ccd-data-store-api:4452 ./wa-setup.sh
+* upload IA CCD definition and WA CCD definition by running the command "yarn upload"
+* edit your hosts file and add
+127.0.0.1 host.docker.internal gateway.docker.internal sidam-simulator,ccd-data-store-api,dm-store,am-role-assignment-service,wa_task_management_api,camunda-bpm,wa-workflow-api,wa-case-event-handler
+  connect the VPN
+* open 3 new terminals and source ${IA_DOCKER_PATH}/.wa-env where IA_DOCKER_PATH is the location of ia-docker repo
+run ia-case-api, ia-case-notifications-api and ia-case-documents-api
+* open a new terminal and clone the repo https://github.com/hmcts/wa-post-deployment-ft-tests and switch to RWA-920 branch
+run the command CCD_URL=http://ccd-data-store-api:4452 ./gradlew functional
 ## Variables
 Here are the important variables exposed in the compose files:
 
