@@ -12,11 +12,11 @@ services:
         - no_proxy
     image: hmctspublic.azurecr.io/payment/api:latest
     environment:
-      LAUNCH_DARKLY_SDK_KEY: ${LAUNCH_DARKLY_SDK_KEY_FEE_N_PAY_DEMO}
+      LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY_FEE_N_PAY_DEMO}"
       AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: http://service-auth-provider-api:8080
       AUTH_IDAM_CLIENT_BASEURL: http://sidam-api:5000
       AUTH_REF_DATA_BASEURL: http://wiremock:8080
-      ASB_CONNECTION_STRING: ${AZURE_SERVICE_BUS_CONNECTION_STRING}
+      ASB_CONNECTION_STRING: "${AZURE_SERVICE_BUS_CONNECTION_STRING}"
       IDAM_S2S_AUTH_URL: http://service-auth-provider-api:8080
       GOV_PAY_URL: https://publicapi.payments.service.gov.uk/v1/payments
       FEES_REGISTER_URL: http://wiremock:8080
@@ -75,7 +75,7 @@ services:
         - no_proxy
     image: hmctspublic.azurecr.io/ccpay/callback-function:latest
     environment:
-      SERVICE_CALLBACK_BUS_CONNECTION: ${CALLBACK_BUS_CONNECTION_STRING}
+      SERVICE_CALLBACK_BUS_CONNECTION: "${CALLBACK_BUS_CONNECTION_STRING}"
       SERVICE_CALLBACK_SUBSCRIPTION: defaultServiceCallbackSubscription
       PROCESS_MESSAGES_COUNT: 10
       APPINSIGHTS_INSTRUMENTATIONKEY: 124e39c3-6dad-49ef-aede-d2cddac865c2
@@ -84,5 +84,5 @@ services:
       MICROSERVICE_PAYMENT_APP: payment_app
       S2S_KEY_PAYMENT_APP: AAAAAAAAAAAAAAAA
     extra_hosts:
-      - "ia-case-payments-api:host-gateway"
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
