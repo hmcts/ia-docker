@@ -65,6 +65,7 @@ export IA_NBC_EMAIL=someemail@net.com
 export FEES_ADMIN_OFFICER_EMAIL=fees-ao@example.com
 export IA_HOME_OFFICE_APC_EMAIL=apc_privatebetainbox@example.com
 export IA_UPPER_TRIBUNAL_NOTICES_EMAIL=upper-tribunal-notices@example.com
+export IA_BAIL_GOV_NOTIFY_KEY=OOOOOOOOOOOOOOOO
 
 # ASB related variables
 export AZURE_SERVICE_BUS_CONNECTION_STRING=replace_me
@@ -87,6 +88,9 @@ export DOCMOSIS_CONVERT_URL=/api/convert
 #WA Users
 export WA_SYSTEM_USERNAME=wa-system-user@fake.hmcts.net
 export WA_SYSTEM_PASSWORD=System01
+
+export WA_CASEOFFICER_USERNAME=wa-caseofficer-user@fake.hmcts.net
+export WA_CASEOFFICER_PASSWORD=System01
 
 export TEST_WA_CASEOFFICER_A_USERNAME=wa-test-caseofficer-a@fake.hmcts.net
 export TEST_WA_CASEOFFICER_A_PASSWORD=London01
