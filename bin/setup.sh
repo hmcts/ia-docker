@@ -3,7 +3,7 @@
 # Setup Services
 echo "Setting up Services..."
 ./create-service.sh "ccd_gateway" "false" "ccd_gateway" "OOOOOOOOOOOOOOOO" "[\"http://localhost:3451/oauth2redirect\", \"http://localhost:3002/oauth2/callback\", \"https://localhost:3000/redirectUrl\"]" "[\"caseworker\", \"caseworker-ia\", \"caseworker-ia-legalrep-solicitor\", \"pui-case-manager\"]" "CCD Gateway" "CCD scope manage-user create-user openid profile roles acr search-user authorities"
-
+./create-service.sh "ccd_admin" "false" "ccd_admin" "OOOOOOOOOOOOOOOO" "[\"http://localhost:3451/oauth2redirect\", \"https://localhost:3100/oauth2redirect\"]" "[\"ccd-import\"]" "CCD Gateway" "CCD scope manage-user create-user openid profile roles acr search-user authorities"
 
 # Setup Roles
 echo ""
@@ -27,8 +27,13 @@ echo "Setting up Roles..."
 ./create-role.sh "caseworker-ia-respondentofficer"
 ./create-role.sh "caseworker-ia-homeofficebail"
 ./create-role.sh "caseworker-ia-iacjudge"
+./create-role.sh "GS_profile"
 ./create-role.sh "payments"
 ./create-role.sh "caseworker-wa-task-configuration"
+./create-role.sh "specific-access-judiciary"
+./create-role.sh "specific-access-legal-ops"
+./create-role.sh "specific-access-admin"
+./create-role.sh "specific-access-group"
 
 # Roles required for XUI
 echo ""
@@ -74,7 +79,7 @@ echo "Setting up Users..."
 ./create-user.sh "${TEST_JUDICIARY_USERNAME}" "${IA_USER_PREFIX}Tribunal" "Judge" "${TEST_JUDICIARY_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-judiciary\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_A_USERNAME}" "${IA_USER_PREFIX}A" "Legal Rep" "${TEST_LAW_FIRM_A_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_B_USERNAME}" "${IA_USER_PREFIX}B" "Legal Rep" "${TEST_LAW_FIRM_B_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
-./create-user.sh "${TEST_ADMINOFFICER_USERNAME}" "${IA_USER_PREFIX}Admin" "Officer" "${TEST_ADMINOFFICER_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-admofficer\"}, { \"code\": \"payments\"}]"
+./create-user.sh "${TEST_ADMINOFFICER_USERNAME}" "${IA_USER_PREFIX}Admin" "Officer" "${TEST_ADMINOFFICER_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-admofficer\"},{ \"code\": \"specific-access-group\"}, { \"code\": \"payments\"}, { \"code\": \"GS_profile\"}]"
 ./create-user.sh "${TEST_HOMEOFFICE_APC_USERNAME}" "${IA_USER_PREFIX}Home Office" "APC" "${TEST_HOMEOFFICE_APC_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficeapc\"}]"
 ./create-user.sh "${TEST_HOMEOFFICE_LART_USERNAME}" "${IA_USER_PREFIX}Home Office" "LART" "${TEST_HOMEOFFICE_LART_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficelart\"}]"
 ./create-user.sh "${TEST_HOMEOFFICE_POU_USERNAME}" "${IA_USER_PREFIX}Office" "POU" "${TEST_HOMEOFFICE_POU_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficepou\"}]"
@@ -90,7 +95,7 @@ echo "Setting up Users..."
 ./create-user.sh "${TEST_LAW_FIRM_SHARE_CASE_C_USERNAME}" "${IA_USER_PREFIX}Share C" "Legal Rep" "${TEST_LAW_FIRM_SHARE_CASE_C_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"pui-case-manager\"}, { \"code\": \"payments\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_SHARE_CASE_D_USERNAME}" "${IA_USER_PREFIX}Share D" "Legal Rep" "${TEST_LAW_FIRM_SHARE_CASE_D_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"pui-case-manager\"}, { \"code\": \"payments\"}]"
 
-./create-user.sh "${TEST_JUDGE_X_USERNAME}" "${IA_USER_PREFIX}Judge" "X" "${TEST_JUDGE_X_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-iacjudge\"}]"
+./create-user.sh "${TEST_JUDGE_X_USERNAME}" "${IA_USER_PREFIX}Judge" "X" "${TEST_JUDGE_X_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-iacjudge\"}, { \"code\": \"GS_profile\"}]"
 
 ./create-user.sh "${TEST_LAW_FIRM_ORG_SUCCESS_USERNAME}" "${IA_USER_PREFIX}PBA Success" "Legal Rep" "${TEST_LAW_FIRM_ORG_SUCCESS_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_ORG_DELETED_USERNAME}" "${IA_USER_PREFIX}PBA Deleted" "Legal Rep" "${TEST_LAW_FIRM_ORG_DELETED_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
@@ -127,6 +132,11 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "caseworker-ia-respondentofficer" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker-ia-homeofficebail" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker-ia-iacjudge" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "GS_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "specific-access-judiciary" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "specific-access-legal-ops" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "specific-access-admin" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "specific-access-group" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "citizen" "$USER_TOKEN" "$SERVICE_TOKEN"
 
