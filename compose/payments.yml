@@ -79,10 +79,9 @@ services:
       SERVICE_CALLBACK_SUBSCRIPTION: defaultServiceCallbackSubscription
       PROCESS_MESSAGES_COUNT: 10
       APPINSIGHTS_INSTRUMENTATIONKEY: 124e39c3-6dad-49ef-aede-d2cddac865c2
-      DELAY_MESSAGE_MINUTES: 30
+      DELAY_MESSAGE_MINUTES: 1
       S2S_URL: http://service-auth-provider-api:8080
       MICROSERVICE_PAYMENT_APP: payment_app
       S2S_KEY_PAYMENT_APP: AAAAAAAAAAAAAAAA
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    restart: unless-stopped
