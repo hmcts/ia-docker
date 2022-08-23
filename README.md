@@ -536,6 +536,7 @@ and finally, Login to the Azure Container registry:
 
 ## Variables
 Here are the important variables exposed in the compose files:
+(updated August 2022)
 
 | Variable | Description |
 | -------- | ----------- |
@@ -551,6 +552,9 @@ Here are the important variables exposed in the compose files:
 | STORAGEACCOUNT_PRIMARY_CONNECTION_STRING | (If dm-store is enabled) Secret for Azure Blob Storage. It is pointing to dockerized Azure Blob Storage emulator. |
 | STORAGE_CONTAINER_DOCUMENT_CONTAINER_NAME | (If dm-store is enabled) Container name for Azure Blob Storage |
 | IA_USER_PREFIX | Idam User prefix used by Launch Darkly client |
+| LAUNCH_DARKLY_SDK_KEY_FEE_N_PAY_DEMO | Secret for Launch Darkly feature toggle of a Fee&Pay common component |
+| AZURE_SERVICE_BUS_CONNECTION_STRING | Secret for a Fee&Pay common component to connect to an Azure Service Bus |
+| CALLBACK_BUS_CONNECTION_STRING | Secret for a Fee&Pay common component to connect to an Azure Service Bus |
 
 ## Remarks
 
@@ -609,6 +613,17 @@ Usage:
     ./delete-user.sh [csv file with user emails] [environment - demo/ithc/aat/perftest]
 
 NOTE: If you want to delete all users from an environment the same input file used for creating users can be used in which case the email ids from the first field will be picked for deletion. 
+
+## ccpay-functions-node
+When a payment has been processed on Gov Pay, a message with up-to-date details is sent to an Azure Topic.
+
+On the cloud, this service gets automatically triggered to run once when an Azure Topic is expected to have messages to be read (and then sends the content to ia-case-payments-api to update case data).
+
+Locally, the developer will have to trigger the container to start **manually** whenever they wish to make ccpay-functions-node consume messages from the Topic (i.e. when they make a payment), for updated info to reach ia-case-payment-api.
+
+The service will run once (for about 1 min) and the stop. Messages are unavailable for multiple consumers at the same time, only one developer at a time can access the Azure Topic.
+
+Do not attempt to have the service run continuously, as the retrieval mode is Peek&Lock, and this will hog the Azure Topic and not let other developer access to the Topic.
    
 ## Notes
 
