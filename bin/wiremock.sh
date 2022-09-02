@@ -474,6 +474,10 @@ curl -X POST \
 http://localhost:8991/__admin/mappings/new
 
 #PBA accounts
+# new waysToPay accounts:
+# "PBAFUNC12345" Successful account
+# "PBAFUNC12350" Deleted account
+# "PBAFUNC12355" Account on hold
 curl -X POST \
 --data '{
           "request": {
@@ -503,7 +507,10 @@ curl -X POST \
                   "PBA0087535",
                   "PBA0087240",
                   "PBA0088063",
-                  "PBA0087442"
+                  "PBA0087442",
+                  "PBAFUNC12345",
+                  "PBAFUNC12350",
+                  "PBAFUNC12355"
                 ],
                 "contactInformation": [
                   {
