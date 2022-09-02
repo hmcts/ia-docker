@@ -36,6 +36,7 @@ services:
       SPRING_LIQUIBASE_ENABLED: "true"
       AZURE_APPLICATION_INSIGHTS_INSTRUMENTATION_KEY: "dummy"
       TRUSTED_S2S_SERVICE_NAMES: "cmc,iac,xui_webapp,payment_app,paymentoutcome_web"
+      SPRING_PROFILES_ACTIVE: "${PAYMENTS_API_PROFILE:-liberataMock}"
     ports:
       - 8083:8080
     depends_on:
