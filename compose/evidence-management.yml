@@ -61,7 +61,7 @@ services:
       IDAM_API_BASE_URI: http://sidam-api:5000
       OPEN_ID_API_BASE_URI: http://sidam-api:5000/o
       S2S_BASE_URI: http://service-auth-provider-api:8080
-      EM_STITCHING_API_URL: http://stitching-api:8080
+      EM_STITCHING_API_URL: http://stitching-api:4630
       CALLBACK_DOMAIN: rpa-em-ccd-orchestrator
       APPINSIGHTS_INSTRUMENTATIONKEY: key
       ENABLE_LIQUIBASE: "true"
