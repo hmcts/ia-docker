@@ -45,6 +45,22 @@
       }
     ],
     "overrideAll": true
+  },
+  {
+    "email": "ia-system-user@fake.hmcts.net",
+    "roleAssignments": [
+      {
+        "roleType": "CASE",
+        "roleName": "case-allocator",
+        "grantType": "STANDARD",
+        "roleCategory": "ADMIN",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": { "jurisdiction":"IA", "caseType":"Asylum" },
+        "authorisations": []
+      }
+    ],
+    "overrideAll": true
   }
 
 ]
