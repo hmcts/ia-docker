@@ -27,7 +27,7 @@ services:
       SERVICES_EM_DOCASSEMBLY_API: http://wiremock:8080
       REDISCLOUD_URL: http://dummyrediscloudurl
       SERVICES_ROLE_ASSIGNMENT_API: http://am-role-assignment-service:4096
-
+      SERVICES_WORK_ALLOCATION_TASK_API: http://wa-task-management-api:8087
       SERVICES_EM_ANNO_API: http://localhost:3453
 
       FEATURE_REDIS_ENABLED: "false"
