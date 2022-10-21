@@ -28,7 +28,7 @@ services:
       REDISCLOUD_URL: http://dummyrediscloudurl
       SERVICES_ROLE_ASSIGNMENT_API: http://am-role-assignment-service:4096
       SERVICES_PAYMENT_RETURN_URL: http://localhost:3100
-
+      SERVICES_WORK_ALLOCATION_TASK_API: http://wa-task-management-api:8087
       SERVICES_EM_ANNO_API: http://localhost:3453
 
       FEATURE_REDIS_ENABLED: "false"
