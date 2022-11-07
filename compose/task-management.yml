@@ -80,7 +80,7 @@ services:
       POSTGRES_NAME: cft_task_db
       ALLOWED_JURISDICTIONS: wa,ia,sscs,civil
       ALLOWED_CASE_TYPES: asylum,wacasetype,sscs,civil
-      WA_S2S_AUTHORIZED_SERVICES: ccd,ccd_data,ccd_gw,ccd_ps,iac,wa_task_management_api,xui_webapp,wa_task_monitor,camunda_bpm,wa_workflow_api
+      WA_S2S_AUTHORIZED_SERVICES: ccd,ccd_data,ccd_gw,ccd_ps,iac,wa_task_management_api,xui_webapp,wa_task_monitor,camunda_bpm,wa_workflow_api,wa_case_event_handler
       LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
       WA_SYSTEM_USERNAME: "${WA_SYSTEM_USERNAME}"
       WA_SYSTEM_PASSWORD: "${WA_SYSTEM_PASSWORD}"
@@ -110,6 +110,7 @@ services:
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
       CAMUNDA_URL: http://camunda-bpm:8999/engine-rest
       CCD_URL: http://ccd-data-store-api:4452
+      WA_TASK_MANAGEMENT_API_URL: http://wa-task-management-api:8087
       AZURE_SERVICE_BUS_FEATURE_TOGGLE: "true"
       AZURE_SERVICE_BUS_DLQ_FEATURE_TOGGLE: "true"
       AZURE_SERVICE_BUS_CONCURRENT_SESSIONS: 2
