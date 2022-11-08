@@ -133,7 +133,7 @@ curl -X POST --data '{
 }' \
 http://localhost:8991/__admin/mappings/new
 
-# rd-casewoker-ref-api. It's used for the RWA-318, RWA-319 and RWA-340 tickets
+# rd-caseworker-ref-api. It's used for the RWA-318, RWA-319 and RWA-340 tickets
 curl -X POST \
   --data '{
           "request": {
@@ -151,7 +151,7 @@ curl -X POST \
               }
             },
             "bodyPatterns" : [{
-              "equalToJson" : { "userIds": ["${json-unit.any-string}"]}
+              "contains" : "userIds"
             }]
           },
           "response": {

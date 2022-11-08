@@ -593,7 +593,7 @@ Subnet Mask: 255.255.255.0
   * ia-case-api
   * ia-case-notifications-api
   * ia-case-documents-api
-* open a new terminal and clone the repo https://github.com/hmcts/wa-post-deployment-ft-tests and switch to master branch
+* open a new terminal and clone the repo https://github.com/hmcts/ia-wa-post-deployment-ft-tests and switch to master branch
 * ```source  ${CCD_DOCKER_PATH}/.wa-env``` 
 * ```source  your batch profile``` 
 * run the command ```CCD_URL=http://ccd-data-store-api:4452 ./gradlew functional```
