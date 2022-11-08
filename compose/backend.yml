@@ -203,11 +203,12 @@ services:
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       OPEN_ID_API_BASE_URI: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}/o"
       OIDC_ISSUER_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}/openam/oauth2/hmcts"
-      ROLE_ASSIGNMENT_IDAM_CLIENT_ID: am_role_assignment
-      ROLE_ASSIGNMENT_IDAM_CLIENT_SECRET: am_role_assignment_secret
-      ROLE_ASSIGNMENT_IDAM_ADMIN_USERID: role.assignment.admin@gmail.com
-      ROLE_ASSIGNMENT_IDAM_ADMIN_PASSWORD: "${AM_ROLE_AADMINGMENT_ADMIN_PWD:-Pa55word11}"
+      ROLE_ASSIGNMENT_IDAM_CLIENT_ID: ccd_gateway
+      ROLE_ASSIGNMENT_IDAM_CLIENT_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
+      ROLE_ASSIGNMENT_IDAM_ADMIN_USERID: "${IDAM_ADMIN_USER}"
+      ROLE_ASSIGNMENT_IDAM_ADMIN_PASSWORD: "$IDAM_ADMIN_PASSWORD"
       ROLE_ASSIGNMENT_IDAM_ADMIN_SCOPE: profile openid roles search-user
+      ROLE_ASSIGNMENT_IDAM_REDIRECT_URI: http://localhost:3002/oauth2/callback
       CCD_DATA_STORE_URL: http://ccd-data-store-api:4452
       AZURE_APPLICATIONINSIGHTS_INSTRUMENTATIONKEY:
       REFORM_SERVICE_NAME: am-role-assignment-service
@@ -260,6 +261,8 @@ services:
       PRD_HOST: http://wiremock:8080
       NOTIFY_MCA_API_KEY: "notify-test-api-key"
       JAVA_TOOL_OPTIONS: -Xmx384m
+    depends_on:
+      - sidam-simulator
 
   ia-home-office-mock-api:
     image: hmctspublic.azurecr.io/ia/home-office-mock-api:latest

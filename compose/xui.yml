@@ -28,19 +28,21 @@ services:
       REDISCLOUD_URL: http://dummyrediscloudurl
       SERVICES_ROLE_ASSIGNMENT_API: http://am-role-assignment-service:4096
       SERVICES_WORK_ALLOCATION_TASK_API: http://wa-task-management-api:8087
-      SERVICES_EM_ANNO_API: http://localhost:3453
+      SERVICES_EM_ANNO_API: http://ccd-api-gateway:3453
+      SERVICES_CASE_CASEWORKER_API: http://wiremock:8080
 
       FEATURE_REDIS_ENABLED: "false"
       FEATURE_APP_INSIGHTS_ENABLED: "false"
       FEATURE_SECURE_COOKIE_ENABLED: "false"
+      FEATURE_WORKALLOCATION_ENABLED: "false"
       APPINSIGHTS_INSTRUMENTATIONKEY: fake
 
       # S2S_SECRET: "${IDAM_KEY_CCD_GATEWAY}"
       S2S_SECRET: "AAAAAAAAAAAAAAAA"
       IDAM_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
 
-      SYSTEM_USER_NAME: "dummy"
-      SYSTEM_USER_PASSWORD: "dummy"
+      SYSTEM_USER_NAME: "${WA_SYSTEM_USERNAME}"
+      SYSTEM_USER_PASSWORD: "${WA_SYSTEM_PASSWORD}"
 
       #real LAUNCH_DARKLY_CLIENT_ID must be set to enable share a case functionality
       LAUNCH_DARKLY_CLIENT_ID: "${EXUI_LAUNCH_DARKLY_CLIENT_ID}"

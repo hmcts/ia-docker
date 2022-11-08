@@ -90,6 +90,7 @@ services:
       - ccd-shared-database-v11
       - service-auth-provider-api
       - camunda-bpm
+      - sidam-simulator
 
   case-event-handler:
     image: "hmctspublic.azurecr.io/wa/case-event-handler:latest"
