@@ -29,6 +29,7 @@ echo "Setting up Roles..."
 ./create-role.sh "caseworker-ia-iacjudge"
 ./create-role.sh "payments"
 ./create-role.sh "caseworker-wa-task-configuration"
+./create-role.sh "specific-access-ctsc"
 
 # Roles required for XUI
 echo ""
@@ -127,6 +128,7 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "caseworker-ia-respondentofficer" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker-ia-homeofficebail" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker-ia-iacjudge" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "specific-access-ctsc" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "citizen" "$USER_TOKEN" "$SERVICE_TOKEN"
 
