@@ -192,15 +192,15 @@ services:
     depends_on:
       - ccd-shared-database-v11
       - ccd-data-store-api
-      - sidam-api
+      - sidam-simulator
       - service-auth-provider-api
     links:
       - ccd-shared-database-v11
       - ccd-data-store-api
-      - sidam-api
+      - sidam-simulator
       - service-auth-provider-api
     environment:
-      IDAM_URL: http://sidam-api:5000
+      IDAM_URL: http://sidam-simulator:5000
       S2S_URL: http://service-auth-provider-api:8080
       CCD_URL: http://ccd-data-store-api:4452
       POSTGRES_HOST: ccd-shared-database-v11
