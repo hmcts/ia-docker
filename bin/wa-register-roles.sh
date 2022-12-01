@@ -67,5 +67,11 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "specific-access-legal-ops" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "specific-access-judiciary" "$USER_TOKEN" "$SERVICE_TOKEN"
 
+./register-role.sh "ia_specific_access_admin_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "ia_specific_access_legal_ops_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "ia_specific_access_judge_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "ia_specific_access_ctsc_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+
+
 echo ""
 echo "Registering CCD Roles has completed"
