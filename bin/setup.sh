@@ -52,7 +52,7 @@ echo "Setting up Roles required for XUI..."
 ./create-role.sh "caseworker-sscs"
 ./create-role.sh "caseworker-sscs-dwpresponsewriter"
 
-./ccd-add-access-profile.sh "ia_specific-access-judiciary"
+./ccd-add-access-profile.sh "ia_specific_access_judge_profile"
 ./ccd-add-access-profile.sh "ia_specific_access_legal_ops_profile"
 ./ccd-add-access-profile.sh "ia_specific_access_admin_profile"
 ./ccd-add-access-profile.sh "GS_profile"
