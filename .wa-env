@@ -18,7 +18,11 @@ export WA_CASE_EVENT_HANDLER_URL=http://host.docker.internal:8088
 export WA_TASK_MONITOR_URL=http://host.docker.internal:8077
 export WA_CAMUNDA_NEXUS_PASSWORD=AAAAAAAAAAAAAAAA
 export WA_CAMUNDA_NEXUS_USER=ministry_of_justice_uk
-export ADDRESS_LOOKUP_TOKEN=AAAAAAAAAAAAAA
+
+
+if [[ -z "${ADDRESS_LOOKUP_TOKEN}" ]]; then
+  echo "ERROR: need to set ADDRESS_LOOKUP_TOKEN environment variable in profile"
+fi
 
 # Microsoft Insights Key
 export APPINSIGHTS_INSTRUMENTATIONKEY=SomeRandomStringForLocalDocker
