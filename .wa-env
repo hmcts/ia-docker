@@ -57,8 +57,8 @@ export S2S_SECRET=AAAAAAAAAAAAAAAC
 
 #IA FEATURES (not needed for our local development)
 export IA_CASE_URL=http://host.docker.internal:8090
-export IA_DOCMOSIS_ENABLED=false
-export IA_EM_STITCHING_ENABLED=false
+export IA_DOCMOSIS_ENABLED=true
+export IA_EM_STITCHING_ENABLED=true
 export IA_SUBMIT_HEARING_REQUIREMENTS_ENABLED=false
 export IA_TIMED_EVENT_SERVICE_ENABLED=false
 export IA_FEEPAYMENT_ENABLED=false
@@ -85,9 +85,10 @@ export LAUNCH_DARKLY_ACCESS_TOKEN=replace_me
 export DOCMOSIS_ACCESS_KEY=replace_me
 export DOCMOSIS_ENDPOINT=http://localhost:5544
 export DOCMOSIS_SITE="Free Trial Tornado"
-export DOCMOSIS_RENDER_URL=/api/render
-export DOCMOSIS_STATUS_URL=/api/status
-export DOCMOSIS_CONVERT_URL=/api/convert
+
+#EM settings for Docmosis
+export EM_DOCMOSIS_CONVERT_ENDPOINT=https://docmosis.aat.platform.hmcts.net/rs/convert
+export EM_DOCMOSIS_RENDER_ENDPOINT=https://docmosis.aat.platform.hmcts.net/rs/render
 
 #WA Users
 export WA_SYSTEM_USERNAME=wa-system-user@fake.hmcts.net
