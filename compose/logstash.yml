@@ -1,0 +1,26 @@
+version: '2.4'
+services:
+
+  ccd-logstash:
+    image: "logstash:7.16.3"
+    container_name: ccd-logstash
+    environment:
+      - XPACK_MONITORING_ENABLED=false
+      - DATA_STORE_URL=jdbc:postgresql://ccd-shared-database-v11:5432/ccd_data?stringtype=unspecified&ssl=false
+      - DATA_STORE_USER=ccd
+      - DATA_STORE_PASS=ccd
+      - ES_HOSTS=http://ccd-elasticsearch:9200
+    volumes:
+      - ${PWD}/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ${PWD}/logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - ${PWD}/logstash/pipeline/01_input.conf:/usr/share/logstash/pipeline/01_input.conf
+      - ${PWD}/logstash/pipeline/02_filter.conf:/usr/share/logstash/pipeline/02_filter.conf
+      - ${PWD}/logstash/pipeline/03_output.conf:/usr/share/logstash/pipeline/03_output.conf
+      - ${PWD}/logstash/pipeline/dead_letter_indexing_pipeline.conf:/usr/share/logstash/pipeline/dead_letter_indexing_pipeline.conf
+      - ${PWD}/logstash/lib/postgresql-42.2.18.jar:/usr/share/logstash/ccd/postgresql.jar
+    networks:
+      - compose_default
+    depends_on:
+      - ccd-shared-database-v11
+      - ccd-elasticsearch
+

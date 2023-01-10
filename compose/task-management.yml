@@ -13,6 +13,8 @@ services:
       CCD_CASE_EVENTS_DESTINATION: "${AZURE_SERVICE_BUS_TOPIC_NAME}"
     ports:
       - 4456:4456
+    depends_on:
+      - ccd-shared-database-v11
 
   camunda-bpm:
     image: "hmctsprivate.azurecr.io/camunda/bpm:latest"
