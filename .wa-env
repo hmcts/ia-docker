@@ -23,6 +23,9 @@ export WA_CAMUNDA_NEXUS_USER=ministry_of_justice_uk
 if [[ -z "${ADDRESS_LOOKUP_TOKEN}" ]]; then
   echo "ERROR: need to set ADDRESS_LOOKUP_TOKEN environment variable in profile"
 fi
+if [[ -z "${DOCMOSIS_ACCESS_KEY}" ]]; then
+  echo "ERROR: need to set DOCMOSIS_ACCESS_KEY environment variable in profile"
+fi
 
 # Microsoft Insights Key
 export APPINSIGHTS_INSTRUMENTATIONKEY=SomeRandomStringForLocalDocker
@@ -82,11 +85,10 @@ export AZURE_SERVICE_BUS_FEATURE_TOGGLE=true
 export WA_DLQ_PROCESS_ENABLED=true
 export AZURE_SERVICE_BUS_MESSAGE_AUTHOR=replace_me
 export LAUNCH_DARKLY_ACCESS_TOKEN=replace_me
-export DOCMOSIS_ACCESS_KEY=replace_me
-export DOCMOSIS_ENDPOINT=http://localhost:5544
 export DOCMOSIS_SITE="Free Trial Tornado"
 
 #EM settings for Docmosis
+export DOCMOSIS_ENDPOINT=https://docmosis.aat.platform.hmcts.net
 export EM_DOCMOSIS_CONVERT_ENDPOINT=https://docmosis.aat.platform.hmcts.net/rs/convert
 export EM_DOCMOSIS_RENDER_ENDPOINT=https://docmosis.aat.platform.hmcts.net/rs/render
 
