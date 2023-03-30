@@ -143,6 +143,7 @@ services:
       CAMUNDA_URL: http://camunda-bpm:8999/engine-rest
       CCD_URL: http://ccd-data-store-api:4452
       TASK_MANAGEMENT_SERVICE_URL: http://wa-task-management-api:8087
+      WA_TASK_MANAGEMENT_API_URL: http://wa-task-management-api:8087
       CASE_EVENT_HANDLER_SERVICE_URL: http://wa-case-event-handler:8088
       CCD_SEARCH_URL: http://ccd-elasticsearch:9200
       CONFIGURATION_CAMUNDA_MAX_RESULTS: 100
