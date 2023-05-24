@@ -54,7 +54,10 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "caseworker-wa-task-officer" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "GS_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
-./register-role.sh "caseflags_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "ia_caseflags_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "ia_caseflags_readonly_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "ia_caselinks_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+
 ./register-role.sh "caseworker_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker_admin_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "hmcts-staff" "$USER_TOKEN" "$SERVICE_TOKEN"
