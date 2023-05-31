@@ -7,6 +7,7 @@ USER_TOKEN="$(sh ./idam-user-token.sh)"
 SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 
 ./register-role.sh "caseworker-ia-caseofficer" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "caseworker-ia-bails" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker-ia-judiciary" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker-ia-legalrep-solicitor" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "caseworker-ia-system" "$USER_TOKEN" "$SERVICE_TOKEN"
@@ -55,6 +56,7 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 
 ./register-role.sh "GS_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "ia_caseflags_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "ia_bail_caseflags_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "ia_caseflags_readonly_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "ia_caselinks_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 
@@ -75,6 +77,7 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "ia_specific_access_judge_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 ./register-role.sh "ia_specific_access_ctsc_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 
+./register-role.sh "caseworker-ia-homeofficebail" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 echo ""
 echo "Registering CCD Roles has completed"
