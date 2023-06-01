@@ -1,11 +1,11 @@
 #Azure Service Bus Environment Variables: env_variables_azure.txt
-export HMC_SERVICE_BUS_INBOUND_CONNECTION_STRING="Endpoint=sb://hmc-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=<replace_me>"
-export HMC_SERVICE_BUS_INBOUND_QUEUE="<replace_me>"
-export HMC_SERVICE_BUS_OUTBOUND_CONNECTION_STRING="Endpoint=sb://hmc-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=<replace_me>"
-export HMC_SERVICE_BUS_OUTBOUND_QUEUE="<replace_me>"
-export HMC_SERVICE_BUS_CONNECTION_STRING="Endpoint=sb://hmc-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=<replace_me>"
-export HMC_SERVICE_BUS_TOPIC="<replace_me>"
-export HMC_SERVICE_BUS_SUBSCRIPTION="<replace_me>"
+export HMC_SERVICE_BUS_INBOUND_CONNECTION_STRING="Endpoint=sb://hmc-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=L8UbL82q7brDYKfeE9lgbkSsH++nAckjA+ASbIjvI+I="
+export HMC_SERVICE_BUS_INBOUND_QUEUE="ia-hmc-inbound-queue"
+export HMC_SERVICE_BUS_OUTBOUND_CONNECTION_STRING="Endpoint=sb://hmc-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=lhOHsF2iNR3r3eTT42/p8KbUafWPk33cL+ASbGzBOrw="
+export HMC_SERVICE_BUS_OUTBOUND_QUEUE="ia-hmc-outbound-queue"
+export HMC_SERVICE_BUS_CONNECTION_STRING="Endpoint=sb://hmc-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=8P/Eb6v3aDskMkML3Svf74y6FayN9syzJ+ASbPfu2j8="
+export HMC_SERVICE_BUS_TOPIC="ia-hmc-topic"
+export HMC_SERVICE_BUS_SUBSCRIPTION="ia-hmc-subscription"
 #
 #
 #HMI/LA Connection details: env_variables_hmi
