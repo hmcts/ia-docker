@@ -90,6 +90,7 @@ services:
       S2S_URL: http://service-auth-provider-api:8080
       CFT_HEARING_SERVICE_S2S_AUTHORISED_SERVICES: "xui_webapp,hmc_hmi_inbound_adapter,iac"
       HMC_ACCESS_CONTROL_ENABLED: "${HMC_ACCESS_CONTROL_ENABLED}"
+      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
       #HMI/LA connection details
       FH_BASE_URL: "${FH_BASE_URL}"
       FH_GET_TOKEN_URL: "oauth2/v2.0/token"

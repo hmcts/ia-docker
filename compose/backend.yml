@@ -229,7 +229,7 @@ services:
       LD_SDK_KEY:
       ROLE_ASSIGNMENT_IDAM_KEY:
       ROLE_ASSIGNMENT_TOKEN_SECRET:
-      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data,iac,wa_task_monitor,wa_case_event_handler,hmc-cft-hearing-service
+      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data,iac,wa_task_monitor,wa_case_event_handler,hmc_cft_hearing_service
       IDAM_USER_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}"
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       OPEN_ID_API_BASE_URI: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}/o"

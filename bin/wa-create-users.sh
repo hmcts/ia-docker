@@ -6,6 +6,9 @@ echo "Setting up required Users..."
 ./create-user.sh "ccd-import@fake.hmcts.net" "CCD" "Import" "London01" "ccd-import" "[{\"code\":\"ccd-import\"}]"
 ./create-user.sh "${IA_SYSTEM_USERNAME}" "System" "user" "${IA_SYSTEM_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-system\"}]"
 ./create-user.sh "${CCD_SYSTEM_USERNAME}" "${USER_PREFIX}CCD System" "user" "${CCD_SYSTEM_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}]"
+./organisational-role-assignment.sh "${IA_SYSTEM_USERNAME}" "${IA_SYSTEM_USERNAME}" "PUBLIC" "case-allocator" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment.sh "${IA_SYSTEM_USERNAME}" "${IA_SYSTEM_USERNAME}" "PUBLIC" "hearing-manager" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment.sh "${IA_SYSTEM_USERNAME}" "${IA_SYSTEM_USERNAME}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 
 echo "Setting up WA test accounts"
 ./create-user.sh "${TEST_WA_CASEOFFICER_A_USERNAME}" "CaseOfficer" "TestPurposes A" "${TEST_WA_CASEOFFICER_A_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-caseofficer\"}]"
