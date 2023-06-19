@@ -77,6 +77,10 @@ services:
       APPINSIGHTS_INSTRUMENTATIONKEY: key
       IDAM_OIDC_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}"
       IDAM_API_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}"
+      S2S_URL: http://service-auth-provider-api:8080
+      CFT_HEARING_SERVICE_S2S_AUTHORISED_SERVICES: "xui_webapp,hmc_hmi_inbound_adapter,iac"
+      HMC_ACCESS_CONTROL_ENABLED: "${HMC_ACCESS_CONTROL_ENABLED}"
+      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
       #inbound queue
       HMC_QUEUE_CONNECTION_STRING: "${HMC_SERVICE_BUS_INBOUND_CONNECTION_STRING}"
       HMC_SERVICE_BUS_QUEUE: "${HMC_SERVICE_BUS_INBOUND_QUEUE}"
@@ -87,10 +91,6 @@ services:
       HMC_SERVICE_BUS_CONNECTION_STRING: "${HMC_SERVICE_BUS_CONNECTION_STRING}"
       HMC_SERVICE_BUS_TOPIC: "${HMC_SERVICE_BUS_TOPIC}"
       HMC_SERVICE_BUS_SUBSCRIPTION: "${HMC_SERVICE_BUS_SUBSCRIPTION}"
-      S2S_URL: http://service-auth-provider-api:8080
-      CFT_HEARING_SERVICE_S2S_AUTHORISED_SERVICES: "xui_webapp,hmc_hmi_inbound_adapter,iac"
-      HMC_ACCESS_CONTROL_ENABLED: "${HMC_ACCESS_CONTROL_ENABLED}"
-      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
       #HMI/LA connection details
       FH_BASE_URL: "${FH_BASE_URL}"
       FH_GET_TOKEN_URL: "oauth2/v2.0/token"
