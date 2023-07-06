@@ -12,6 +12,7 @@ echo ""
 echo "Setup Wiremock responses for Professional Reference Data based on existing Idam users..."
 ./wiremock.sh
 ./wiremock-languages.sh
+./wiremock-hearing-channel.sh
 
 echo "Deploying camunda bpmn and dmn"
 ./camunda-deployment.sh
