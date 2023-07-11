@@ -11,6 +11,7 @@ export CCD_URL=http://ccd-data-store-api:4452
 echo ""
 echo "Setup Wiremock responses for Professional Reference Data based on existing Idam users..."
 ./wiremock.sh
+./wiremock-caseflags.sh
 ./wiremock-languages.sh
 
 echo "Deploying camunda bpmn and dmn"
