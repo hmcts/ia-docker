@@ -7,6 +7,8 @@ export OPEN_ID_IDAM_URL=http://sidam-simulator:5000
 export IDAM_USER_URL=http://localhost:5000
 export POSTGRES_PASSWORD=ccd
 export POSTGRES_USERNAME=ccd
+export POSTGRES_ADMIN_PASSWORD=postgres
+export POSTGRES_ADMIN_USERNAME=postgres
 export DB_USERNAME=ccd
 export DB_PASSWORD=ccd
 export CCD_SYSTEM_USERNAME=ccd-system-user@fake.hmcts.net
@@ -63,7 +65,7 @@ export IA_CASE_URL=http://host.docker.internal:8090
 export IA_DOCMOSIS_ENABLED=true
 export IA_EM_STITCHING_ENABLED=true
 export IA_SUBMIT_HEARING_REQUIREMENTS_ENABLED=false
-export IA_TIMED_EVENT_SERVICE_ENABLED=false
+export IA_TIMED_EVENT_SERVICE_ENABLED=true
 export IA_FEEPAYMENT_ENABLED=false
 export IS_SAVE_AND_CONTINUE_ENABLED=false
 export IA_HOME_OFFICE_INTEGRATION_ENABLED=false
@@ -75,16 +77,20 @@ export IA_UPPER_TRIBUNAL_NOTICES_EMAIL=upper-tribunal-notices@example.com
 export IA_BAIL_GOV_NOTIFY_KEY=OOOOOOOOOOOOOOOO
 
 # ASB related variables
-export AZURE_SERVICE_BUS_CONNECTION_STRING=replace_me
-export AZURE_SERVICE_BUS_TOPIC_NAME=replace_me
+export AZURE_SERVICE_BUS_TOPIC_NAME=servicecallbacktopic
 
-export AZURE_SERVICE_BUS_SUBSCRIPTION_NAME=replace_me
-export AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME=replace_me
+if [[ -z "${AZURE_SERVICE_BUS_CONNECTION_STRING}" ]]; then
+  echo "ERROR: need to set AZURE_SERVICE_BUS_CONNECTION_STRING environment variable in profile"
+  echo "Use the Primary Connection String for below from https://portal.azure.com/#@HMCTS.NET/resource/subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourceGroups/ia-case-payments-api-demo/providers/Microsoft.ServiceBus/namespaces/ia-servicebus-demo/topics/servicecallbacktopic/saskey"
+fi
+
+export AZURE_SERVICE_BUS_SUBSCRIPTION_NAME=thomasc_local
+export AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME=thomasc_local
 
 export AZURE_SERVICE_BUS_FEATURE_TOGGLE=true
 export WA_DLQ_PROCESS_ENABLED=true
-export AZURE_SERVICE_BUS_MESSAGE_AUTHOR=replace_me
-export LAUNCH_DARKLY_ACCESS_TOKEN=replace_me
+export AZURE_SERVICE_BUS_MESSAGE_AUTHOR=thomas
+export LAUNCH_DARKLY_ACCESS_TOKEN=replace_me5
 export DOCMOSIS_SITE="Free Trial Tornado"
 
 #EM settings for Docmosis
@@ -158,20 +164,30 @@ export TEST_LAW_FIRM_SHARE_CASE_A_USERNAME=ia-law-firm-a-sc@fake.hmcts.net
 export TEST_LAW_FIRM_SHARE_CASE_A_PASSWORD=London03
 export TEST_LAW_FIRM_SHARE_CASE_B_USERNAME=ia-law-firm-b-sc@fake.hmcts.net
 export TEST_LAW_FIRM_SHARE_CASE_B_PASSWORD=London03
-
 export TEST_LAW_FIRM_SHARE_CASE_ORG2_USERNAME=ia-law-firm-org2-sc@fake2.hmcts.net
 export TEST_LAW_FIRM_SHARE_CASE_ORG2_PASSWORD=London03
 export TEST_LAW_FIRM_SHARE_CASE_C_USERNAME=ia-law-firm-c-sc@fake2.hmcts.net
 export TEST_LAW_FIRM_SHARE_CASE_C_PASSWORD=London03
 export TEST_LAW_FIRM_SHARE_CASE_D_USERNAME=ia-law-firm-d-sc@fake2.hmcts.net
 export TEST_LAW_FIRM_SHARE_CASE_D_PASSWORD=London03
-
 export TEST_JUDGE_X_USERNAME=ia.iacjudge.ccd@fake.hmcts.net
 export TEST_JUDGE_X_PASSWORD=London20
+export TEST_LAW_FIRM_ORG_SUCCESS_USERNAME=ia-law-firm-success@fake.hmcts.net
+export TEST_LAW_FIRM_ORG_SUCCESS_PASSWORD=London08
+export TEST_LAW_FIRM_ORG_DELETED_USERNAME=ia-law-firm-deleted@fake.hmcts.net
+export TEST_LAW_FIRM_ORG_DELETED_PASSWORD=London09
 
-export WA_TASK_DMNS_BPMNS_PATH="your path to DMNs repo"
-export WA_BPMNS_DMNS_PATH="your path to wa-standalone-task-bpmn repo"
-export IA_TASK_DMNS_BPMNS_PATH="your path to ia-task-configuration repo"
+if [[ -z "${WA_TASK_DMNS_BPMNS_PATH}" ]]; then
+  echo "ERROR: need to set WA_TASK_DMNS_BPMNS_PATH environment variable in profile"
+  echo "This is your wa-task-configuration-template repo path"
+fi
 
+if [[ -z "${WA_BPMNS_DMNS_PATH}" ]]; then
+  echo "ERROR: need to set WA_BPMNS_DMNS_PATH environment variable in profile"
+  echo "This is your wa-standalone-task-bpmn repo path"
+fi
 
-
+if [[ -z "${IA_TASK_DMNS_BPMNS_PATH}" ]]; then
+  echo "ERROR: need to set IA_TASK_DMNS_BPMNS_PATH environment variable in profile"
+  echo "This is your ia-task-configuration repo path)"
+fi

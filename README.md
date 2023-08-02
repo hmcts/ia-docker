@@ -553,13 +553,13 @@ and finally, Login to the Azure Container registry:
   * IA_TASK_DMNS_BPMNS_PATH
   * LAUNCH_DARKLY_ACCESS_TOKEN
   * LAUNCH_DARKLY_SDK_KEY
-  * AZURE_SERVICE_BUS_CONNECTION_STRING
+  * AZURE_SERVICE_BUS_CONNECTION_STRING - Get Primary Connection String from https://portal.azure.com/#@HMCTS.NET/resource/subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourceGroups/ia-case-payments-api-demo/providers/Microsoft.ServiceBus/namespaces/ia-servicebus-demo/topics/servicecallbacktopic/saskey
   * AZURE_SERVICE_BUS_TOPIC_NAME
-  * AZURE_SERVICE_BUS_SUBSCRIPTION_NAME
-  * AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME
+  * AZURE_SERVICE_BUS_SUBSCRIPTION_NAME - Obtained from https://portal.azure.com/#@HMCTS.NET/resource/subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourceGroups/ia-case-payments-api-demo/providers/Microsoft.ServiceBus/namespaces/ia-servicebus-demo/topics/servicecallbacktopic/subscriptions
+  * AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME - Same as above
   * AZURE_SERVICE_BUS_FEATURE_TOGGLE
   * WA_DLQ_PROCESS_ENABLED
-  * AZURE_SERVICE_BUS_MESSAGE_AUTHOR
+  * AZURE_SERVICE_BUS_MESSAGE_AUTHOR - Obtained from author of AZURE_SERVICE_BUS_SUBSCRIPTION_NAME
     
 ### Create a static ip for callbacks
 
