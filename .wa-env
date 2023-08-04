@@ -176,4 +176,7 @@ export WA_BPMNS_DMNS_PATH="your path to wa-standalone-task-bpmn repo"
 export IA_TASK_DMNS_BPMNS_PATH="your path to ia-task-configuration repo"
 
 
-
+export TEST_LAW_FIRM_ORG_SUCCESS_USERNAME=ia-law-firm-success@fake.hmcts.net
+export TEST_LAW_FIRM_ORG_SUCCESS_PASSWORD=London08
+export TEST_LAW_FIRM_ORG_DELETED_USERNAME=ia-law-firm-deleted@fake.hmcts.net
+export TEST_LAW_FIRM_ORG_DELETED_PASSWORD=London09
