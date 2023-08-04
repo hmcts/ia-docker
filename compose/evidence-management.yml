@@ -42,7 +42,7 @@ services:
     # it is needed to generate bundle cover page - there is an issue with VPN dns settings and docker environment
     # ping docmosis.aat.platform.hmcts.net to get latest IP if there is a change
     extra_hosts:
-      - "docmosis.aat.platform.hmcts.net:10.10.161.121"
+      - "docmosis.aat.platform.hmcts.net:10.10.161.100"
 
   stitching-db:
     image: postgres:11.5

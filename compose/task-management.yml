@@ -80,6 +80,8 @@ services:
       OPEN_ID_IDAM_URL: http://sidam-simulator:5000
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
       POSTGRES_PORT: 5432
+      POSTGRES_USERNAME: "${POSTGRES_ADMIN_USERNAME}"
+      POSTGRES_PASSWORD: "${POSTGRES_ADMIN_PASSWORD}"
       POSTGRES_NAME: cft_task_db
       ALLOWED_JURISDICTIONS: wa,ia,sscs,civil
       ALLOWED_CASE_TYPES: asylum,wacasetype,sscs,civil
