@@ -51,6 +51,9 @@ services:
 
       JURISDICTIONS: IA
 
+      SERVICES_HEARINGS_COMPONENT_API_IAC: http://host.docker.internal:8100/asylum
+      SERVICES_HMC_HEARINGS_COMPONENT_API: http://localhost:4561
+
     ports:
       - 3002:3000
     links:
