@@ -81,5 +81,9 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 
 ./register-role.sh "ia_caselinks_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 
+./register-role.sh "hearing-manager" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "hearing-viewer" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "listed-hearing-viewer" "$USER_TOKEN" "$SERVICE_TOKEN"
+
 echo ""
 echo "Registering CCD Roles has completed"
