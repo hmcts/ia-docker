@@ -71,6 +71,7 @@ services:
       CFT_HEARING_SERVICE_DB_HOST: ccd-shared-database-v11
       CFT_HEARING_SERVICE_DB_PORT: 5432
       CFT_HEARING_SERVICE_DB_NAME: hmc_cft_hearing_service
+      CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api:4452
       SERVER_PORT: 4561
       REFORM_SERVICE_NAME: hmc-cft-hearing-service
       REFORM_ENVIRONMENT: local

@@ -1,24 +1,32 @@
 #!/usr/bin/env bash
 
-# Setup Wiremock responses for Reference Data
+# Setup Wiremock responses for Hearing Types
 
 curl -X POST \
 --data '{
     "request": {
         "method": "GET",
-        "urlPath": "/refdata/commondata/lov/categories/HearingChannel"
+        "urlPath": "/refdata/commondata/lov/categories/HearingType",
+        "queryParameters": {
+            "serviceId": {
+                "equalTo": "BFA1"
+            },
+            "isChildRequired": {
+                "equalTo": "N"
+            }
+        }
     },
     "response": {
-        "status": 200,
+        "status": 200,  
         "headers": {
           "Content-Type": "application/json"
         },
         "jsonBody": {
     "list_of_values": [
         {
-            "category_key": "HearingChannel",
-            "key": "INTER",
-            "value_en": "In Person",
+            "category_key": "HearingType",
+            "key": "BFA1-CMR",
+            "value_en": "Case Management Review",
             "value_cy": "",
             "hint_text_en": "",
             "hint_text_cy": "",
@@ -29,9 +37,9 @@ curl -X POST \
             "child_nodes": null
         },
         {
-            "category_key": "HearingChannel",
-            "key": "TEL",
-            "value_en": "Telephone",
+            "category_key": "HearingType",
+            "key": "BFA1-COS",
+            "value_en": "Costs",
             "value_cy": "",
             "hint_text_en": "",
             "hint_text_cy": "",
@@ -42,9 +50,9 @@ curl -X POST \
             "child_nodes": null
         },
         {
-            "category_key": "HearingChannel",
-            "key": "VID",
-            "value_en": "Video",
+            "category_key": "HearingType",
+            "key": "BFA1-BAI",
+            "value_en": "Bail",
             "value_cy": "",
             "hint_text_en": "",
             "hint_text_cy": "",
@@ -55,9 +63,9 @@ curl -X POST \
             "child_nodes": null
         },
         {
-            "category_key": "HearingChannel",
-            "key": "NA",
-            "value_en": "Not in Attendance",
+            "category_key": "HearingType",
+            "key": "BFA1-SUB",
+            "value_en": "Substantive",
             "value_cy": "",
             "hint_text_en": "",
             "hint_text_cy": "",
@@ -65,23 +73,10 @@ curl -X POST \
             "parent_category": "",
             "parent_key": "",
             "active_flag": "Y",
-            "child_nodes": null
-        },
-        {
-            "category_key": "HearingChannel",
-            "key": "ONPPRS",
-            "value_en": "On the Papers",
-            "value_cy": "",
-            "hint_text_en": "",
-            "hint_text_cy": "",
-            "lov_order": null,
-            "parent_category": "",
-            "parent_key": "",
-            "active_flag": "D",
             "child_nodes": null
         }
     ]
 }
     }
 }' \
-  http://localhost:8991/__admin/mappings/new
+http://localhost:8991/__admin/mappings/new
