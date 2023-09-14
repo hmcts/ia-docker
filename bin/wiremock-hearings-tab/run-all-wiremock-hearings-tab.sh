@@ -4,11 +4,11 @@
 ./wiremock-change-reasons.sh
 ./wiremock-court-venues.sh
 ./wiremock-facilities.sh
-./wiremock-getLocationById-hatton-cross.sh
+./wiremock-getLocationById.sh
 ./wiremock-hearing-channels.sh
 ./wiremock-hearing-priority.sh
 ./wiremock-hearing-subchannels.sh
 ./wiremock-hearing-types.sh
 ./wiremock-judgetype.sh
-./wiremock-lookup-hatton-cross.sh
+./wiremock-location-lookup.sh
 ./wiremock-panelmembertype.sh
