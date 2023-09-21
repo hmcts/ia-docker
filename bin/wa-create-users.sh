@@ -99,3 +99,5 @@ echo "Setting up IA Users..."
 ./create-user.sh "caa-caseworker@fake.hmcts.net" "${USER_PREFIX}CAA-System" "user" "London21" "caseworker" "[{ \"code\": \"caseworker-caa\"}]"
 ./create-user.sh "approver-caseworker@fake.hmcts.net" "${USER_PREFIX}Approver-System" "user" "London22" "caseworker" "[{ \"code\": \"caseworker-approver\"}, { \"code\": \"prd-aac-system\"}]"
 ./create-user.sh "approver-noc@fake.com" "${USER_PREFIX}Approver-NoC" "user" "Pa55word11" "caseworker" "[{ \"code\": \"caseworker-approver\"}, { \"code\": \"prd-aac-system\"}]"
+
+./organisational-role-assignment.sh "${TEST_CASEOFFICER_USERNAME}" "${TEST_CASEOFFICER_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
