@@ -12,3 +12,4 @@
 ./wiremock-hearings-tab/wiremock-judgetype.sh
 ./wiremock-hearings-tab/wiremock-location-lookup.sh
 ./wiremock-hearings-tab/wiremock-panelmembertype.sh
+./wiremock-hearings-tab/wiremock-hearing-case-management-cancellation-reasons.sh
