@@ -139,7 +139,7 @@ curl -o /dev/null -s -w "wiremock location lookup: %{http_code}\n" POST \--data 
     "urlPath": "/refdata/location/court-venues/venue-search",
     "queryParameters": {
         "search-string": {
-            "equalTo": "Newcastle Civil & Family Courts and Tribunals Centre"
+            "equalTo": "Newcastle Civil Family Courts and Tribunals Centre"
         },
         "court-type-id": {
             "equalTo": "23"
@@ -271,7 +271,7 @@ curl -o /dev/null -s -w "wiremock location lookup: %{http_code}\n" POST \--data 
     "urlPath": "/refdata/location/court-venues/venue-search",
     "queryParameters": {
         "search-string": {
-            "equalTo": "Nottingham Magistrates'\'' Court"
+            "equalTo": "Nottingham Magistrates'\'' Court /Nottingham Justice Centre"
         },
         "court-type-id": {
             "equalTo": "23"
@@ -459,7 +459,7 @@ curl -o /dev/null -s -w "wiremock location lookup: %{http_code}\n" POST \--data 
       "headers": {
         "Content-Type": "application/json"
       },
-      "jsonBody": []
+      "jsonBody": [{"court_venue_id":"25849","epimms_id":"999972","site_name":"Stirling Sheriff Court","region_id":"10","region":"Northern Ireland","court_type":"Immigration and Asylum Tribunal","court_type_id":"23","cluster_id":null,"cluster_name":null,"open_for_public":"YES","court_address":"45 Donegall Quay","postcode":"BT1 3LL","phone_number":"","closed_date":null,"court_location_code":"","dx_address":"","welsh_site_name":"","welsh_court_address":"","court_status":"Open","court_open_date":null,"court_name":"Stirling Sheriff Court","venue_name":"Belfast LC","is_case_management_location":"N","is_hearing_location":"Y","welsh_venue_name":"","is_temporary_location":"N","is_nightingale_court":"N","location_type":"COURT","parent_location":"366559","welsh_court_name":"","uprn":"","venue_ou_code":"","mrd_building_location_id":"MRD-BLD-415","mrd_venue_id":"","service_url":"","fact_url":""}]
       }
   }' http://localhost:8991/__admin/mappings/new
 
