@@ -51,32 +51,6 @@ curl -X POST \
             "parent_key": "",
             "active_flag": "Y",
             "child_nodes": null
-        },
-        {
-            "category_key": "HearingPriority",
-            "key": "Urgent",
-            "value_en": "Urgent",
-            "value_cy": "Brys",
-            "hint_text_en": "",
-            "hint_text_cy": "",
-            "lov_order": null,
-            "parent_category": "",
-            "parent_key": "",
-            "active_flag": "Y",
-            "child_nodes": null
-        },
-        {
-            "category_key": "HearingPriority",
-            "key": "Standard",
-            "value_en": "Standard",
-            "value_cy": "Safonol",
-            "hint_text_en": "",
-            "hint_text_cy": "",
-            "lov_order": null,
-            "parent_category": "",
-            "parent_key": "",
-            "active_flag": "Y",
-            "child_nodes": null
         }
     ]
 }
