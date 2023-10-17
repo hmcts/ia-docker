@@ -30,7 +30,7 @@ curl -X POST \
     "list_of_values": [
         {
             "category_key": "ChangeReasons",
-            "key": "Differenthearingmoderequired",
+            "key": "hearing-type-change",
             "value_en": "Different hearing mode required",
             "value_cy": "",
             "hint_text_en": "",
@@ -43,7 +43,7 @@ curl -X POST \
         },
         {
             "category_key": "ChangeReasons",
-            "key": "Applicationforpostponementgranted",
+            "key": "postponement-granted",
             "value_en": "Application for postponement granted",
             "value_cy": "",
             "hint_text_en": "",
@@ -56,7 +56,7 @@ curl -X POST \
         },
         {
             "category_key": "ChangeReasons",
-            "key": "Nointerpreteravailableinrequiredlanguage",
+            "key": "no-interpreter-available",
             "value_en": "No interpreter available in required language",
             "value_cy": "",
             "hint_text_en": "",
@@ -69,7 +69,7 @@ curl -X POST \
         },
         {
             "category_key": "ChangeReasons",
-            "key": "Courtdisruption/closure",
+            "key": "court-closure",
             "value_en": "Court disruption/closure",
             "value_cy": "",
             "hint_text_en": "",
@@ -82,7 +82,7 @@ curl -X POST \
         },
         {
             "category_key": "ChangeReasons",
-            "key": "Changetohearing request/requirements",
+            "key": "requirements-change",
             "value_en": "Change to hearing request/requirements",
             "value_cy": "",
             "hint_text_en": "",
@@ -95,7 +95,7 @@ curl -X POST \
         },
         {
             "category_key": "ChangeReasons",
-            "key": "Changetointerpreterrequirements",
+            "key": "interpreter-change",
             "value_en": "Change to interpreter requirements",
             "value_cy": "",
             "hint_text_en": "",
@@ -108,7 +108,7 @@ curl -X POST \
         },
         {
             "category_key": "ChangeReasons",
-            "key": "HearingCentretransferdirected/granted",
+            "key": "hearing-centre-transfer",
             "value_en": "Hearing Centre transfer directed/granted",
             "value_cy": "",
             "hint_text_en": "",
@@ -121,7 +121,7 @@ curl -X POST \
         },
         {
             "category_key": "ChangeReasons",
-            "key": "Applicationtoexpeditegranted",
+            "key": "expedite-granted",
             "value_en": "Application to expedite granted",
             "value_cy": "",
             "hint_text_en": "",
@@ -134,7 +134,7 @@ curl -X POST \
         },
         {
             "category_key": "ChangeReasons",
-            "key": "Other",
+            "key": "other",
             "value_en": "Other",
             "value_cy": "",
             "hint_text_en": "",
