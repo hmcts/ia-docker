@@ -217,6 +217,19 @@ curl -X POST \
             "parent_key": "",
             "active_flag": "Y",
             "child_nodes": null
+        },
+        {
+            "category_key": "Facilities",
+            "key": "33",
+            "value_en": "IAC Type-C Conference Equipment",
+            "value_cy": "IAC Type-C Conference Equipment",
+            "hint_text_en": "",
+            "hint_text_cy": "",
+            "lov_order": null,
+            "parent_category": "",
+            "parent_key": "",
+            "active_flag": "Y",
+            "child_nodes": null
         }
     ]
 }
