@@ -75,6 +75,8 @@ SERVICE_TOKEN="$(sh ./idam-service-token.sh)"
 ./register-role.sh "caseworker-ia-homeofficebail" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 ./register-role.sh "ia_caselinks_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "ia_caseflags_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
+./register-role.sh "ia_caseflags_readonly_profile" "$USER_TOKEN" "$SERVICE_TOKEN"
 
 echo ""
 echo "Registering CCD Roles has completed"
