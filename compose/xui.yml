@@ -13,10 +13,10 @@ services:
       SERVICES_CCD_DATA_STORE_API: http://localhost:4452
       SERVICES_DOCUMENTS_API: http://dm-store:8080
       SERVICES_S2S: http://service-auth-provider-api:8080
-      SERVICES_IDAM_LOGIN_URL: http://localhost:3501
-      SERVICES_IDAM_API_URL: http://sidam-api:5000
+      SERVICES_IDAM_LOGIN_URL: http://sidam-simulator:5000
+      SERVICES_IDAM_API_URL: http://sidam-simulator:5000
       SERVICES_IDAM_OAUTH_CALLBACK_URL: /oauth2/callback
-      SERVICES_IDAM_ISS_URL: http://sidam-api:5000
+      SERVICES_IDAM_ISS_URL: http://sidam-simulator:5000
       SERVICES_IDAM_CLIENT_ID: ccd_gateway
       # Look to use  SERVICES_IDAM_CLIENT_ID: xui_webapp
       # at some point. Create client and point to this
@@ -28,20 +28,22 @@ services:
       REDISCLOUD_URL: http://dummyrediscloudurl
       SERVICES_ROLE_ASSIGNMENT_API: http://am-role-assignment-service:4096
       SERVICES_PAYMENT_RETURN_URL: http://localhost:3100
-
-      SERVICES_EM_ANNO_API: http://localhost:3453
+      SERVICES_WORK_ALLOCATION_TASK_API: http://wa-task-management-api:8087
+      SERVICES_EM_ANNO_API: http://ccd-api-gateway:3453
+      SERVICES_CASE_CASEWORKER_API: http://wiremock:8080
 
       FEATURE_REDIS_ENABLED: "false"
       FEATURE_APP_INSIGHTS_ENABLED: "false"
       FEATURE_SECURE_COOKIE_ENABLED: "false"
+      FEATURE_WORKALLOCATION_ENABLED: "false"
       APPINSIGHTS_INSTRUMENTATIONKEY: fake
 
       # S2S_SECRET: "${IDAM_KEY_CCD_GATEWAY}"
       S2S_SECRET: "AAAAAAAAAAAAAAAA"
       IDAM_SECRET: "${OAUTH2_CLIENT_CCD_GATEWAY}"
 
-      SYSTEM_USER_NAME: "dummy"
-      SYSTEM_USER_PASSWORD: "dummy"
+      SYSTEM_USER_NAME: "${WA_SYSTEM_USERNAME}"
+      SYSTEM_USER_PASSWORD: "${WA_SYSTEM_PASSWORD}"
 
       #real LAUNCH_DARKLY_CLIENT_ID must be set to enable share a case functionality
       LAUNCH_DARKLY_CLIENT_ID: "${EXUI_LAUNCH_DARKLY_CLIENT_ID}"
@@ -51,7 +53,7 @@ services:
     ports:
       - 3002:3000
     links:
-      - sidam-api
+      - sidam-simulator
       - ccd-data-store-api
       - ccd-api-gateway
       - dm-store
@@ -60,6 +62,6 @@ services:
       - wiremock
       - payments-api
     depends_on:
-      - sidam-api
+      - sidam-simulator
       - ccd-api-gateway
       - payments-api

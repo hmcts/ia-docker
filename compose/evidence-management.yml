@@ -17,8 +17,8 @@ services:
       SPRING_DATASOURCE_USERNAME: emstitch
       SPRING_DATASOURCE_PASSWORD: emstitch
       S2S_BASE_URI: http://service-auth-provider-api:8080
-      IDAM_API_BASE_URI: http://sidam-api:5000
-      OPEN_ID_API_BASE_URI: http://sidam-api:5000/o
+      IDAM_API_BASE_URI: http://sidam-simulator:5000
+      OPEN_ID_API_BASE_URI: http://sidam-simulator:5000/o
       ENABLE_LIQUIBASE: "true"
       APPINSIGHTS_INSTRUMENTATIONKEY: key
       DM_STORE_APP_URL: http://dm-store:8080
@@ -29,12 +29,12 @@ services:
       ROOT_LOGGING_LEVEL: WARN
       JAVA_TOOL_OPTIONS: -Xmx384m
     depends_on:
-      - sidam-api
+      - sidam-simulator
       - stitching-db
       - dm-store
     links:
       - service-auth-provider-api
-      - sidam-api
+      - sidam-simulator
       - stitching-db
       - dm-store
     ports:
@@ -51,15 +51,15 @@ services:
       - POSTGRES_DB=emstitch
       - POSTGRES_USER=emstitch
       - POSTGRES_PASSWORD=emstitch
-      
+
   rpa-em-ccd-orchestrator:
     image: hmctspublic.azurecr.io/em/ccdorc:latest
     restart: on-failure
     environment:
       SERVER_PORT: 8080
       CCD_DATA_API_URL: http://ccd-data-store-api:4452
-      IDAM_API_BASE_URI: http://sidam-api:5000
-      OPEN_ID_API_BASE_URI: http://sidam-api:5000/o
+      IDAM_API_BASE_URI: http://sidam-simulator:5000
+      OPEN_ID_API_BASE_URI: http://sidam-simulator:5000/o
       S2S_BASE_URI: http://service-auth-provider-api:8080
       EM_STITCHING_API_URL: http://stitching-api:4630
       CALLBACK_DOMAIN: rpa-em-ccd-orchestrator
@@ -76,10 +76,10 @@ services:
     ports:
       - 4623:8080
     depends_on:
-      - sidam-api
+      - sidam-simulator
       - stitching-api
     links:
       - service-auth-provider-api
-      - sidam-api
+      - sidam-simulator
       - stitching-api
       - ccd-data-store-api
