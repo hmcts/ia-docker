@@ -7,11 +7,6 @@ curl -X POST \
     "request": {
         "method": "GET",
         "urlPath": "/refdata/commondata/lov/categories/CaseManagementCancellationReasons",
-        "headers": {
-              "Accept": {
-                "contains": "application/json"
-              }
-        },
         "queryParameters": {
             "serviceId": {
                 "equalTo": "BFA1"
@@ -30,7 +25,7 @@ curl -X POST \
             "list_of_values": [
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "withdrawn",
+                    "key": "withdraw",
                     "value_en": "Withdrawn",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -56,7 +51,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "reasonableadjustmentnotmet",
+                    "key": "ra-not-met",
                     "value_en": "Reasonable adjustment not met",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -69,7 +64,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "expertevidenceincontention",
+                    "key": "evidence-contention",
                     "value_en": "Expert evidence in contention",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -82,7 +77,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "applicationforpostponementgranted",
+                    "key": "postponement-granted",
                     "value_en": "Application for postponement granted",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -95,7 +90,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "nojudgeavailable/nonattendance",
+                    "key": "joh-not-attend",
                     "value_en": "No judge available/non attendance",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -108,7 +103,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "courtdisruption/closure",
+                    "key": "court-closure",
                     "value_en": "Court disruption/closure",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -121,7 +116,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "publichealthemergency",
+                    "key": "public-health",
                     "value_en": "Public health emergency",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -134,7 +129,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "expertevidencerequired",
+                    "key": "evidence-required",
                     "value_en": "Expert evidence required",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -147,7 +142,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "newissueraised",
+                    "key": "new-issue",
                     "value_en": "New issue raised",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -160,7 +155,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "appellanttransferredtoadifferentdetentionfacility",
+                    "key": "detention-facility-transfer",
                     "value_en": "Appellant transferred to a different detention facility",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -173,7 +168,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "appealabandoned",
+                    "key": "abandoned",
                     "value_en": "Appeal abandoned",
                     "value_cy": "",
                     "hint_text_en": "",
@@ -186,7 +181,7 @@ curl -X POST \
                 },
                 {
                     "category_key": "CaseManagementCancellationReasons",
-                    "key": "novalidappeal",
+                    "key": "no-valid-appeal",
                     "value_en": "No valid appeal",
                     "value_cy": "",
                     "hint_text_en": "",
