@@ -20,47 +20,53 @@ curl -X POST \
         }
     },
     "response": {
-        "list_of_values": [
-            {
-                "category_key": "PanelMemberType",
-                "key": "84",
-                "value_en": "Tribunal Judge",
-                "value_cy": "",
-                "hint_text_en": "",
-                "hint_text_cy": "",
-                "lov_order": null,
-                "parent_category": "",
-                "parent_key": "",
-                "active_flag": "Y",
-                "child_nodes": null
-            },
-            {
-                "category_key": "PanelMemberType",
-                "key": "65",
-                "value_en": "President of Tribunal",
-                "value_cy": "",
-                "hint_text_en": "",
-                "hint_text_cy": "",
-                "lov_order": null,
-                "parent_category": "",
-                "parent_key": "",
-                "active_flag": "Y",
-                "child_nodes": null
-            },
-            {
-                "category_key": "PanelMemberType",
-                "key": "",
-                "value_en": "Resident Immigration Judge",
-                "value_cy": "",
-                "hint_text_en": "",
-                "hint_text_cy": "",
-                "lov_order": null,
-                "parent_category": "",
-                "parent_key": "",
-                "active_flag": "Y",
-                "child_nodes": null
-            }
-        ]
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+            "list_of_values": [
+                {
+                    "category_key": "PanelMemberType",
+                    "key": "84",
+                    "value_en": "Tribunal Judge",
+                    "value_cy": "",
+                    "hint_text_en": "",
+                    "hint_text_cy": "",
+                    "lov_order": null,
+                    "parent_category": "",
+                    "parent_key": "",
+                    "active_flag": "Y",
+                    "child_nodes": null
+                },
+                {
+                    "category_key": "PanelMemberType",
+                    "key": "65",
+                    "value_en": "President of Tribunal",
+                    "value_cy": "",
+                    "hint_text_en": "",
+                    "hint_text_cy": "",
+                    "lov_order": null,
+                    "parent_category": "",
+                    "parent_key": "",
+                    "active_flag": "Y",
+                    "child_nodes": null
+                },
+                {
+                    "category_key": "PanelMemberType",
+                    "key": "",
+                    "value_en": "Resident Immigration Judge",
+                    "value_cy": "",
+                    "hint_text_en": "",
+                    "hint_text_cy": "",
+                    "lov_order": null,
+                    "parent_category": "",
+                    "parent_key": "",
+                    "active_flag": "Y",
+                    "child_nodes": null
+                }
+            ]
+        }
     }
 }' \
 http://localhost:8991/__admin/mappings/new
