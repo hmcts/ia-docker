@@ -7,7 +7,7 @@ curl -o /dev/null -s -w "wiremock list location: %{http_code}\n" POST \--data '{
         "method": "GET",
         "urlPath": "/refdata/location/court-venues/services",
         "queryParameters": {
-            "service-code": {
+            "service_code": {
                 "equalTo": "BFA1"
             }
         }
