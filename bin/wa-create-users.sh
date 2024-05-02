@@ -59,6 +59,12 @@ echo "Setting up CTSC Users..."
 ./organisational-role-assignment-ctsc.sh "${TEST_CTSC_ADMIN_USERNAME}" "${TEST_CTSC_ADMIN_PASSWORD}" "PUBLIC" "hearing-manager" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 ./organisational-role-assignment-ctsc.sh "${TEST_CTSC_ADMIN_USERNAME}" "${TEST_CTSC_ADMIN_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 
+echo "Setting up NBC Users..."
+./create-user.sh "${TEST_NBC_ADMIN_USERNAME}" "NBC" "Admin" "${TEST_NBC_ADMIN_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-admofficer\"}, { \"code\": \"payments\"}]"
+./organisational-role-assignment-nbc.sh "${TEST_NBC_ADMIN_USERNAME}" "${TEST_NBC_ADMIN_PASSWORD}" "PUBLIC" "national-business-centre" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment-nbc.sh "${TEST_NBC_ADMIN_USERNAME}" "${TEST_NBC_ADMIN_PASSWORD}" "PUBLIC" "hearing-manager" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment-nbc.sh "${TEST_NBC_ADMIN_USERNAME}" "${TEST_NBC_ADMIN_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+
 echo "Setting up IA Users..."
 ./create-user.sh "${TEST_CASEOFFICER_USERNAME}" "Case" "Officer" "${TEST_CASEOFFICER_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-caseofficer\"}, { \"code\": \"payments\"}]"
 ./organisational-role-assignment.sh "${TEST_CASEOFFICER_USERNAME}" "${TEST_CASEOFFICER_PASSWORD}" "PUBLIC" "case-allocator" '{"jurisdiction":"IA","primaryLocation":"765324"}'

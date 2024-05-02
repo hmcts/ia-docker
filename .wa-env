@@ -128,6 +128,9 @@ export TEST_WA_DLQ_PROCESS_PASSWORD=London05
 export TEST_CTSC_ADMIN_USERNAME=ia-ctsc-admin@fake.hmcts.net
 export TEST_CTSC_ADMIN_PASSWORD=London01
 
+export TEST_NBC_ADMIN_USERNAME=ia-nbc-admin@fake.hmcts.net
+export TEST_NBC_ADMIN_PASSWORD=London01
+
 export TEST_E2E_USE_PROXY=false
 export TEST_CASEOFFICER_USERNAME=ia-caseofficer@fake.hmcts.net
 export TEST_CASEOFFICER_PASSWORD=London01
