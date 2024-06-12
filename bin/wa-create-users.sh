@@ -96,6 +96,7 @@ echo "Setting up IA Users..."
 
 ./create-user.sh "${TEST_LAW_FIRM_ORG_SUCCESS_USERNAME}" "${IA_USER_PREFIX}PBA Success" "Legal Rep" "${TEST_LAW_FIRM_ORG_SUCCESS_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_ORG_DELETED_USERNAME}" "${IA_USER_PREFIX}PBA Deleted" "Legal Rep" "${TEST_LAW_FIRM_ORG_DELETED_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
+./create-user.sh "${TEST_LAW_FIRM_BAILS_USERNAME}" "${IA_USER_PREFIX}PBA Success" "Legal Rep" "${TEST_LAW_FIRM_BAILS_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-bails\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}]"
 
 ./create-user.sh "caa-caseworker@fake.hmcts.net" "${USER_PREFIX}CAA-System" "user" "London21" "caseworker" "[{ \"code\": \"caseworker-caa\"}]"
 ./create-user.sh "approver-caseworker@fake.hmcts.net" "${USER_PREFIX}Approver-System" "user" "London22" "caseworker" "[{ \"code\": \"caseworker-approver\"}, { \"code\": \"prd-aac-system\"}]"
