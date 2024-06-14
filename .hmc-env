@@ -1,0 +1,38 @@
+#Azure Service Bus Environment Variables(point to HMC demo env): env_variables_azure.txt
+export HMC_SERVICE_BUS_INBOUND_CONNECTION_STRING="Endpoint=sb://hmc-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=L8UbL82q7brDYKfeE9lgbkSsH++nAckjA+ASbIjvI+I="
+export HMC_SERVICE_BUS_INBOUND_QUEUE="ia-hmc-inbound-queue"
+export HMC_SERVICE_BUS_OUTBOUND_CONNECTION_STRING="Endpoint=sb://hmc-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=lhOHsF2iNR3r3eTT42/p8KbUafWPk33cL+ASbGzBOrw="
+export HMC_SERVICE_BUS_OUTBOUND_QUEUE="ia-hmc-outbound-queue"
+export HMC_SERVICE_BUS_CONNECTION_STRING="Endpoint=sb://hmc-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=8P/Eb6v3aDskMkML3Svf74y6FayN9syzJ+ASbPfu2j8="
+export HMC_SERVICE_BUS_TOPIC="ia-hmc-topic"
+export HMC_SERVICE_BUS_SUBSCRIPTION="ia-hmc-subscription"
+#
+#
+#HMI/LA Connection details(point to test env): env_variables_hmi
+export FH_BASE_URL="https://login.microsoftonline.com/531ff96d-0ae9-462a-8d2d-bec7c0b42082/"
+export CLIENT_ID="a12e8358-fbd8-4a98-84aa-a106161dfbd7"
+export CLIENT_SECRET="u9o7Q~NIGAgstnHYIkLp9z72ANBOP9JSBNPTr"
+export SCOPE="api://d49d7fa2-6904-4223-a907-3b8992af4190/.default"
+export HMI_BASE_URL="https://hmi-apim.staging.platform.hmcts.net/hmi"
+#
+#
+#Environment Variables: env_variables_all.txt
+export BEFTA_OAUTH2_ACCESS_TOKEN_TYPE_OF_XUIWEBAPP=OIDC
+export BEFTA_OAUTH2_CLIENT_ID_OF_XUIWEBAPP=xuiwebapp
+export BEFTA_OAUTH2_CLIENT_SECRET_OF_XUIWEBAPP=OOOOOOOOOOOOOOOO
+export BEFTA_OAUTH2_REDIRECT_URI_OF_XUIWEBAPP=http://localhost:3333/oauth2/callback
+export BEFTA_OAUTH2_SCOPE_VARIABLES_OF_XUIWEBAPP="profile openid roles"
+export BEFTA_S2S_CLIENT_ID_OF_XUI_WEBAPP=xui_webapp
+export BEFTA_S2S_CLIENT_SECRET_OF_XUI_WEBAPP=OOOOOOOOOOOOOOOO
+export BEFTA_S2S_CLIENT_ID_OF_CCD_DATA=ccd_data
+export BEFTA_S2S_CLIENT_SECRET_OF_CCD_DATA=AAAAAAAAAAAAAAAB
+export CCD_BEFTA_MASTER_SOLICITOR_4_PWD=Pa55word11
+export CCD_BEFTA_PUI_CAA_1_PWD=Pa55word11
+export CCD_BEFTA_SOLICITOR_4_PWD=Pa55word11
+export TEST_URL=http://localhost:4454
+#
+export BEFTA_IDAM_CAA_USERNAME=master.caa@gmail.com
+export BEFTA_IDAM_CAA_PASSWORD=Pa55word11
+#
+export WIREMOCK_STUB_SERVICE_NAME=http://localhost:8991
+export HMC_ACCESS_CONTROL_ENABLED=true

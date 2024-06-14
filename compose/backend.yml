@@ -85,7 +85,7 @@ services:
       DATA_STORE_DB_USE_SSL: "${DB_USE_SSL}"
       DATA_STORE_IDAM_KEY: "${IDAM_KEY_CCD_DATA_STORE}"
       DATA_STORE_TOKEN_SECRET: iuasbcuasdcbasdgcasdgcuysachjsacyasdgjcgasdj
-      DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac,em_stitching_api,em_gw,em_ccd_orchestrator,aac_manage_case_assignment,ccd_case_document_am_api,xui_webapp,am_role_assignment_service,wa_workflow_api,wa_task_management_api,wa_task_monitor,wa_case_event_handler
+      DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,fpl_case_service,ccd_data,ccd_ps,iac,em_stitching_api,em_gw,em_ccd_orchestrator,aac_manage_case_assignment,ccd_case_document_am_api,xui_webapp,am_role_assignment_service,wa_workflow_api,wa_task_management_api,wa_task_monitor,wa_case_event_handler,hmc_cft_hearing_service
       CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: ccd_gw,iac,ia,aac_manage_case_assignment,xui_webapp
       DEFINITION_STORE_HOST: http://ccd-definition-store-api:4451
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
@@ -182,6 +182,7 @@ services:
       MICROSERVICEKEYS_WA_CASE_EVENT_HANDLER: "AAAAAAAAAAAAAAAA"
       MICROSERVICEKEYS_WA_TASK_MONITOR: "AAAAAAAAAAAAAAAA"
       MICROSERVICEKEYS_CAMUNDA_BPM: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_HMC_CFT_HEARING_SERVICE: "AAAAAAAAAAAAAAAA"
       TESTING_SUPPORT_ENABLED: "true"
       JAVA_TOOL_OPTIONS: -Xmx384m
 
@@ -228,7 +229,7 @@ services:
       LD_SDK_KEY:
       ROLE_ASSIGNMENT_IDAM_KEY:
       ROLE_ASSIGNMENT_TOKEN_SECRET:
-      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data,iac,wa_task_monitor,wa_case_event_handler
+      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data,iac,wa_task_monitor,wa_case_event_handler,hmc_cft_hearing_service
       IDAM_USER_URL: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}"
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       OPEN_ID_API_BASE_URI: "${IDAM_STUB_SERVICE_NAME:-http://sidam-simulator:5000}/o"
