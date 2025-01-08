@@ -273,7 +273,7 @@ function usage() {
     echo "  update <project...> - update project overide to match upstream branch; and build"
     echo "  enable <project>|defaults|show - enable a compose file"
     echo "  disable <project> - disable a compose file"
-    echo "  compose [<docker-compose command> [options]] - wrap docker compose for your configuration"
+    echo "  compose [<docker compose command> [options]] - wrap docker compose for your configuration"
     echo
     exit 1
 }
@@ -329,8 +329,8 @@ function usage_disable() {
 
 function usage_compose() {
     if [ $# -eq 1 -a "$1" == "-h" ]; then
-        echo "Use docker-compose to run the configured overrides and enabled projects"
-        echo "Usage: $(basename $0) compose [<docker-compose command> [options]]"
+        echo "Use docker compose to run the configured overrides and enabled projects"
+        echo "Usage: $(basename $0) compose [<docker compose command> [options]]"
         echo
         exit 1
     fi
@@ -493,7 +493,7 @@ function ccd_compose() {
         source $TAGS_FILE
     fi
     compose_file_options=$(create_compose_file_options)
-    docker-compose $compose_file_options $options
+    docker compose $compose_file_options $options
 }
 
 function ccd_login() {
