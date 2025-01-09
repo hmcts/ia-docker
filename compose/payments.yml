@@ -14,7 +14,7 @@ services:
     environment:
       LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY_FEE_N_PAY_DEMO}"
       AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: http://service-auth-provider-api:8080
-      AUTH_IDAM_CLIENT_BASEURL: http://sidam-api:5000
+      AUTH_IDAM_CLIENT_BASEURL: http://sidam-simulator:5000
       AUTH_REF_DATA_BASEURL: http://wiremock:8080
       ASB_CONNECTION_STRING: "${AZURE_SERVICE_BUS_CONNECTION_STRING}"
       IDAM_S2S_AUTH_URL: http://service-auth-provider-api:8080
@@ -43,7 +43,7 @@ services:
       - payments-db
       - wiremock
     links:
-      - sidam-api
+      - sidam-simulator
       - wiremock
       - service-auth-provider-api
 
