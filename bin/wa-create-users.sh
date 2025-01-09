@@ -6,6 +6,10 @@ echo "Setting up required Users..."
 ./create-user.sh "ccd-import@fake.hmcts.net" "CCD" "Import" "London01" "ccd-import" "[{\"code\":\"ccd-import\"}]"
 ./create-user.sh "${IA_SYSTEM_USERNAME}" "System" "user" "${IA_SYSTEM_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-system\"}]"
 ./create-user.sh "${CCD_SYSTEM_USERNAME}" "${USER_PREFIX}CCD System" "user" "${CCD_SYSTEM_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}]"
+./organisational-role-assignment.sh "${IA_SYSTEM_USERNAME}" "${IA_SYSTEM_PASSWORD}" "PUBLIC" "case-allocator" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment.sh "${IA_SYSTEM_USERNAME}" "${IA_SYSTEM_PASSWORD}" "PUBLIC" "hearing-manager" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment.sh "${IA_SYSTEM_USERNAME}" "${IA_SYSTEM_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment.sh "${IA_SYSTEM_USERNAME}" "${IA_SYSTEM_PASSWORD}" "PUBLIC" "listed-hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 
 echo "Setting up WA test accounts"
 ./create-user.sh "${TEST_WA_CASEOFFICER_A_USERNAME}" "CaseOfficer" "TestPurposes A" "${TEST_WA_CASEOFFICER_A_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-caseofficer\"}]"
@@ -52,17 +56,30 @@ echo "Setting up WA Users and role assignments..."
 echo "Setting up CTSC Users..."
 ./create-user.sh "${TEST_CTSC_ADMIN_USERNAME}" "CTSC" "Admin" "${TEST_CTSC_ADMIN_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"hmcts-ctsc\"}, { \"code\": \"payments\"}]"
 ./organisational-role-assignment-ctsc.sh "${TEST_CTSC_ADMIN_USERNAME}" "${TEST_CTSC_ADMIN_PASSWORD}" "PUBLIC" "ctsc" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment-ctsc.sh "${TEST_CTSC_ADMIN_USERNAME}" "${TEST_CTSC_ADMIN_PASSWORD}" "PUBLIC" "hearing-manager" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment-ctsc.sh "${TEST_CTSC_ADMIN_USERNAME}" "${TEST_CTSC_ADMIN_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+
+echo "Setting up NBC Users..."
+./create-user.sh "${TEST_NBC_ADMIN_USERNAME}" "NBC" "Admin" "${TEST_NBC_ADMIN_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-admofficer\"}, { \"code\": \"payments\"}]"
+./organisational-role-assignment-nbc.sh "${TEST_NBC_ADMIN_USERNAME}" "${TEST_NBC_ADMIN_PASSWORD}" "PUBLIC" "national-business-centre" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment-nbc.sh "${TEST_NBC_ADMIN_USERNAME}" "${TEST_NBC_ADMIN_PASSWORD}" "PUBLIC" "hearing-manager" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment-nbc.sh "${TEST_NBC_ADMIN_USERNAME}" "${TEST_NBC_ADMIN_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 
 echo "Setting up IA Users..."
 ./create-user.sh "${TEST_CASEOFFICER_USERNAME}" "Case" "Officer" "${TEST_CASEOFFICER_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-caseofficer\"}, { \"code\": \"payments\"}]"
 ./organisational-role-assignment.sh "${TEST_CASEOFFICER_USERNAME}" "${TEST_CASEOFFICER_PASSWORD}" "PUBLIC" "case-allocator" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 ./organisational-role-assignment.sh "${TEST_CASEOFFICER_USERNAME}" "${TEST_CASEOFFICER_PASSWORD}" "PUBLIC" "task-supervisor" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 ./organisational-role-assignment.sh "${TEST_CASEOFFICER_USERNAME}" "${TEST_CASEOFFICER_PASSWORD}" "PUBLIC" "tribunal-caseworker" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment.sh "${TEST_CASEOFFICER_USERNAME}" "${TEST_CASEOFFICER_PASSWORD}" "PUBLIC" "hearing-manager" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment.sh "${TEST_CASEOFFICER_USERNAME}" "${TEST_CASEOFFICER_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 
 ./create-user.sh "${TEST_JUDICIARY_USERNAME}" "Tribunal" "Judge" "${TEST_JUDICIARY_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-judiciary\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_A_USERNAME}" "A" "Legal Rep" "${TEST_LAW_FIRM_A_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-system\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_B_USERNAME}" "B" "Legal Rep" "${TEST_LAW_FIRM_B_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, {\"code\": \"caseworker-ia-legalrep-solicitor\"},{ \"code\": \"payments\"}]"
 ./create-user.sh "${TEST_ADMINOFFICER_USERNAME}" "admin" "Officer" "${TEST_ADMINOFFICER_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-admofficer\"}, { \"code\": \"payments\"}]"
+./organisational-role-assignment.sh "${TEST_ADMINOFFICER_USERNAME}" "${TEST_ADMINOFFICER_PASSWORD}" "PUBLIC" "hearing-manager" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment.sh "${TEST_ADMINOFFICER_USERNAME}" "${TEST_ADMINOFFICER_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+
 ./create-user.sh "${TEST_HOMEOFFICE_APC_USERNAME}" "Home Office" "APC" "${TEST_HOMEOFFICE_APC_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficeapc\"}]"
 ./create-user.sh "${TEST_HOMEOFFICE_LART_USERNAME}" "Home Office" "LART" "${TEST_HOMEOFFICE_LART_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficelart\"}]"
 ./create-user.sh "${TEST_HOMEOFFICE_POU_USERNAME}" "Home Office" "POU" "${TEST_HOMEOFFICE_POU_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker\"}, { \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-homeofficepou\"}]"
@@ -81,10 +98,14 @@ echo "Setting up IA Users..."
 ./organisational-role-assignment.sh "${TEST_JUDGE_X_USERNAME}" "${TEST_JUDGE_X_PASSWORD}" "PUBLIC" "case-allocator" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 ./organisational-role-assignment.sh "${TEST_JUDGE_X_USERNAME}" "${TEST_JUDGE_X_PASSWORD}" "PUBLIC" "task-supervisor" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 ./organisational-role-assignment-judge.sh "${TEST_JUDGE_X_USERNAME}" "${TEST_JUDGE_X_PASSWORD}" "PUBLIC" "judge" '{"jurisdiction":"IA","primaryLocation":"765324"}'
+./organisational-role-assignment-judge.sh "${TEST_JUDGE_X_USERNAME}" "${TEST_JUDGE_X_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'
 
 ./create-user.sh "${TEST_LAW_FIRM_ORG_SUCCESS_USERNAME}" "${IA_USER_PREFIX}PBA Success" "Legal Rep" "${TEST_LAW_FIRM_ORG_SUCCESS_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
 ./create-user.sh "${TEST_LAW_FIRM_ORG_DELETED_USERNAME}" "${IA_USER_PREFIX}PBA Deleted" "Legal Rep" "${TEST_LAW_FIRM_ORG_DELETED_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}, { \"code\": \"payments\"}]"
+./create-user.sh "${TEST_LAW_FIRM_BAILS_USERNAME}" "${IA_USER_PREFIX}PBA Success" "Legal Rep" "${TEST_LAW_FIRM_BAILS_PASSWORD}" "caseworker" "[{ \"code\": \"caseworker-ia\"}, { \"code\": \"caseworker-ia-bails\"}, { \"code\": \"caseworker-ia-legalrep-solicitor\"}]"
 
 ./create-user.sh "caa-caseworker@fake.hmcts.net" "${USER_PREFIX}CAA-System" "user" "London21" "caseworker" "[{ \"code\": \"caseworker-caa\"}]"
 ./create-user.sh "approver-caseworker@fake.hmcts.net" "${USER_PREFIX}Approver-System" "user" "London22" "caseworker" "[{ \"code\": \"caseworker-approver\"}, { \"code\": \"prd-aac-system\"}]"
 ./create-user.sh "approver-noc@fake.com" "${USER_PREFIX}Approver-NoC" "user" "Pa55word11" "caseworker" "[{ \"code\": \"caseworker-approver\"}, { \"code\": \"prd-aac-system\"}]"
+
+./organisational-role-assignment.sh "${TEST_CASEOFFICER_USERNAME}" "${TEST_CASEOFFICER_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"IA","primaryLocation":"765324"}'

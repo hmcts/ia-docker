@@ -89,6 +89,8 @@ export TEST_LAW_FIRM_ORG_SUCCESS_USERNAME=ia-law-firm-success@fake.hmcts.net
 export TEST_LAW_FIRM_ORG_SUCCESS_PASSWORD=London08
 export TEST_LAW_FIRM_ORG_DELETED_USERNAME=ia-law-firm-deleted@fake.hmcts.net
 export TEST_LAW_FIRM_ORG_DELETED_PASSWORD=London09
+export TEST_LAW_FIRM_BAILS_USERNAME=ia-law-firm-bails@fake.hmcts.net
+export TEST_LAW_FIRM_BAILS_PASSWORD=London09
 
 export IDAM_ADMIN_USER=idamOwner@hmcts.net
 export IDAM_URL=http://localhost:5000

@@ -31,12 +31,14 @@ services:
       SERVICES_WORK_ALLOCATION_TASK_API: http://wa-task-management-api:8087
       SERVICES_EM_ANNO_API: http://ccd-api-gateway:3453
       SERVICES_CASE_CASEWORKER_API: http://wiremock:8080
+      SERVICES_PRD_LOCATION_API: http://wiremock:8080
 
       FEATURE_REDIS_ENABLED: "false"
       FEATURE_APP_INSIGHTS_ENABLED: "false"
       FEATURE_SECURE_COOKIE_ENABLED: "false"
       FEATURE_WORKALLOCATION_ENABLED: "false"
       APPINSIGHTS_INSTRUMENTATIONKEY: fake
+      SERVICES_PRD_COMMONDATA_API: http://wiremock:8080
 
       # S2S_SECRET: "${IDAM_KEY_CCD_GATEWAY}"
       S2S_SECRET: "AAAAAAAAAAAAAAAA"
@@ -49,6 +51,9 @@ services:
       LAUNCH_DARKLY_CLIENT_ID: "${EXUI_LAUNCH_DARKLY_CLIENT_ID}"
 
       JURISDICTIONS: IA
+
+      SERVICES_HEARINGS_COMPONENT_API_IAC: http://host.docker.internal:8100/asylum
+      SERVICES_HMC_HEARINGS_COMPONENT_API: http://cft-hearing-service:4561
 
     ports:
       - 3002:3000
