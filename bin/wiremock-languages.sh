@@ -3031,3 +3031,6 @@ curl -X POST \
 
 }' \
 http://localhost:8991/__admin/mappings/new
+
+# make responses persistent in Docker volume
+curl -X POST http://localhost:8991/__admin/mappings/save
